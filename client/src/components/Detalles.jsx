@@ -1,5 +1,5 @@
 import React from "react";
-import './css/CreateUser.css'
+import './css/Detalles.css'
 
 export default function Detalles() {
     return(
