@@ -1,7 +1,7 @@
 import React from "react";
-import './css/CreateUser.css'
+import './CreateUser'
 
-export default function Main() {
+export default function CreateUser() {
     return(
         <h1 className="texto">Create User</h1>
     )
