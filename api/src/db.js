@@ -2,10 +2,10 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecommerce`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
   {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -44,7 +44,10 @@ const { Videogame, Genre, Audience, Order, Item, Library, User } =
 
 // Videojuegos
 Videogame.belongsToMany(Genre, { through: 'videogame_genre' });
-Videogame.hasOne(Audience);
+Videogame.belongsToMany(Audience, { through: 'videogame_audience' });
+Videogame.belongsToMany(Library, { through: 'videogame_library' });
+// Audience
+Audience.belongsToMany(Videogame, { through: 'videogame_audience' });
 // Generos
 Genre.belongsToMany(Videogame, { through: 'videogame_genre' });
 // Users
@@ -55,9 +58,9 @@ Order.belongsTo(User);
 Order.hasMany(Item);
 // Libraries
 Library.belongsTo(User);
+Library.belongsToMany(Videogame, { through: 'videogame_library' });
 // Items
 Item.belongsTo(Order);
-Item.hasOne(Videogame);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

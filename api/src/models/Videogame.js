@@ -26,9 +26,6 @@ module.exports = sequelize => {
       rating: {
         type: DataTypes.FLOAT,
       },
-      esrbRating: {
-        type: DataTypes.ENUM('')
-      },
       minReq: {
         type: DataTypes.TEXT,
       },
