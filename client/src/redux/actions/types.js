@@ -1,19 +1,25 @@
-//-------------ALL-PRODUCTS----------------//
+//-------------ALL-GAMES----------------//
 
-export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
+export const GET_ALL_GAMES = 'GET_ALL_GAMES';
 
 export const GET_GENRES = 'GET_GENRES';
 export const GENRE_FILTER = 'GENRE_FILTER';
 
 export const NAME_ORDER = 'NAME_ORDER';
 
-//-------------SINGLE-PRODUCT---------------//
+//export const GET_AUDIENCE = 'GET_AUDIENCE';
+//export const AUDIENCE_FILTER = 'AUDIENCE_FILTER';
 
-export const GET_PRODUCT = 'GET_PRODUCT';
+//export const GET_RATING = 'GET_RATING';
+//export const RATING_FILTER = 'RATING_FILTER';
 
-export const ADD_PRODUCT = 'ADD_PRODUCT';
-export const EDIT_PRODUCT = 'EDIT_PRODUCT';
-export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+//-------------SINGLE-GAME---------------//
+
+export const GET_GAME = 'GET_GAME';
+
+export const ADD_GAME = 'ADD_GAME';
+export const EDIT_GAME = 'EDIT_GAME';
+export const DELETE_GAME = 'DELETE_GAME';
 
 //-----------------USER--------------------//
 

@@ -1,18 +1,18 @@
 import {
-    GET_ALL_PRODUCTS,
+    GET_ALL_GAMES,
     GET_GENRES,
     GENRE_FILTER,
     NAME_ORDER,
 } from '../types.js';
 
 const initialState = {
-    allProducts: [],
+    allGames: [],
 };
 
-export default function allProductsReducer(state = initialState, action) {
+export default function allGamesReducer(state = initialState, action) {
     switch (action.type) {
 
-        case GET_ALL_PRODUCTS:
+        case GET_ALL_GAMES:
             return {
                 ...state
             };
