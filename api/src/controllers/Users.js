@@ -12,15 +12,23 @@ router.post('/', async (req, res) => {
  if(!name || !email || !password || !role){return res.status(401).send("Falta enviar datos obligatorios")}
  sha1(password)
  try {
-    const newUser = User.create({
+    const foundMail = await User.findAll(
+        {
+            where :{
+                email: email
+                }})
+    if(foundMail.length>0){
+        res.send('El email ya esta asociado a una cuenta existente')
+    }else{
+    User.create({
         name,
         email,
-        pass,
+        password,
         role,
     })
-    res.send('Usuario creado exitosamente')
+    res.send('Usuario creado exitosamente')}
  } catch (error) {
-    res.send(error)
+    res.send('No se pudo crear el usuario')
  }
 }
 )
@@ -33,3 +41,12 @@ module.exports = router;
     "password":"1234",
     "role":"user"
 } */
+
+/* const foundMail = await User.findAll(
+        {
+            where :{
+                email: email
+                }})
+    if(foundMail.length>0){
+        res.send('foundMail')
+    }else{  */
