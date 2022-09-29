@@ -38,11 +38,19 @@ let handleChange = (e) => {
             console.log(response)
         })()
     }}
+
+    const uploadImage = (files) => {
+        console.log(files[0]);
+    }
+
     console.log(input)
     return(
         <form>
         <h1 className="texto">Create User</h1>
         <br />
+        <input type='file' onChange={(event) => {
+            uploadImage(event.target.files)
+            }}/>
         <div>
             <label className='texto'>Nombre:</label>
             <br />
