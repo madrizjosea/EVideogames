@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import productsReducer from './productsReducer.js';
+import games from './games.js';
+import cart from './cart.js';
+import users from './users.js';
 
 export default combineReducers({
-  productsReducer,
+  games,
+  cart,
+  users,
 });
