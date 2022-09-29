@@ -6,10 +6,11 @@ import {
 } from '../types.js';
 
 const initialState = {
+    allUsers: [],
     user: [],
 };
 
-export default function userReducer(state = initialState, action) {
+export default function users(state = initialState, action) {
     switch (action.type) {
 
         case GET_USER:

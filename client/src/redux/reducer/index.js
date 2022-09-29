@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
-import allGamesReducer from './allGamesReducer.js';
-import gameReducer from './gameReducer.js';
-import cartReducer from './cartReducer.js';
-import userReducer from './userReducer.js';
+import games from './games.js';
+import cart from './cartReducer.js';
+import users from './userReducer.js';
 
 export default combineReducers({
   allGamesReducer, 
