@@ -8,7 +8,7 @@ import {
     ADD_GAME,
     EDIT_GAME,
     DELETE_GAME,
-} from '../types.js';
+} from '../actions/types.js';
 
 const initialState = {
     allGames: [],
