@@ -40,12 +40,7 @@ export function getGame(id) {
     };
 };
 
-export function addGame(payload) {
-    return async function (dispatch) {
-        const game = await axios.post('/videogames', payload);
-        dispatch({ type: ADD_GAME, payload: game.data })
-    };
-};
 
+// ADD_GAME
 // EDIT_GAME
 // DELETE_GAME
