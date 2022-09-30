@@ -29,11 +29,9 @@ export function getGameQuery(query) {
     };
 };
 
-
-// GET_GENRES,
-// GENRE_FILTER,
-// NAME_ORDER,
-
+// GET_GENRES
+// GENRE_FILTER
+// NAME_ORDER
 
 export function getGame(id) {
     return async function (dispatch) {
@@ -49,5 +47,5 @@ export function addGame(payload) {
     };
 };
 
-// EDIT_GAME,
+// EDIT_GAME
 // DELETE_GAME

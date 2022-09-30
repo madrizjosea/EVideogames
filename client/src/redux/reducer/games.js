@@ -1,5 +1,6 @@
 import {
     GET_ALL_GAMES,
+    GET_GAME_QUERY,
     GET_GENRES,
     GENRE_FILTER,
     NAME_ORDER,
@@ -11,6 +12,7 @@ import {
 
 const initialState = {
     allGames: [],
+    games: [],
     game: [],
 };
 
@@ -19,7 +21,14 @@ export default function games(state = initialState, action) {
 
         case GET_ALL_GAMES:
             return {
-                ...state
+                ...state,
+                allGames: action.payload,
+            };
+
+        case GET_GAME_QUERY:
+            return {
+                ...state,
+                games: action.payload,
             };
 
         case GET_GENRES:
@@ -39,7 +48,8 @@ export default function games(state = initialState, action) {
 
         case GET_GAME:
             return {
-                ...state
+                ...state,
+                game: action.payload,
             };
 
         case ADD_GAME:
