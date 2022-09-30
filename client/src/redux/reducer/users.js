@@ -3,7 +3,7 @@ import {
     ADD_USER,
     EDIT_USER,
     DELETE_USER,
-} from '../types.js';
+} from '../actions/types.js';
 
 const initialState = {
     allUsers: [],

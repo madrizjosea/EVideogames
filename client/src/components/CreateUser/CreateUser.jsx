@@ -1,18 +1,19 @@
 import React from "react";
 import './CreateUser'
 import { useState } from "react";
-import axios from 'axios';
-
+import axiosInstance from "../../axios";
+import { Image } from 'cloudinary-react'
 
 export default function CreateUser() {
-
     const [input, setInput] = useState({
     name: '',
     email: '',
     password: '',
-    role: 'user'
+    role: 'user',
+    image: ''
 })
-
+const [result, setResult] = useState('')
+const [image, setImage] = useState('')
 const [error, setError] = useState({})
 
 let handleChange = (e) => {
@@ -25,24 +26,45 @@ let handleChange = (e) => {
        [e.target.name]: e.target.value
     }))}
 
-    let handleClick = (e) => {
+let handleClick = (e) => {
     e.preventDefault()
     if(!input.name || !input.email || !input.password) return
     else{
         (async () => {
-        const response = await axios({
+                await axiosInstance({
                 method:'post',
-                url:'http://localhost:3001/users',
+                url:'/users',
                 data: input
             })
-            console.log(response)
+            .then((response) => setResult(response.status))
         })()
     }}
-    console.log(input)
+
+const uploadImage = (files) => {
+        files.preventDefault()
+        const formData = new FormData()
+        formData.append('file', image)
+        formData.append('upload_preset', 'uk5jmzhu')
+        axiosInstance.post('https://api.cloudinary.com/v1_1/dnf3cz1f3/image/upload', formData)
+        .then((response) => setInput({
+            ...input,
+            image: `https://res.cloudinary.com/dnf3cz1f3/image/upload/v1664485387/${response.data.public_id}.png`
+        }))  
+    }
+    
+   
     return(
         <form>
         <h1 className="texto">Create User</h1>
         <br />
+        <input className="texto" type='file' onChange={(event) => {event.preventDefault()
+            setImage(event.target.files[0])
+            }}/>
+        <button onClick={uploadImage}>Subir Imagen</button>
+        <Image 
+        style={{width: 200}} 
+        cloudName='dnf3cz1f3' 
+        publicId = {input.image}/>
         <div>
             <label className='texto'>Nombre:</label>
             <br />
@@ -73,6 +95,8 @@ let handleChange = (e) => {
         <div>
          <button onClick={handleClick}>Registrarse</button>
         </div>     
+        {result===201 && <p className="danger">El mail ya esta asociado a una cuenta</p>}
+        {result===200 && <p className="texto">Usuario creado exitosamente</p>}
         <br/>
         </form>
     )
