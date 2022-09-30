@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
- const {name, email, password, role} = req.body
+ const {name, email, password, role, image} = req.body
  if(!name || !email || !password || !role){return res.status(401).send("Falta enviar datos obligatorios")}
  sha1(password)
  try {
@@ -18,13 +18,14 @@ router.post('/', async (req, res) => {
                 email: email
                 }})
     if(foundMail.length>0){
-        res.send('El email ya esta asociado a una cuenta existente')
+        res.status(201).send('El email ya esta asociado a una cuenta existente')
     }else{
     User.create({
         name,
         email,
         password,
         role,
+        image,
     })
     res.send('Usuario creado exitosamente')}
  } catch (error) {
