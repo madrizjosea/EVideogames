@@ -1,4 +1,4 @@
-//-------------ALL-GAMES----------------//(Main)
+//----------------GAMES----------------//(Main)
 
 export const GET_ALL_GAMES = 'GET_ALL_GAMES';
 export const GET_GAME_QUERY = 'GET_GAME_QUERY';
@@ -6,10 +6,10 @@ export const GET_GAME_QUERY = 'GET_GAME_QUERY';
 export const GET_GENRES = 'GET_GENRES';
 export const GENRE_FILTER = 'GENRE_FILTER';
 
-export const NAME_ORDER = 'NAME_ORDER';
+export const GET_AUDIENCES = 'GET_AUDIENCE';
+export const AUDIENCE_FILTER = 'AUDIENCE_FILTER';
 
-//export const GET_AUDIENCE = 'GET_AUDIENCE';
-//export const AUDIENCE_FILTER = 'AUDIENCE_FILTER';
+export const NAME_ORDER = 'NAME_ORDER';
 
 //export const GET_RATING = 'GET_RATING';
 //export const RATING_FILTER = 'RATING_FILTER';
