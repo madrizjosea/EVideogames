@@ -2,7 +2,7 @@ import {
     ADD_TO_CART,
     DELETE_FROM_CART,
     EMPTY_CART,
-} from '../types.js';
+} from '../actions/types.js';
 
 const initialState = {
     items: [],
