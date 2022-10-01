@@ -27,7 +27,11 @@ export function getGameQuery(query) {
     };
 };
 
-// NAME_ORDER
+export function nameOrder(payload) {
+    return {
+        type: NAME_ORDER, payload
+    };
+};
 
 export function getGame(id) {
     return async function (dispatch) {

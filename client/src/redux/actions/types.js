@@ -9,7 +9,7 @@ export const GENRE_FILTER = 'GENRE_FILTER'; //✓
 export const GET_AUDIENCES = 'GET_AUDIENCE'; //✓
 export const AUDIENCE_FILTER = 'AUDIENCE_FILTER'; //✓
 
-export const NAME_ORDER = 'NAME_ORDER';
+export const NAME_ORDER = 'NAME_ORDER'; //✓
 
 //export const GET_RATING = 'GET_RATING';
 //export const RATING_FILTER = 'RATING_FILTER';
