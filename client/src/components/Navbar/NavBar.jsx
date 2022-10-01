@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { NavLink } from 'react-router-dom';
-import Style from'./Navbar.module.css';
+import { NavLink } from "react-router-dom";
 // import { useSelector } from "react-redux";
 // import NavUser from "../NavUser/NavUser";
-import { useState } from "react";
+//import { useState } from "react";
 import logo from "../image/Logo.JPG";
+import './Navbar.css';
 // import NavUser from "../NavUser/NavUser";
 // import { IconContext } from "react-icons";
 // import { Badge } from '@mui/material';
@@ -15,15 +14,15 @@ import logo from "../image/Logo.JPG";
 export default function NavBar(props) {
   //  const carryProducts = useSelector((state) => state.carryProducts);
   //  const user_login = useSelector((state) => state.user_login);
- const [openModal, setOpenModal] = useState(false);
+ /* const [openModal, setOpenModal] = useState(false); */
 
- function handleOpen() {
+/*  function handleOpen() {
    setOpenModal(true);
  }
 
  function handleClose(value) {
    setOpenModal(value);
- }
+ } */
 
 //  let Cantidad=0
 //  for (let index = 0; index < carryProducts.length; index++) {
@@ -33,38 +32,33 @@ export default function NavBar(props) {
 
  return (
    <header>
-     <nav className={Style.NavBarComplete}>
-       <div className={Style.left}>
-         <Link to={"/"}>
+     <nav>
+       <div>
+         <NavLink  to={"/"}>
            {/* <img src={logo_wooly} alt="Not Found" width="85px" height="85px" className={Style.logo} /> */}
            <img
              src={logo}
              alt="Not Found"
              width="85px"
              height="85px"
-             className={Style.logo}
+             
            />
-         </Link>
-         <ul className={Style.NavUl}>
+         </NavLink>
+         <ul >
            <li>
-             <Link to={"/products/inicio"} className={Style.letra}>
-              INICIO
-             </Link>
+             <NavLink to={"/Main"} className='navlink'>
+              Game List
+             </NavLink>
            </li>
            <li>
-             <Link to={"/products/producto"} className={Style.letra}>
-               PRODUCTO
-             </Link>
-           </li>
-           <li>
-             <Link to={"/mis pedidos"} className={Style.letra}>
-               MIS PEDIDOS
-             </Link>
+             <NavLink to={'/CreateUser'} className='navlink'>
+               Register
+             </NavLink>
            </li>
          </ul>
        </div>
-       <div className={Style.center}>
-         <ul className={Style.NavUl}></ul>
+       <div >
+         <ul ></ul>
          </div>
            {/* <li>
                <Link to={"/products/Men"} className={Style.letra}>

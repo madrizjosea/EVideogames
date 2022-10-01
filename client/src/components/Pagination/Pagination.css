@@ -1,0 +1,28 @@
+.bpage{
+    
+        background-color: #b41d1d;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        position: relative;
+        border-radius: 10%;
+        
+}
+.selected{
+    
+        background-color: #424242;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        position: relative;
+        border-radius: 10%;
+       
+}
