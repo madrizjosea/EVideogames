@@ -2,8 +2,6 @@ import axios from '../../../axios';
 import {
     GET_ALL_GAMES,
     GET_GAME_QUERY,
-    GET_GENRES,
-    GENRE_FILTER,
     NAME_ORDER,
     GET_GAME,
     ADD_GAME,
@@ -29,8 +27,6 @@ export function getGameQuery(query) {
     };
 };
 
-// GET_GENRES
-// GENRE_FILTER
 // NAME_ORDER
 
 export function getGame(id) {
