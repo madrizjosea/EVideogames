@@ -3,6 +3,8 @@ import {
     GET_GAME_QUERY,
     GET_GENRES,
     GENRE_FILTER,
+    GET_AUDIENCES,
+    AUDIENCE_FILTER,
     NAME_ORDER,
     GET_GAME,
     ADD_GAME,
@@ -12,6 +14,8 @@ import {
 
 const initialState = {
     allGames: [],
+    allGenres: [],
+    allAudiences: [],
     games: [],
     game: [],
 };
@@ -33,12 +37,26 @@ export default function games(state = initialState, action) {
 
         case GET_GENRES:
             return {
-                ...state
+                ...state,
+                allGenres: action.payload,
             };
 
         case GENRE_FILTER:
             return {
-                ...state
+                ...state,
+                games: action.payload,
+            };
+
+        case GET_AUDIENCES:
+            return {
+                ...state,
+                allAudiences: action.payload,
+            };
+
+        case AUDIENCE_FILTER:
+            return {
+                ...state,
+                games: action.payload,
             };
 
         case NAME_ORDER:
