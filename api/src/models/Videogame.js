@@ -32,6 +32,10 @@ module.exports = sequelize => {
       recommendedReq: {
         type: DataTypes.TEXT,
       },
+      price: {
+        type: DataTypes.FLOAT,
+        defaultValue: 60,
+      },
       isAvailable: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,

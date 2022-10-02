@@ -25,7 +25,7 @@ export default function Details() {
         <div>
           <h2>Release Date: {details.releaseDate}</h2>
           <div className={styles.btns}>
-            <h2>Price: $60</h2>
+            <h2>Price: ${details.price}</h2>
             {/* <button>Add to Cart</button>
             <button>Write review</button> */}
           </div>
