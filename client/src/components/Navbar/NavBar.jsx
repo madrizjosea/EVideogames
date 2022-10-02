@@ -48,20 +48,20 @@ export default function NavBar(props) {
          </Link>
          <ul className={Style.NavUl}>
            <li>
-             <Link to={"/products/inicio"} className={Style.letra}>
-              INICIO
+             <Link to={"/Main"} className={Style.letra}>
+              GAMES
              </Link>
            </li>
            <li>
-             <Link to={"/products/producto"} className={Style.letra}>
-               PRODUCTO
+             <Link to={"/CreateUser"} className={Style.letra}>
+               CREATE USER
              </Link>
            </li>
-           <li>
+           {/* <li>
              <Link to={"/mis pedidos"} className={Style.letra}>
                MIS PEDIDOS
              </Link>
-           </li>
+           </li> */}
          </ul>
        </div>
        <div className={Style.center}>
