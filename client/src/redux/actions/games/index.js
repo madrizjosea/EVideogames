@@ -2,8 +2,6 @@ import axios from '../../../axios';
 import {
     GET_ALL_GAMES,
     GET_GAME_QUERY,
-    GET_GENRES,
-    GENRE_FILTER,
     NAME_ORDER,
     GET_GAME,
     ADD_GAME,
@@ -29,9 +27,11 @@ export function getGameQuery(query) {
     };
 };
 
-// GET_GENRES
-// GENRE_FILTER
-// NAME_ORDER
+export function nameOrder(payload) {
+    return {
+        type: NAME_ORDER, payload
+    };
+};
 
 export function getGame(id) {
     return async function (dispatch) {
@@ -40,6 +40,24 @@ export function getGame(id) {
     };
 };
 
-// ADD_GAME
-// EDIT_GAME
-// DELETE_GAME
+export function addGame(payload) {
+    return async function (dispatch) {
+        const game = await axios.post('/videogames', payload);
+        dispatch({ type: ADD_GAME, payload: game.data })
+    };
+};
+
+export function editGame(payload) {
+    return async function (dispatch) {
+        const game = await axios.put(`/videogames/${id}`, payload);
+        dispatch({ type: EDIT_GAME, payload: game.data })
+    };
+};
+
+export function deleteGame(id) {
+    return async function (dispatch) {
+        await axios.delete(`/videogames/${id}`);
+        dispatch({ type: DELETE_GAME });
+    };
+}
+

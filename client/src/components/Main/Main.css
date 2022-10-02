@@ -1,0 +1,33 @@
+.texto {
+    color: aliceblue;
+}
+
+.filtrado {
+    color: aliceblue;
+    width: 400px;
+    margin: auto;
+}
+
+.button {
+    background-color: #b41d1d;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 10%;
+    }
+
+    .divcontainer{
+        align-content: center;
+        text-align: center;
+    }
+
+    .div{
+        display: inline-block;
+        width:120px;
+        height:120px;
+    }

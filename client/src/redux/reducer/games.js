@@ -3,6 +3,8 @@ import {
     GET_GAME_QUERY,
     GET_GENRES,
     GENRE_FILTER,
+    GET_AUDIENCES,
+    AUDIENCE_FILTER,
     NAME_ORDER,
     GET_GAME,
     ADD_GAME,
@@ -33,18 +35,44 @@ export default function games(state = initialState, action) {
 
         case GET_GENRES:
             return {
-                ...state
+                ...state,
+                allGenres: action.payload,
             };
 
         case GENRE_FILTER:
             return {
-                ...state
+                ...state,
+                games: action.payload,
+            };
+
+        case GET_AUDIENCES:
+            return {
+                ...state,
+                allAudiences: action.payload,
+            };
+
+        case AUDIENCE_FILTER:
+            return {
+                ...state,
+                games: action.payload,
             };
 
         case NAME_ORDER:
-            return {
-                ...state
-            };
+            let nameOrder;
+            if (action.payload === 'A-Z') {
+                nameOrder = state.games.sort((a, b) => {
+                    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                    return 0;
+                })
+            } else if (action.payload === 'Z-A') {
+                nameOrder = state.games.sort((a, b) => {
+                    if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+                    return 0;
+                })
+            }
+            return { ...state, games: nameOrder };
 
         case GET_GAME:
             return {
