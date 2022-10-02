@@ -15,7 +15,8 @@ export default function users(state = initialState, action) {
 
         case GET_USER:
             return {
-                ...state
+                ...state,
+                user: action.payload,
             };
 
         case ADD_USER:
