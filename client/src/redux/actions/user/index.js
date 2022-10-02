@@ -6,7 +6,12 @@ import {
     DELETE_USER,
 } from '../types.js';
 
-//GET_USER
+export function getUser(id) {
+    return async function (dispatch) {
+        const user = await axios.get(`/users/${id}`);
+        dispatch({ type: GET_USER, payload: user.data });
+    };
+};
 
 export function addUser(payload) {
     return async function (dispatch) {
@@ -15,5 +20,16 @@ export function addUser(payload) {
     };
 };
 
-//EDIT_USER
-//DELETE_USER
+export function editUser(payload) {
+    return async function (dispatch) {
+        const user = await axios.put(`/users/${id}`, payload);
+        dispatch({ type: EDIT_GAME, payload: user.data })
+    };
+};
+
+export function deleteUser(id) {
+    return async function (dispatch) {
+        await axios.delete(`/users/${id}`);
+        dispatch({ type: DELETE_USER });
+    };
+}

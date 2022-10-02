@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import './Landing.module.css'
+import Style from './Landing.module.css'
+import logo from "../image/Logo.JPG";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
 
@@ -10,10 +12,26 @@ const Landing = () => {
         history("/Main");
     }
 
-    return(<div className="div">
-        <h1 className="texto">Bienvenido</h1>
-        <button className="button" type="button" onClick={handleclick}>Ingresar</button>
-        </div>
+    return(<div className= {Style.landingContainer}>
+        {/* <h1 className={Style.tittle}>Bienvenido</h1> */}
+       {/* <button className="button" type="button" onClick={handleclick}>Ingresar</button> */}
+       <button className={Style.center} onClick={handleclick}>
+         <Link to={"/"}>
+           {/* <img src={logo_wooly} alt="Not Found" width="85px" height="85px" className={Style.logo} /> */}
+           <img
+             src={logo}
+             alt="Not Found"
+             width="85px"
+             height="85px"
+             className={Style.logo}
+             />
+         </Link>
+         </button>
+           
+            </div>
+            
+
+        
     )
 }
 

@@ -14,8 +14,6 @@ import {
 
 const initialState = {
     allGames: [],
-    allGenres: [],
-    allAudiences: [],
     games: [],
     game: {},
 };
@@ -60,9 +58,21 @@ export default function games(state = initialState, action) {
             };
 
         case NAME_ORDER:
-            return {
-                ...state
-            };
+            let nameOrder;
+            if (action.payload === 'A-Z') {
+                nameOrder = state.games.sort((a, b) => {
+                    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                    return 0;
+                })
+            } else if (action.payload === 'Z-A') {
+                nameOrder = state.games.sort((a, b) => {
+                    if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+                    return 0;
+                })
+            }
+            return { ...state, games: nameOrder };
 
         case GET_GAME:
             return {

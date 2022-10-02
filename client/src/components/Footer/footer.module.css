@@ -1,0 +1,83 @@
+.footerDistributed {
+    /* background-color: #b2785b; */
+    background: url("../image/fodonavbar2.JPG");
+    height: 130px;
+    box-sizing: border-box;
+    width: 100%;
+    /* text-align: left; */
+    font: bold 16px sans-serif;
+    padding: 0px 30px;
+    border-top: 5px solid white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .formatLinks {
+    color: white;
+    cursor: pointer;
+  }
+  
+  .formatLinks:hover {
+    color: #008000;
+  }
+  /* 
+  .footerDistributed .footerLinks h4:before {
+    content: "|";
+    font-weight: 300;
+    font-size: 20px;
+    left: 0;
+    color: #fff;
+    display: inline-block;
+    padding-right: 5px;
+    text-decoration: none;
+  }
+   */
+  /* .footerDistributed .footerLinks .linkOne:before {
+     content: none;
+  } */
+  
+  /* CENTRO */
+  
+  .footerDistributed .footerCenter {
+    text-align: center;
+    margin: 0;
+    /* vertical-align: text-top; */
+    width: 200px;
+  }
+  
+  .img {
+    height: auto;
+    width: auto;
+    justify-content: center;
+    margin: 5px 5px;
+    vertical-align: middle;
+    border-radius: 6rem;
+  }
+  
+  .containerCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* DERECHA */
+  
+  /* .footerDistributed .footerRight {
+     width: 20%;
+  } */
+  
+  /* .footerDistributed .footerCompanyAbout {
+     line-height: 20px;
+     font-size: 13px;
+     font-weight: normal;
+     margin: 0;
+  } */
+  
+  /* .footerDistributed .footerCompanyAbout {
+     display: block;
+     color: #ffffff;
+     font-size: 14px;
+     font-weight: bold;
+     margin-bottom: 20px;
+  } */
+  
