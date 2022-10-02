@@ -22,10 +22,7 @@ const getVideogames = async (req, res, next) => {
           attributes: ['name'],
           through: { attributes: [] },
         },
-        { model: Genre,
-          attributes: ['name'],
-          through: { attributes: [] }
-        },
+        { model: Genre, attributes: ['name'], through: { attributes: [] } },
       ],
       attributes: {
         exclude: ['description', 'minReq', 'recommendedReq'],
@@ -34,7 +31,6 @@ const getVideogames = async (req, res, next) => {
 
     if (videogames.length) res.status(200).json(videogames);
     else res.status(204).send('No se encontraron videojuegos.');
-
   } catch (error) {
     next(error);
   }
@@ -44,26 +40,19 @@ const getVideogames = async (req, res, next) => {
 const getVideogameById = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const videogame = await Videogame.findAll({
-      where: {
-        id,
-      },
+    const videogame = await Videogame.findByPk(id, {
       include: [
         {
           model: Audience,
           attributes: ['name'],
           through: { attributes: [] },
         },
-        { model: Genre,
-          attributes: ['name'],
-          through: { attributes: [] }
-        },
+        { model: Genre, attributes: ['name'], through: { attributes: [] } },
       ],
     });
 
     if (videogame) res.status(200).json(videogame);
     else res.status(201).send('No existe un videojuego con ese ID');
-
   } catch (error) {
     next(error);
   }
