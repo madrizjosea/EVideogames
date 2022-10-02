@@ -28,3 +28,71 @@ nav {
   .active {
     background-color: #cc0707;
   }
+
+  .NavBarComplete{
+    background: url("../image/fodonavbar2.JPG");
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font: bold 16px sans-serif;
+    padding: 3px 5px;
+  }
+
+  .letra{
+    justify-content: space-between;
+    color: white;
+    text-decoration: none;
+    width: 100px;
+    padding: 10px 15px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0px;
+    border: none;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    top: 60vh;
+    
+  }
+
+  .liFormat {
+    margin-left: 15px;
+  }
+
+  .letra:hover {
+    color: #80007a;
+  }
+
+  .NavBarComplete .logo {
+    border-radius: 5rem;
+    margin-left: 3rem;
+  }
+  .logo:hover {
+    transform: scale(1.025, 1.025);
+    filter: drop-shadow(0 0 12px white);
+  }
+
+  .left {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40%;
+  }
+  
+  .NavUl {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    width: 50%;
+  }
+  * {
+    text-decoration: none;
+  }

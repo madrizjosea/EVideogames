@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import { NavLink } from 'react-router-dom';
-import Style from'./Navbar.module.css';
+
 // import { useSelector } from "react-redux";
 // import NavUser from "../NavUser/NavUser";
 import { useState } from "react";
 import logo from "../image/Logo.JPG";
+import Style from "../Navbar/Navbar.module.css"
 // import NavUser from "../NavUser/NavUser";
 // import { IconContext } from "react-icons";
 // import { Badge } from '@mui/material';

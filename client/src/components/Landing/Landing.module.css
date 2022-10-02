@@ -3,17 +3,34 @@
     margin: auto;
 }
 
-.div {
-    position: relative;
-    margin: auto;
+.landingCointainer {
+    /* background-image: url("https://i.ibb.co/LJs4Ydx/fonfolanding.jpg"); */
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgb(46, 44, 44);
     
 }
+.landingContainer button {
+    padding: 10px 15px;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid black;
+    align-items: center;
+    background-color: black;
+  
+  }
+
+  
 
 .button {
     margin: auto;
     background-color: #d30606;
     border: none;
-    color: white;
+    color: rgb(3, 3, 3);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -23,4 +40,22 @@
     position: relative;
     border-radius: 10%;
     }
+
+    .center{
+    align-items: center;
+    border-radius: 50rem;
+    margin-left: 50rem;
+    height: max-content;
+    align-items: flex-end;
+   float: inline-end;
+   position: relative;
+   
+    }
+    .center:hover    {
+    transform: scale(1.025, 1.025);
+    filter: drop-shadow(0 0 12px white);
+
+    }
+
+
   
