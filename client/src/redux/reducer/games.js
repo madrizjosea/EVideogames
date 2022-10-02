@@ -15,7 +15,7 @@ import {
 const initialState = {
     allGames: [],
     games: [],
-    game: [],
+    game: {},
 };
 
 export default function games(state = initialState, action) {
