@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllGames, getGame } from '../../redux/actions/games';
+import { getGame } from '../../redux/actions/games';
 import styles from './Details.module.css';
 
 export default function Details() {
@@ -16,7 +16,7 @@ export default function Details() {
   return details.id ? (
     <section className={styles.container}>
       <div className={styles.leftSide}>
-        <h2>{details.name}</h2>
+        <h3>{details.name}</h3>
         <div className={styles.imageContainer}>
           <img src={details.image} alt={details.name} />
         </div>
@@ -37,5 +37,5 @@ export default function Details() {
         <p className={styles.description}>{details.description}</p>
       </div>
     </section>
-  ) : null;
+  ) : <h1>Loading...</h1>;
 }
