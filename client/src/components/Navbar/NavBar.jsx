@@ -54,7 +54,7 @@ export default function NavBar(props) {
            </li>
            <li>
              <Link to={"/CreateUser"} className={Style.letra}>
-               CREATE USER
+              CREATE USER
              </Link>
            </li>
            {/* <li>
