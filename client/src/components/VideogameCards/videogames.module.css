@@ -1,0 +1,14 @@
+.cointainerCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0; */
+    width: auto;
+    overflow: auto;
+    /* background-image: url(../image/Fondonavbar.JPG); */
+    /* background-image: url(../image/Fondo2.png); */
+    height: 75vh;
+    background-size: 50% auto;
+
+
+}
