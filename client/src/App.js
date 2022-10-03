@@ -1,10 +1,10 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
-import Landing from './components/Landing/Landing';
-import Main from './components/Main/Main'
-import Navbar from './components/Navbar/NavBar';
-import CreateUser from './components/CreateUser/CreateUser';
-import Details from './components/Details/Details'
+import Landing from './Components/Landing/Landing.jsx';
+import Main from './Components/Main/Main.jsx'
+import Navbar from './Components/Navbar/NavBar.jsx';
+import CreateUser from './Components/CreateUser/CreateUser.jsx';
+import Details from './Components/Details/Details.jsx'
 
 function App() {
   return (

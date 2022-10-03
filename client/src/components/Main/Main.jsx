@@ -57,6 +57,7 @@ export default function Main() {
         
          const searcher = (e) => {
             setBuscar(e.target.value)
+            setCurrentPage(1)
          }
 
          let results = []
