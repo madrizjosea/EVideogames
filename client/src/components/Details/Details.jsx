@@ -12,6 +12,7 @@ export default function Details() {
   useEffect(() => {
     dispatch(getGame(id));
   }, [dispatch, id]);
+  console.log(details)
 
   return details.id ? (
     <section className={styles.container}>
