@@ -10,7 +10,7 @@ export default function Main() {
 
   const [buscar, setBuscar] = useState()
   const [currentPage, setCurrentPage] = useState(1);
-  const [postperPage, setPostPerPage] = useState(8);
+  const [postperPage, setPostPerPage] = useState(12);
   const [gamedata, setGame] = useState([]);
   const [order, setOrder] = useState('asc')
   const [order2, setOrder2] = useState('asc')
@@ -113,46 +113,49 @@ export default function Main() {
 
   return (<div>
     <br />
-    <div className="divcontainer">
-      <label className="texto" htmlFor="title">Game Title</label>
-      <input placeholder="Buscar" type="text" value={buscar} onChange={searcher}></input>
+
+    <div id="filters">
+      <div className="divcontainer">
+        <label className="texto" htmlFor="title">Game Title</label>
+        <input placeholder="Buscar" type="text" value={buscar} onChange={searcher}></input>
+      </div>
+      <br />
+      <div className="divcontainer">
+        <div className="div">
+          <button className="button" type='button' onClick={() => sorting()}>Order by Name</button>
+        </div>
+        <div className="div">
+          <button className="button" type='button' onClick={() => sorting2()}>Order by Rating</button>
+        </div>
+      </div>
+      <div className="divcontainer">
+        <label className="texto">Genres</label>
+        <select name='filtro' onChange={handleSelect}>
+          <option></option>
+          <option>Action</option>
+          <option>Indie</option>
+          <option>Adventure</option>
+          <option>RPG</option>
+          <option>Strategy</option>
+          <option>Shooter</option>
+          <option>Casual</option>
+          <option>Simulation</option>
+          <option>Puzzle</option>
+          <option>Arcade</option>
+          <option>Platformer</option>
+          <option>Racing</option>
+          <option>Massively Multiplayer</option>
+          <option>Sports</option>
+          <option>Fighting</option>
+          <option>Family</option>
+          <option>Board Games</option>
+          <option>Educational</option>
+          <option>Card</option>
+        </select>
+      </div>
     </div>
     <br />
-    <div className="divcontainer">
-      <div className="div">
-        <button className="button" type='button' onClick={() => sorting()}>Order by Name</button>
-      </div>
-      <div className="div">
-        <button className="button" type='button' onClick={() => sorting2()}>Order by Rating</button>
-      </div>
-    </div>
-    <div className="divcontainer">
-      <label className="texto">Genres</label>
-      <select name='filtro' onChange={handleSelect}>
-        <option></option>
-        <option>Action</option>
-        <option>Indie</option>
-        <option>Adventure</option>
-        <option>RPG</option>
-        <option>Strategy</option>
-        <option>Shooter</option>
-        <option>Casual</option>
-        <option>Simulation</option>
-        <option>Puzzle</option>
-        <option>Arcade</option>
-        <option>Platformer</option>
-        <option>Racing</option>
-        <option>Massively Multiplayer</option>
-        <option>Sports</option>
-        <option>Fighting</option>
-        <option>Family</option>
-        <option>Board Games</option>
-        <option>Educational</option>
-        <option>Card</option>
-      </select>
-    </div>
-    <br />
-    <div>
+    <div id="cards">
       <Videogamescards gamedata={currentPost} />
       <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
     </div>
