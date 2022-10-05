@@ -16,6 +16,8 @@ export default function Main() {
     const [order2, setOrder2] = useState('asc')
     const [genre, setGenre] = useState('')
 
+    console.log(setPostPerPage)
+
     useEffect(() => {
         fetch('http://localhost:3001/videogames')
         .then(r => r.json())
@@ -73,9 +75,8 @@ export default function Main() {
          
         
 
-        if(!genre){
-            results = results
-           }else{
+        if(genre)
+            {
             results = results.filter((dato) =>
               dato.genres.toLowerCase().includes(genre.toLowerCase())
              ) 
