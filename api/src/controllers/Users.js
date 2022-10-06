@@ -3,8 +3,14 @@ const router = Router();
 const { User } = require('../db')
 const sha1 = require('sha1')
 
-router.get('/', (req, res) => {
-    res.send('Conexion exitosa')
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.findAll();
+        if (users.length) res.status(200).json(users);
+        else res.status(204).send('No se encontraron users.');
+    } catch (err) {
+        console.log('GET USERS ERROR--->', err);
+    }
 })
 
 router.get('/:id', async (req, res) => {
