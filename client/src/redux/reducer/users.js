@@ -1,4 +1,5 @@
 import {
+    GET_ALL_USERS,
     GET_USER,
     ADD_USER,
     EDIT_USER,
@@ -13,6 +14,12 @@ const initialState = {
 export default function users(state = initialState, action) {
     switch (action.type) {
 
+        case GET_ALL_USERS:
+            return {
+                ...state,
+                allUsers: action.payload,
+            };
+        
         case GET_USER:
             return {
                 ...state,
