@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/NavBar.jsx';
 import CreateUser from './components/CreateUser/CreateUser.jsx';
 import Details from './components/Details/Details.jsx'
 import Login from './components/Login/Login.jsx';
+import Dashboard from './Components/Dashboard/Dashboard.jsx';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path={'/CreateUser'} element={<><Navbar/><CreateUser/></>}></Route>
         <Route exact path={'/Details/:id'} element={<><Navbar/><Details/></>}></Route>
         <Route exact path={'/Login'} element={<><Navbar/><Login/></>}></Route>
+        <Route exact path={'/Dashboard'} element={<><Navbar/><Dashboard/></>}></Route>
       </Routes>
     </div>
   );

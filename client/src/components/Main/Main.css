@@ -1,3 +1,15 @@
+#filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .texto {
     color: aliceblue;
 }
