@@ -1,11 +1,11 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
-import Landing from './Components/Landing/Landing.jsx';
-import Main from './Components/Main/Main.jsx'
-import Navbar from './Components/Navbar/NavBar.jsx';
-import CreateUser from './Components/CreateUser/CreateUser.jsx';
-import Details from './Components/Details/Details.jsx'
-import Login from './Components/Login/Login.jsx';
+import Landing from './components/Landing/Landing.jsx';
+import Main from './components/Main/Main.jsx'
+import Navbar from './components/Navbar/NavBar.jsx';
+import CreateUser from './components/CreateUser/CreateUser.jsx';
+import Details from './components/Details/Details.jsx'
+import Login from './components/Login/Login.jsx';
 
 function App() {
   return (
