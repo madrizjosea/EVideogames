@@ -12,6 +12,9 @@ export default function DashCardsGames({ gamedata }) {
                             <p><NavLink className='navlink' to={`/Details/${game.id}`}>{game.name}</NavLink></p>
                             <p>Rating: {game.rating}</p>
                             <p>Genres: {game.genres}</p>
+                            <label class="switch">
+                                <input type="checkbox"/>
+                            </label>
                         </div>
                     </div>
                 </div>
