@@ -6,7 +6,7 @@ import Navbar from './components/Navbar/NavBar.jsx';
 import CreateUser from './components/CreateUser/CreateUser.jsx';
 import Details from './components/Details/Details.jsx'
 import Login from './components/Login/Login.jsx';
-import Dashboard from './Components/Dashboard/Dashboard.jsx';
+import Dashboard from './components/Dashboard/Dashboard.jsx';
 
 function App() {
   return (
