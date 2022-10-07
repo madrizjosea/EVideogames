@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import { NavLink } from 'react-router-dom';
-import { useSelector } from "react-redux";
+
+// import { useSelector } from "react-redux";
+// import NavUser from "../NavUser/NavUser";
 import { useState } from "react";
 import logo from "../image/Logo Games.JPG";
 import Style from "../Navbar/Navbar.module.css"
@@ -13,7 +15,7 @@ import Style from "../Navbar/Navbar.module.css"
 
 export default function NavBar(props) {
   //  const carryProducts = useSelector((state) => state.carryProducts);
- const user_login = useSelector((state) => state.user_login);
+  //  const user_login = useSelector((state) => state.user_login);
  const [openModal, setOpenModal] = useState(false);
 
  function handleOpen() {
@@ -52,7 +54,7 @@ export default function NavBar(props) {
            </li>
            <li>
              <Link to={"/CreateUser"} className={Style.letra}>
-              CREATE USER
+               CREATE USER
              </Link>
            </li>
            {/* <li>
@@ -100,21 +102,21 @@ export default function NavBar(props) {
                    <Link to={"/register"} className={Style.letra}>
                        REGISTER
                    </Link>*/}
-{/* 
-       { user_login.id!==undefined && user_login.id !== false && user_login.isAdmin!==undefined && user_login.isAdmin==true &&
+
+      {/* { user_login.id!==undefined && user_login.id !== false && user_login.isAdmin!==undefined && user_login.isAdmin==true &&
            <li className={Style.liFormat}>
              <Link to={"/createProduct"} className={Style.letra}>
                CREATE_PRODUCT
              </Link>
            </li>
            }
-         </ul> 
+         </ul>
           { user_login.id!==undefined && user_login.id === false ?
          <button onClick={handleOpen} className={Style.buttonlogin}>
            Login/Register
          </button>   : <NavUser />
          }
- {/* </div>  */}
+ </div> */}
        {/* <div className={Style.right}>
 
                <Link to={"/create"}>
