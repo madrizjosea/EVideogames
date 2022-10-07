@@ -22,9 +22,27 @@ export default function games(state = initialState, action) {
     switch (action.type) {
 
         case GET_ALL_GAMES:
+            var arrdef = []
+            for (let i = 0; i < action.payload.length; i++) {
+                var arr2 = []
+                for (let y = 0; y < action.payload[i].genres.length; y++) {
+                    arr2.push(action.payload[i].genres[y].name)
+                }
+
+                var string = arr2.toString()
+
+                var obj = {
+                    id: action.payload[i].id,
+                    name: action.payload[i].name,
+                    genres: string,
+                    rating: action.payload[i].rating,
+                    image: action.payload[i].image,
+                }
+                arrdef.push(obj)
+            }
             return {
                 ...state,
-                allGames: action.payload,
+                allGames: arrdef,
             };
 
         case GET_GAME_QUERY:

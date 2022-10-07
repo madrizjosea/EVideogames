@@ -4,6 +4,7 @@ import DashGames from "../DashGames/DashGames.jsx";
 import DashUsers from '../DashUsers/DashUsers.jsx';
 import DashOrders from '../DashOrders/DashOrders.jsx';
 import style from './Dashboard.module.css';
+// import jwt_decode from 'jwt-decode';
 
 export default function Dashboard() {
 
@@ -28,5 +29,4 @@ export default function Dashboard() {
                 {currentView === 'orders' ? (<DashOrders/>) : undefined }
             </div>
         </div>
-    )
-}
+

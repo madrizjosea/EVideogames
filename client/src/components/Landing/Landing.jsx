@@ -5,8 +5,10 @@ import logo from "../image/Logo Games.JPG";
 import { Link } from "react-router-dom";
 
 
-const Landing = () => {
 
+const Landing = () => {
+  
+  console.log(document.cookie)
     const history = useNavigate();
 
     const handleclick = () => {

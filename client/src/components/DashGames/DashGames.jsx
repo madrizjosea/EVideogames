@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import DashCardsGames from "../DashCardsGames/DashCardsGames";
-import style from '../DashGames/DashGames.module.css';
+import style from './DashGames.module.css';
 
 export default function  DashGames() {
     

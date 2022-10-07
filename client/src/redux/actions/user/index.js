@@ -5,6 +5,7 @@ import {
     ADD_USER,
     EDIT_USER,
     DELETE_USER,
+    GET_USER_EMAIL,
 } from '../types.js';
 
 export function getUsers() {
@@ -21,6 +22,13 @@ export function getUser(id) {
     };
 };
 
+export function getUserByEmail(payload) {
+    return async function (dispatch) {
+        const user = await axios.post(`/users/login`, payload);
+        dispatch({ type: GET_USER_EMAIL, payload: user.data });
+    };
+};
+
 export function addUser(payload) {
     return async function (dispatch) {
         const user = await axios.post('/users', payload);
@@ -30,7 +38,7 @@ export function addUser(payload) {
 
 export function editUser(id, payload) {
     return async function (dispatch) {
-        const user = await axios.put(`/users/${id}`, payload);
+        const user = await axios.put(`/users/`, payload);
         dispatch({ type: EDIT_USER, payload: user.data })
     };
 };
