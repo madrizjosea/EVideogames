@@ -11,9 +11,10 @@ export default function Login(){
     const [logginPassword, setLoginPassword] = useState('')
     const {value, setValue} = useContext(UserContext)
     const [errors, setErrors] = useState()
+
     console.log(logginUsername, logginPassword, document.cookie, value)
     const login = () => {
-        
+        console.log(logginUsername, logginPassword, value, document.cookie)
         axios({
             method: 'POST',
             data: {
@@ -28,7 +29,7 @@ export default function Login(){
         console.log(res.data.user)   
         if(!res.data.user) { setErrors(res.data.message) }
         else{
-        document.cookie = `token=${res.data.token}; max-age=${60 * 1}; path=/; samesite=strict`
+        document.cookie = `token=${res.data.token}; path=/; samesite=strict`
         setValue(res.data.user)}
      }) 
     }
