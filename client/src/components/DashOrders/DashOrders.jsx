@@ -25,7 +25,7 @@ export default function DashUsers() {
         <div>
             <div>
                 { orders.length ? <DashOrdersCards orders={orders} /> : <p>NO ORDERS</p>}
-                <Pagination totalPosts={orders.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+                { orders.length ? <Pagination totalPosts={orders.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
             </div>
         </div>
     )

@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import DashUserCards from '../DashUserCards/DashUserCards';
+import style from './DashUsers.module.css'
 
 export default function DashUsers() {
 
@@ -23,7 +24,7 @@ export default function DashUsers() {
 
     return (
         <div>
-            <div>
+            <div id={style.sort}>
                 <div>
                     <label>Search: </label>
                     <input placeholder="Name..."></input>
@@ -45,7 +46,7 @@ export default function DashUsers() {
 
             <div>
                 <DashUserCards users={users} />
-                <Pagination totalPosts={users.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+                {users.length ? <Pagination totalPosts={users.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
             </div>
         </div>
     )

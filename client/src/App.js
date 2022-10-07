@@ -7,6 +7,7 @@ import CreateUser from './Components/CreateUser/CreateUser.jsx';
 import Details from './Components/Details/Details.jsx'
 import Login from './Components/Login/Login.jsx';
 import Dashboard from './Components/Dashboard/Dashboard.jsx';
+import AddGame from './Components/AddGame/AddGame.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path={'/Details/:id'} element={<><Navbar/><Details/></>}></Route>
         <Route exact path={'/Login'} element={<><Navbar/><Login/></>}></Route>
         <Route exact path={'/Dashboard'} element={<><Navbar/><Dashboard/></>}></Route>
+        <Route exact path={'/AddGame'} element={<><Navbar/><AddGame/></>}></Route>
       </Routes>
     </div>
   );

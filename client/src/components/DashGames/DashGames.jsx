@@ -8,7 +8,7 @@ export default function  DashGames() {
     
     const [buscar, setBuscar] = useState()
     const [currentPage, setCurrentPage] = useState(1);
-    const [postperPage, setPostPerPage] = useState(12);
+    const [postperPage, setPostPerPage] = useState(14);
     const [gamedata, setGame] = useState([]);
     const [order, setOrder] = useState('asc')
     const [order2, setOrder2] = useState('asc')
@@ -105,7 +105,7 @@ export default function  DashGames() {
                 </div>
 
                 <div>
-                    <button className="bttn" type='button'>New Game</button>
+                    <a className="bttn" type='button' href='/AddGame'>New Game</a>
                 </div>
 
                 <div>
@@ -143,7 +143,7 @@ export default function  DashGames() {
 
             <div>
                 <DashCardsGames gamedata={currentPost}/>
-                <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+                { results.length ? <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
             </div>
         </div>
     )
