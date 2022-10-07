@@ -62,6 +62,11 @@ export default function NavBar(props) {
               Login
              </Link>
            </li>
+           <li>
+             <Link to={"/Dashboard"} className={Style.letra}>
+              Dashboard
+             </Link>
+           </li>
            {/* <li>
              <Link to={"/mis pedidos"} className={Style.letra}>
                MIS PEDIDOS

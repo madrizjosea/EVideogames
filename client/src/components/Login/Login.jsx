@@ -1,15 +1,19 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useEffect } from "react";
 import jwt_decode from 'jwt-decode';
 import { useState } from "react";
 import axios from '../../axios';
+import { UserContext } from "../../Context/UserContext";
 
 export default function Login(){
     const [user, setUser] = useState({})
     const [logginUsername, setLoginUsername] = useState('')
     const [logginPassword, setLoginPassword] = useState('')
-    
+    const {value, setValue} = useContext(UserContext)
+    const [errors, setErrors] = useState()
+    console.log(logginUsername, logginPassword, document.cookie, value)
     const login = () => {
+        
         axios({
             method: 'POST',
             data: {
@@ -19,12 +23,22 @@ export default function Login(){
             withCredentials: true,
             url: '/users/login'
         })
-        .then(res => console.log(res.data))
-        /* .then((cred) => {document.cookie = `token=${cred.token}; max-age=${60 * 5}; path=/; samesite=strict`
-        console.log(document.cookie) */
-    /* }) */
+        .then((res) =>
+       { 
+        console.log(res.data.user)   
+        if(!res.data.user) { setErrors(res.data.message) }
+        else{
+        document.cookie = `token=${res.data.token}; max-age=${60 * 1}; path=/; samesite=strict`
+        setValue(res.data.user)}
+     }) 
     }
 
+    function logout(){
+        document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+        setValue(null)
+    }
+
+    console.log(value, document.cookie)
     function handleSignout(event){
         setUser({});
         document.getElementById('signInDiv').hidden = false;
@@ -52,9 +66,17 @@ export default function Login(){
     <div>
         <h1>Login</h1>
         <input placeholder="Email" onChange={e => setLoginUsername(e.target.value)}/>
-        <input placeholder="Password" onChange={e => setLoginPassword(e.target.value)}/>
-        <button onClick={login}>Login</button>
-
+        <input type='password' placeholder="Password" onChange={e => setLoginPassword(e.target.value)}/>
+        
+        {!value ?
+        <button onClick={login}>Login</button> :
+        <button onClick={logout}>Logout</button>}
+        {errors && 
+            <p className="danger">{errors}</p>
+            }
+        
+        {value ? <div>Loggeado</div> : <div>No loggeado</div> }
+        
         <div id="signInDiv"></div>
         {Object.keys(user).length !== 0 &&
         <button onClick={(e) => handleSignout(e)}>Sign Out</button>
