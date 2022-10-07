@@ -29,12 +29,28 @@ export default function Main() {
             arr2.push(recurso[i].genres[y].name)
           }
 
-          var string = arr2.toString()
+          /* let handleSelect2 = (e) => {
+            setDb(e.target.value)
+            setCurrentPage(1)
+         }  */
+        
+           let handleSelect = (e) => {
+            setGenre(e.target.value)
+            setCurrentPage(1)
+         }  
+        
+
+
+         
+         const searcher = (e) => {
+            setBuscar(e.target.value)
+            setCurrentPage(1)
+         }
 
           var obj = {
             id: recurso[i].id,
             name: recurso[i].name,
-            genres: string,
+            // genres: string
             rating: recurso[i].rating,
             image: recurso[i].image,
           }

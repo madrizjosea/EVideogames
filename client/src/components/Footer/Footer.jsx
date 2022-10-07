@@ -2,7 +2,7 @@ import React from "react";
 import Style from "./footer.module.css";
 import { Link } from "react-router-dom";
 // import logo_wooly from "../../assets/logo_wooly.png";
-import logo from "../image/Logo.JPG";
+import logo from "../image/Logo Games.JPG";
 
 export default function Footer() {
   return (
