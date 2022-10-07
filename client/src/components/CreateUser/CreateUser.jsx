@@ -2,7 +2,8 @@ import React from "react";
 import './CreateUser'
 import { useState } from "react";
 import axiosInstance from "../../axios";
-import { Image } from 'cloudinary-react'
+import { Image } from 'cloudinary-react';
+import Style from "./CreateUser.module.css";
 
 export default function CreateUser() {
     const [input, setInput] = useState({
@@ -55,18 +56,19 @@ const uploadImage = (files) => {
    
     return(
         <form>
-        <h1 className="texto">Create User</h1>
+        <div className={Style.cointainer}>
+        <h1 className={Style.textoUser}>Create User</h1>
         <br />
         <input className="texto" type='file' onChange={(event) => {event.preventDefault()
             setImage(event.target.files[0])
             }}/>
-        <button onClick={uploadImage}>Subir Imagen</button>
+        <button className= {Style.ImgLoad} onClick={uploadImage}>Subir Imagen</button>
         <Image 
         style={{width: 200}} 
         cloudName='dnf3cz1f3' 
         publicId = {input.image}/>
         <div>
-            <label className='texto'>Nombre:</label>
+            <label className={Style.textoNombre}>Nombre:</label>
             <br />
             <input className={error.name && 'danger'} type='text' name="name" onChange={handleChange} value={input.name}/>
             {error.name && 
@@ -75,7 +77,7 @@ const uploadImage = (files) => {
         </div>
         <br />
         <div>
-            <label className='texto'>Email:</label>
+            <label className={Style.textoEmail}>Email:</label>
             <br />
             <input className={error.email && 'danger'} type='text' name="email" onChange={handleChange} value={input.email}/>
             {error.email && 
@@ -84,7 +86,7 @@ const uploadImage = (files) => {
         </div>
         <br />
         <div>
-            <label className='texto'>Password:</label>
+            <label className={Style.textoPassword}>Password:</label>
             <br />
             <input className={error.password && 'danger'} type='password' name="password" onChange={handleChange} value={input.password}/>
             {error.password && 
@@ -93,11 +95,12 @@ const uploadImage = (files) => {
         </div>
         <br />
         <div>
-         <button onClick={handleClick}>Registrarse</button>
+         <button className={Style.register} onClick={handleClick}>Registrarse</button>
         </div>     
         {result===201 && <p className="danger">El mail ya esta asociado a una cuenta</p>}
         {result===200 && <p className="texto">Usuario creado exitosamente</p>}
         <br/>
+        </div>
         </form>
     )
 }

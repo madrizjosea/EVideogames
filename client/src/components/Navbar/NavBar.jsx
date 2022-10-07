@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 // import { useSelector } from "react-redux";
 // import NavUser from "../NavUser/NavUser";
-//import { useState } from "react";
-import logo from "../image/Logo.JPG";
+import { useState } from "react";
+import logo from "../image/Logo Games.JPG";
 import Style from "../Navbar/Navbar.module.css"
 // import NavUser from "../NavUser/NavUser";
 // import { IconContext } from "react-icons";
@@ -16,7 +16,7 @@ import Style from "../Navbar/Navbar.module.css"
 export default function NavBar(props) {
   //  const carryProducts = useSelector((state) => state.carryProducts);
   //  const user_login = useSelector((state) => state.user_login);
- /* const [openModal, setOpenModal] = useState(false);
+ const [openModal, setOpenModal] = useState(false);
 
  function handleOpen() {
    setOpenModal(true);
@@ -24,7 +24,7 @@ export default function NavBar(props) {
 
  function handleClose(value) {
    setOpenModal(value);
- } */
+ }
 
 //  let Cantidad=0
 //  for (let index = 0; index < carryProducts.length; index++) {
@@ -54,12 +54,7 @@ export default function NavBar(props) {
            </li>
            <li>
              <Link to={"/CreateUser"} className={Style.letra}>
-              CREATE USER
-             </Link>
-           </li>
-           <li>
-             <Link to={"/Login"} className={Style.letra}>
-              Login
+               CREATE USER
              </Link>
            </li>
            <li>
@@ -112,7 +107,7 @@ export default function NavBar(props) {
                    <Link to={"/register"} className={Style.letra}>
                        REGISTER
                    </Link>*/}
-
+{/* 
       {/* { user_login.id!==undefined && user_login.id !== false && user_login.isAdmin!==undefined && user_login.isAdmin==true &&
            <li className={Style.liFormat}>
              <Link to={"/createProduct"} className={Style.letra}>
@@ -126,7 +121,7 @@ export default function NavBar(props) {
            Login/Register
          </button>   : <NavUser />
          }
- </div> */}
+ </div> */} 
        {/* <div className={Style.right}>
 
                <Link to={"/create"}>
