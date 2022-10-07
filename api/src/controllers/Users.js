@@ -2,6 +2,14 @@ const { Router } = require('express');
 const router = Router();
 const { User } = require('../db')
 const sha1 = require('sha1')
+const jwt = require("jsonwebtoken")
+const passport = require('passport')
+
+router.get('/restricted', 
+passport.authenticate("jwt", {session: false}), 
+(req, res) => {
+    res.send('secreto')
+})
 
 router.get('/', (req, res) => {
     res.send('Conexion exitosa')
@@ -85,20 +93,23 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body
+
+    const userWithEmail = await User.findOne({where: {email} }).catch((err) => {
+        console.log("Error " + err)
+    });
+    if(!userWithEmail)
+        return res.json({ message: "Email or password does not match"})
+
+    if(userWithEmail.password !== password)
+        return res.json({ message: "Email or password does not match"})
+
+    const jwtToken = jwt.sign({ id: userWithEmail.id, email: userWithEmail.email }, process.env.JWT_SECRET)  // 'ext' is expiration time
+    res.json({user: userWithEmail, token: jwtToken})
+})
+
+
+
 module.exports = router;
 
-/* {
-    "name":"pepe",
-    "email":"email@gmail.com",
-    "password":"1234",
-    "role":"user"
-} */
-
-/* const foundMail = await User.findAll(
-        {
-            where :{
-                email: email
-                }})
-    if(foundMail.length>0){
-        res.send('foundMail')
-    }else{  */

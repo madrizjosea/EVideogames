@@ -4,6 +4,7 @@ import {
     ADD_USER,
     EDIT_USER,
     DELETE_USER,
+    GET_USER_EMAIL,
 } from '../types.js';
 
 export function getUser(id) {
@@ -12,6 +13,14 @@ export function getUser(id) {
         dispatch({ type: GET_USER, payload: user.data });
     };
 };
+
+export function getUserByEmail(payload) {
+    return async function (dispatch) {
+        const user = await axios.post(`/users/login`, payload);
+        dispatch({ type: GET_USER_EMAIL, payload: user.data });
+    };
+};
+
 
 export function addUser(payload) {
     return async function (dispatch) {
@@ -22,8 +31,8 @@ export function addUser(payload) {
 
 export function editUser(payload) {
     return async function (dispatch) {
-        const user = await axios.put(`/users/${id}`, payload);
-        dispatch({ type: EDIT_GAME, payload: user.data })
+        const user = await axios.put(`/users/`, payload);
+        dispatch({ type: EDIT_USER, payload: user.data })
     };
 };
 
