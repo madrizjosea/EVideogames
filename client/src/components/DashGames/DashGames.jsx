@@ -2,12 +2,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import DashCardsGames from "../DashCardsGames/DashCardsGames";
-import style from '../DashGames/DashGames.module.css';
+import style from './DashGames.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../redux/actions/games";
 
-export default function  DashGames() {
-    
+export default function DashGames() {
+
     const [buscar, setBuscar] = useState()
     const [currentPage, setCurrentPage] = useState(1);
     const [postperPage, setPostPerPage] = useState(14);
@@ -126,8 +126,8 @@ export default function  DashGames() {
             </div>
 
             <div>
-                <DashCardsGames gamedata={currentPost}/>
-                { results.length ? <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
+                <DashCardsGames gamedata={currentPost} />
+                {results.length ? <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined}
             </div>
         </div>
     )

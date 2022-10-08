@@ -42,7 +42,6 @@ export default function games(state = initialState, action) {
             }
             return {
                 ...state,
-                allGames: action.payload,
                 allGames: arrdef,
             };
 

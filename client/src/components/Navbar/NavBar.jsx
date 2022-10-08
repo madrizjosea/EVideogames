@@ -57,6 +57,16 @@ export default function NavBar(props) {
                CREATE USER
              </Link>
            </li>
+           <li>
+             <Link to={"/Dashboard"} className={Style.letra}>
+              Dashboard
+             </Link>
+           </li>
+           <li>
+             <Link to={"/Login"} className={Style.letra}>
+              Login
+             </Link>
+           </li>
            {/* <li>
              <Link to={"/mis pedidos"} className={Style.letra}>
                MIS PEDIDOS
