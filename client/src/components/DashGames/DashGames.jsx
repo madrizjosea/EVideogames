@@ -3,42 +3,27 @@ import { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import DashCardsGames from "../DashCardsGames/DashCardsGames";
 import style from './DashGames.module.css';
+import { useDispatch, useSelector } from "react-redux";
+import { getAllGames } from "../../redux/actions/games";
 
-export default function  DashGames() {
-    
+export default function DashGames() {
+
     const [buscar, setBuscar] = useState()
     const [currentPage, setCurrentPage] = useState(1);
     const [postperPage, setPostPerPage] = useState(14);
-    const [gamedata, setGame] = useState([]);
+    //const [gamedata, setGame] = useState([]);
     const [order, setOrder] = useState('asc')
     const [order2, setOrder2] = useState('asc')
     const [genre, setGenre] = useState('')
 
+    const dispatch = useDispatch();
+    const games = useSelector(state => state.games.allGames);
+
     useEffect(() => {
-        fetch('http://localhost:3001/videogames')
-            .then(r => r.json())
-            .then((recurso) => {
-                var arrdef = []
-                for (let i = 0; i < recurso.length; i++) {
-                    var arr2 = []
-                    for (let y = 0; y < recurso[i].genres.length; y++) {
-                        arr2.push(recurso[i].genres[y].name)
-                    }
-
-                    var string = arr2.toString()
-
-                    var obj = {
-                        id: recurso[i].id,
-                        name: recurso[i].name,
-                        genres: string,
-                        rating: recurso[i].rating,
-                        image: recurso[i].image,
-                    }
-                    arrdef.push(obj)
-                    setGame(arrdef)
-                }
-            })
-    }, []);
+        if (games.length < 1) {
+            dispatch(getAllGames());
+        }
+    }, [dispatch, games]);
 
     let handleSelect = (e) => {
         setGenre(e.target.value)
@@ -53,9 +38,9 @@ export default function  DashGames() {
     let results = []
 
     if (!buscar) {
-        results = gamedata
+        results = games
     } else {
-        results = gamedata.filter((dato) =>
+        results = games.filter((dato) =>
             dato.name.toLowerCase().includes(buscar.toLowerCase())
         )
     }
@@ -66,28 +51,27 @@ export default function  DashGames() {
         )
     }
 
-    const sorting = () => {
+    const sorting = (e) => {
+        e.preventDefault()
         if (order === 'asc') {
-            const sorted = [...gamedata].sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
-            setGame(sorted);
+            results = results.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
             setOrder('dsc')
         }
         if (order === 'dsc') {
-            const sorted = [...gamedata].sort((a, b) => a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1);
-            setGame(sorted);
+            results = results.sort((a, b) => a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1)
             setOrder('asc')
         }
     }
-
-    const sorting2 = () => {
+    
+    const sorting2 = (e) => {
+        e.preventDefault()
         if (order2 === 'asc') {
-            const sorted = [...gamedata].sort((a, b) => a.rating > b.rating ? 1 : -1);
-            setGame(sorted);
+            results = results.sort((a, b) => a.rating > b.rating ? 1 : -1);
             setOrder2('dsc')
         }
         if (order2 === 'dsc') {
-            const sorted = [...gamedata].sort((a, b) => a.rating < b.rating ? 1 : -1);
-            setGame(sorted);
+            results = results.sort((a, b) => a.rating < b.rating ? 1 : -1);
+
             setOrder2('asc')
         }
     }
@@ -142,8 +126,8 @@ export default function  DashGames() {
             </div>
 
             <div>
-                <DashCardsGames gamedata={currentPost}/>
-                { results.length ? <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
+                <DashCardsGames gamedata={currentPost} />
+                {results.length ? <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined}
             </div>
         </div>
     )

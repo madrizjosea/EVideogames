@@ -18,15 +18,16 @@ export default function Dashboard() {
     return (
         <div id={style.dash}>
             <div id={style.admin}>
-                <div><button className={ currentView === 'games' ? style.selectedOption : style.adminOptions } value='games' onClick={(e) => clickHandler(e)}>Games</button></div>
-                <div><button className={ currentView === 'orders' ? style.selectedOption : style.adminOptions } value='orders' onClick={(e) => clickHandler(e)}>Orders</button></div>
-                <div><button className={ currentView === 'users' ? style.selectedOption : style.adminOptions } value='users' onClick={(e) => clickHandler(e)}>Users</button></div>
+                <div><button className={currentView === 'games' ? style.selectedOption : style.adminOptions} value='games' onClick={(e) => clickHandler(e)}>Games</button></div>
+                <div><button className={currentView === 'orders' ? style.selectedOption : style.adminOptions} value='orders' onClick={(e) => clickHandler(e)}>Orders</button></div>
+                <div><button className={currentView === 'users' ? style.selectedOption : style.adminOptions} value='users' onClick={(e) => clickHandler(e)}>Users</button></div>
             </div>
 
             <div id={style.view}>
-                {currentView === 'games' ? (<DashGames/>) : undefined }
-                {currentView === 'users' ? (<DashUsers/>) : undefined }
-                {currentView === 'orders' ? (<DashOrders/>) : undefined }
+                {currentView === 'games' ? (<DashGames />) : undefined}
+                {currentView === 'users' ? (<DashUsers />) : undefined}
+                {currentView === 'orders' ? (<DashOrders />) : undefined}
             </div>
         </div>
-
+    )
+}
