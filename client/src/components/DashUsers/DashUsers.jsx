@@ -2,21 +2,24 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import DashUserCards from '../DashUserCards/DashUserCards';
-import style from './DashUsers.module.css'
+import style from './DashUsers.module.css';
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../redux/actions/user/index";
 
 export default function DashUsers() {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postperPage, setPostPerPage] = useState(12);
-    const [users, setUsers] = useState([]);
+    //const [users, setUsers] = useState([]);
+
+    const dispatch = useDispatch();
+    const users = useSelector(state => state.users.allUsers);
 
     useEffect(() => {
-        fetch('http://localhost:3001/users')
-            .then(r => r.json())
-            .then((recurso) => {
-                setUsers(recurso)
-            })
-    }, []);
+        if (users.length < 1) {
+            dispatch(getUsers());
+        }
+    }, [dispatch, users]);
 
     const lastPostIndex = currentPage * postperPage;
     const firstPostIndex = lastPostIndex - postperPage;
