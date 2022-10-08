@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // import { useSelector } from "react-redux";
 // import NavUser from "../NavUser/NavUser";
-import { useState } from "react";
+//import { useState } from "react";
 import logo from "../image/Logo Games.JPG";
 import Style from "../Navbar/Navbar.module.css"
 // import NavUser from "../NavUser/NavUser";
@@ -16,15 +16,15 @@ import Style from "../Navbar/Navbar.module.css"
 export default function NavBar(props) {
   //  const carryProducts = useSelector((state) => state.carryProducts);
   //  const user_login = useSelector((state) => state.user_login);
- const [openModal, setOpenModal] = useState(false);
+// const [openModal, setOpenModal] = useState(false);
 
- function handleOpen() {
+ /* function handleOpen() {
    setOpenModal(true);
  }
 
  function handleClose(value) {
    setOpenModal(value);
- }
+ } */
 
 //  let Cantidad=0
 //  for (let index = 0; index < carryProducts.length; index++) {
@@ -65,6 +65,11 @@ export default function NavBar(props) {
            <li>
              <Link to={"/Login"} className={Style.letra}>
               Login
+             </Link>
+           </li>
+           <li>
+             <Link to={"/Profile"} className={Style.letra}>
+              Profile
              </Link>
            </li>
            {/* <li>

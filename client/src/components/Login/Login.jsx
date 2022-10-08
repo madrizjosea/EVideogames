@@ -3,7 +3,9 @@ import { useEffect } from "react";
 import jwt_decode from 'jwt-decode';
 import { useState } from "react";
 import axios from '../../axios';
+import { useLocalStorage } from "../../customhooks/useLocalStorage";
 import { UserContext } from "../../Context/UserContext";
+import jwtDecode from "jwt-decode";
 
 export default function Login(){
     const [user, setUser] = useState({})
@@ -11,10 +13,11 @@ export default function Login(){
     const [logginPassword, setLoginPassword] = useState('')
     const {value, setValue} = useContext(UserContext)
     const [errors, setErrors] = useState()
+    const [token, setToken] = useLocalStorage('logged', '')
 
-    console.log(logginUsername, logginPassword, document.cookie, value)
+    
     const login = () => {
-        console.log(logginUsername, logginPassword, value, document.cookie)
+        
         axios({
             method: 'POST',
             data: {
@@ -26,31 +29,44 @@ export default function Login(){
         })
         .then((res) =>
        { 
-        console.log(res.data.user)   
         if(!res.data.user) { setErrors(res.data.message) }
         else{
         document.cookie = `token=${res.data.token}; path=/; samesite=strict`
-        setValue(res.data.user)}
+        let tokencode = document.cookie.replace('token=', '')
+        
+        let decodedtoken = jwtDecode(tokencode)
+       
+        setToken(decodedtoken)
+        setValue(decodedtoken)
+        console.log(value)}
      }) 
     }
 
     function logout(){
         document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
-        setValue(null)
+        setToken(false)
+        setValue(false)
+        console.log(value)
     }
 
-    console.log(value, document.cookie)
     function handleSignout(event){
         setUser({});
+        document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+        setToken(false)
+        setValue(false)
         document.getElementById('signInDiv').hidden = false;
     }
 
     function handleCallback(response) {
+        document.cookie = `token=${response.credential}; path=/; samesite=strict`
         var userObject = jwt_decode(response.credential)
-        console.log('Response:' + userObject)
+        console.log('Response:' + userObject.name)
         setUser(userObject)
+        setValue(userObject)
+        setToken(userObject)
         document.getElementById('signInDiv').hidden = true;
     }
+    console.log(value)
 
     useEffect(()=>{
         /* global google */
@@ -65,18 +81,24 @@ export default function Login(){
     }, [])
     return(
     <div>
+        {!token 
+        ?
+        
+        <div>
         <h1>Login</h1>
         <input placeholder="Email" onChange={e => setLoginUsername(e.target.value)}/>
         <input type='password' placeholder="Password" onChange={e => setLoginPassword(e.target.value)}/>
+        <button onClick={login}>Login</button> 
+        </div>
         
-        {!value ?
-        <button onClick={login}>Login</button> :
+        :
+
         <button onClick={logout}>Logout</button>}
         {errors && 
             <p className="danger">{errors}</p>
             }
         
-        {value ? <div>Loggeado</div> : <div>No loggeado</div> }
+        {token ? <div>Loggeado</div> : <div>No loggeado</div> }
         
         <div id="signInDiv"></div>
         {Object.keys(user).length !== 0 &&
