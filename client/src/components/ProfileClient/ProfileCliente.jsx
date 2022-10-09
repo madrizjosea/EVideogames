@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React /* { useEffect } */ from "react";
 import style from "./profileClient.module.css";
-import ProfileClient from "./ProfileClient.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteUsers, getAllUsers } from "../../redux/actions";
+//import ProfileClient from "./ProfileClient.jsx";
+//import { useDispatch, useSelector } from "react-redux";
+//import { deleteUsers, getAllUsers } from "../../redux/actions";
 
 export default function Profile () {
 
-    const dispatch = useDispatch();
-    const users = useSelector((state) => state.allUsers);
+    /* const dispatch = useDispatch();
+   // const users = useSelector((state) => state.allUsers);
     const user_login = useSelector((state) => state.user_login);
 
 
@@ -17,12 +17,13 @@ export default function Profile () {
     }, [dispatch]);
 
     const userConected = users.find(user => user.id === user_login.id)
-    
+     */
     
         return (
  
             <div className={style.mainContainer}>
-                {userConected ? (
+                <h1>Profile</h1>
+                {/* {userConected ? (
                     <div className={style.containCarry}>
                         <div>
                             <ProfileClient
@@ -42,7 +43,7 @@ export default function Profile () {
                         </p>
                     </div>
                 )
-                }
+                } */}
             </div>
         )
     };

@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 
 
+
+
 const Landing = () => {
-  
-  console.log(document.cookie)
     const history = useNavigate();
 
     const handleclick = () => {
