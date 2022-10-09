@@ -1,11 +1,12 @@
 import React, {useContext} from "react";
 import { useEffect } from "react";
-import jwt_decode from 'jwt-decode';
 import { useState } from "react";
 import axios from '../../axios';
+import jwtDecode from "jwt-decode";
 import { useLocalStorage } from "../../customhooks/useLocalStorage";
 import { UserContext } from "../../Context/UserContext";
-import jwtDecode from "jwt-decode";
+import jwt_decode from "jwt-decode";
+import style from './Login.module.css'
 
 export default function Login(){
     const [user, setUser] = useState({})
@@ -82,7 +83,7 @@ export default function Login(){
         )
     }, [])
     return(
-    <div>
+    <div className={style.userbody}>
         {!token 
         ?
         
@@ -93,27 +94,25 @@ export default function Login(){
         <button onClick={login}>Login</button> 
         </div>
         
-        :
-
-
-        <button onClick={logout}>Logout</button>}
+        : !token.iss ?
+        
+        
+        
+        <button onClick={logout}>Logout</button>
+            : 
+            <div></div>
+    }
         {errors && 
             <p className="danger">{errors}</p>
             }
         
-        {token ? <div>Loggeado</div> : <div>No loggeado</div> }
-        
+        <div>
         <div id="signInDiv"></div>
         {Object.keys(user).length !== 0 &&
         <button onClick={(e) => handleSignout(e)}>Sign Out</button>
         }
+        </div>
     
-    {user && 
-    <div>
-        <img src={user.picture} alt="" />
-        <h3>{user.name}</h3>
-    </div>
-    }
     </div>
     )
 }
