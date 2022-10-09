@@ -8,7 +8,7 @@ const useAuth = () => {
 
 const ProtectedProfile = () => {
     const isAuth = useAuth();
-    return isAuth ? <Outlet/> : <Navigate to='/login'/>
+    return isAuth ? <Outlet/> : <Navigate to='/Login'/>
 }
 
 export default ProtectedProfile;
