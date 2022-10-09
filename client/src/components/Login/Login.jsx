@@ -11,7 +11,7 @@ export default function Login(){
     const [user, setUser] = useState({})
     const [logginUsername, setLoginUsername] = useState('')
     const [logginPassword, setLoginPassword] = useState('')
-    const {value, setValue} = useContext(UserContext)
+    const {value, setValue, setCart} = useContext(UserContext)
     const [errors, setErrors] = useState()
     const [token, setToken] = useLocalStorage('logged', '')
 
@@ -46,6 +46,8 @@ export default function Login(){
         document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
         setToken(false)
         setValue(false)
+        setCart([])
+
         console.log(value)
     }
 

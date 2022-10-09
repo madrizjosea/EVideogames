@@ -1,10 +1,15 @@
 import React /* { useEffect } */ from "react";
+import jwtDecode from "jwt-decode";
 import style from "./profileClient.module.css";
 //import ProfileClient from "./ProfileClient.jsx";
 //import { useDispatch, useSelector } from "react-redux";
 //import { deleteUsers, getAllUsers } from "../../redux/actions";
 
 export default function Profile () {
+
+    let tokencode = document.cookie.replace('token=', '')
+    let decodedtoken = jwtDecode(tokencode)
+    console.log(decodedtoken)
 
     /* const dispatch = useDispatch();
    // const users = useSelector((state) => state.allUsers);
@@ -21,29 +26,10 @@ export default function Profile () {
     
         return (
  
-            <div className={style.mainContainer}>
-                <h1>Profile</h1>
-                {/* {userConected ? (
-                    <div className={style.containCarry}>
-                        <div>
-                            <ProfileClient
-                                email={userConected.email}
-                                name={userConected.name}
-                                lastName={userConected.lastName}
-                                image={userConected.image}
-                                address={userConected.address}
-                                isAdmin={userConected.isAdmin}
-                            />
-                        </div>
-                    </div>
-                ) : (
-                    <div className="cards">
-                        <p>
-                            <b>{"No found Profile"}</b>
-                        </p>
-                    </div>
-                )
-                } */}
+            <div className={style.userbody}>
+                <img src={decodedtoken.image || decodedtoken.picture} alt="No hay imagen" />
+                <p>Name: {decodedtoken.name}</p>
+                <p>Email: {decodedtoken.email}</p>
             </div>
         )
     };
