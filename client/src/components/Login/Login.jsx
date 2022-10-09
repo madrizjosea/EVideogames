@@ -108,8 +108,9 @@ export default function Login(){
         
         <div>
         <div id="signInDiv"></div>
-        {Object.keys(user).length !== 0 &&
-        <button onClick={(e) => handleSignout(e)}>Sign Out</button>
+        {token ?
+        <button onClick={(e) => handleSignout(e)}>Sign Out</button> : 
+        <div></div>
         }
         </div>
     
