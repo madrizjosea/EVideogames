@@ -57,7 +57,8 @@ export default function Login(){
         document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
         setToken(false)
         setValue(false)
-        document.getElementById('signInDiv').hidden = false;
+        setCart([])
+       
     }
 
     function handleCallback(response) {
@@ -67,7 +68,7 @@ export default function Login(){
         setUser(userObject)
         setValue(userObject)
         setToken(userObject)
-        document.getElementById('signInDiv').hidden = true;
+        
     }
     console.log(value)
 
@@ -107,7 +108,11 @@ export default function Login(){
             }
         
         <div>
+        {!token  ?
         <div id="signInDiv"></div>
+        : 
+        <div></div>
+        }
         {token ?
         <button onClick={(e) => handleSignout(e)}>Sign Out</button> : 
         <div></div>

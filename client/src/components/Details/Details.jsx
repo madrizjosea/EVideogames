@@ -11,6 +11,7 @@ export default function Details() {
   const dispatch = useDispatch();
   const details = useSelector(state => state.games.game);
   const { cart, setCart } = useContext(UserContext)
+  const [msg, setmsg] = useState('')
   
   
 console.log(cart)
@@ -23,7 +24,7 @@ console.log(cart)
     let arrcart = [...cart]
     arrcart.push(details)
     setCart(arrcart)
-    
+    setmsg('Juego agregado al carrito')
   }
 
  
@@ -42,6 +43,7 @@ console.log(cart)
           <div className={styles.btns}>
             <h2>Price: ${details.price}</h2>
             <button onClick={onClick}>Add to Cart</button>
+            { msg ? <p className={styles.confirmation}>{msg}</p> : <div></div>}
             {/* 
             <button>Write review</button> */}
           </div>

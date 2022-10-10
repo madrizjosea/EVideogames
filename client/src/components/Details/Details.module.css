@@ -12,6 +12,13 @@
   font-size: 25px;
 }
 
+.confirmation {
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+}
+
 .imageContainer {
   margin: 10px 25px;
 }
