@@ -1,3 +1,11 @@
+
+.pic {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .userbody {
     background-color: rgb(89, 90, 89);
     background-image: url(../image/Fondonavbar.JPG);
@@ -6,7 +14,7 @@
     justify-content:space-around;
     align-items: center;
     border-radius: 5%;
-    height: 200px;
+    height: 100px;
     width: 900px;
     margin: 20px;
     color: white;

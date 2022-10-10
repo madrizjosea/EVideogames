@@ -72,6 +72,11 @@ export default function NavBar(props) {
               Profile
              </Link>
            </li>
+           <li>
+             <Link to={"/Cart"} className={Style.letra}>
+              Cart
+             </Link>
+           </li>
            {/* <li>
              <Link to={"/mis pedidos"} className={Style.letra}>
                MIS PEDIDOS

@@ -1,18 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getGame } from '../../redux/actions/games';
+import { UserContext } from '../../Context/UserContext';
 import styles from './Details.module.css';
+import { useState } from 'react';
 
 export default function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const details = useSelector(state => state.games.game);
-
+  const { cart, setCart } = useContext(UserContext)
+  const [msg, setmsg] = useState('')
+  
+  
+console.log(cart)
   useEffect(() => {
     dispatch(getGame(id));
   }, [dispatch, id]);
-  console.log(details)
+  //console.log(details)
+
+  const onClick = () => {
+    let arrcart = [...cart]
+    arrcart.push(details)
+    setCart(arrcart)
+    setmsg('Juego agregado al carrito')
+  }
+
+ 
 
   return details.id ? (
     <section className={styles.container}>
@@ -27,7 +42,9 @@ export default function Details() {
           <h2>Release Date: {details.releaseDate}</h2>
           <div className={styles.btns}>
             <h2>Price: ${details.price}</h2>
-            {/* <button>Add to Cart</button>
+            <button onClick={onClick}>Add to Cart</button>
+            { msg ? <p className={styles.confirmation}>{msg}</p> : <div></div>}
+            {/* 
             <button>Write review</button> */}
           </div>
           <div className={styles.ratings}>

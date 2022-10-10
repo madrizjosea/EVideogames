@@ -1,17 +1,18 @@
 import React, {useContext} from "react";
 import { useEffect } from "react";
-import jwt_decode from 'jwt-decode';
 import { useState } from "react";
 import axios from '../../axios';
+import jwtDecode from "jwt-decode";
 import { useLocalStorage } from "../../customhooks/useLocalStorage";
 import { UserContext } from "../../Context/UserContext";
-import jwtDecode from "jwt-decode";
+import jwt_decode from "jwt-decode";
+import style from './Login.module.css'
 
 export default function Login(){
     const [user, setUser] = useState({})
     const [logginUsername, setLoginUsername] = useState('')
     const [logginPassword, setLoginPassword] = useState('')
-    const {value, setValue} = useContext(UserContext)
+    const {value, setValue, setCart} = useContext(UserContext)
     const [errors, setErrors] = useState()
     const [token, setToken] = useLocalStorage('logged', '')
 
@@ -46,6 +47,8 @@ export default function Login(){
         document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
         setToken(false)
         setValue(false)
+        setCart([])
+
         console.log(value)
     }
 
@@ -54,7 +57,8 @@ export default function Login(){
         document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
         setToken(false)
         setValue(false)
-        document.getElementById('signInDiv').hidden = false;
+        setCart([])
+       
     }
 
     function handleCallback(response) {
@@ -64,7 +68,7 @@ export default function Login(){
         setUser(userObject)
         setValue(userObject)
         setToken(userObject)
-        document.getElementById('signInDiv').hidden = true;
+        
     }
     console.log(value)
 
@@ -80,7 +84,7 @@ export default function Login(){
         )
     }, [])
     return(
-    <div>
+    <div className={style.userbody}>
         {!token 
         ?
         
@@ -91,27 +95,30 @@ export default function Login(){
         <button onClick={login}>Login</button> 
         </div>
         
-        :
-
-
-        <button onClick={logout}>Logout</button>}
+        : !token.iss ?
+        
+        
+        
+        <button onClick={logout}>Logout</button>
+            : 
+            <div></div>
+    }
         {errors && 
             <p className="danger">{errors}</p>
             }
         
-        {token ? <div>Loggeado</div> : <div>No loggeado</div> }
-        
+        <div>
+        {!token  ?
         <div id="signInDiv"></div>
-        {Object.keys(user).length !== 0 &&
-        <button onClick={(e) => handleSignout(e)}>Sign Out</button>
+        : 
+        <div></div>
         }
+        {token ?
+        <button onClick={(e) => handleSignout(e)}>Sign Out</button> : 
+        <div></div>
+        }
+        </div>
     
-    {user && 
-    <div>
-        <img src={user.picture} alt="" />
-        <h3>{user.name}</h3>
-    </div>
-    }
     </div>
     )
 }
