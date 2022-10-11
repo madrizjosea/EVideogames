@@ -1,0 +1,68 @@
+.container {
+  width: 98vw;
+  height: 75vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.leftSide {
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.confirmation {
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.imageContainer {
+  margin: 10px 25px;
+}
+
+.imageContainer img {
+  border-radius: 10px;
+  width: 500px;
+}
+
+.description {
+  width: 600px;
+  color: #fff;
+  text-align: justify;
+  font-size: 14px;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
+}
+
+.btns h2 {
+  color: #fff;
+}
+
+.btns button {
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  width: 150px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.ratings {
+  display: flex;
+  flex-direction: row;
+  gap: 10px
+}
+
+.ratings p {
+  padding: 5px 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+}

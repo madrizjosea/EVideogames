@@ -1,0 +1,8 @@
+
+#sort {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 50px;
+    margin-top: 20px;
+}

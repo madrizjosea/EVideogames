@@ -1,0 +1,29 @@
+.imagen {
+  width: 200px;
+  border-radius: 5%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-body {
+  /* margin-top: 0px !important;
+    padding-top: 0px !important;
+    align-content: center;
+    float:inline-start; */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(89, 90, 89);
+  background-image: url(../image/Fondonavbar.JPG);
+  border-radius: 5%;
+  height: 300px;
+  width: 300px;
+  margin: 20px;
+  padding: 10px;
+}

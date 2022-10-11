@@ -1,0 +1,9 @@
+.cointainerCard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* margin: 0; */
+    /* background-image: url(../image/Fondonavbar.JPG); */
+    /* background-image: url(../image/Fondo2.png); */
+}
