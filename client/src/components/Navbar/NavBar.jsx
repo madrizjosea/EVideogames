@@ -54,27 +54,33 @@ export default function NavBar(props) {
            </li>
            <li>
              <Link to={"/CreateUser"} className={Style.letra}>
-               CREATE USER
+               REGISTER
              </Link>
            </li>
+           </ul>
+           </div>
+           <div className={Style.navbar}>
+           <div className={Style.right}>
+           
            <li>
              <Link to={"/Dashboard"} className={Style.letra}>
-              Dashboard
+            DASHBOARD
              </Link>
            </li>
            <li>
+         
              <Link to={"/Login"} className={Style.letra}>
-              Login
+              LOGIN
              </Link>
            </li>
            <li>
              <Link to={"/Profile"} className={Style.letra}>
-              Profile
+            PROFILE
              </Link>
            </li>
            <li>
              <Link to={"/Cart"} className={Style.letra}>
-              Cart
+              CART
              </Link>
            </li>
            {/* <li>
@@ -82,7 +88,9 @@ export default function NavBar(props) {
                MIS PEDIDOS
              </Link>
            </li> */}
-         </ul>
+         
+       
+       </div>
        </div>
        <div className={Style.center}>
          <ul className={Style.NavUl}></ul>

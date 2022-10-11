@@ -25,7 +25,7 @@ export default function Cart() {
             onClose={() => onClose(c.id)}
           /> )}
         </div> 
-        : <div className={style.userbody}>El carrito esta vacio</div>}
+        : <div className={style.userbody}>The cart is empty</div>}
       
     </div>
     );

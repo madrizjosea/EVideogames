@@ -89,7 +89,7 @@ export default function Login(){
         ?
         
         <div>
-        <h1>Login</h1>
+        <h1 className={style.Login} >Login</h1>
         <input placeholder="Email" onChange={e => setLoginUsername(e.target.value)}/>
         <input type='password' placeholder="Password" onChange={e => setLoginPassword(e.target.value)}/>
         <button onClick={login}>Login</button> 

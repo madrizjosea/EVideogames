@@ -75,11 +75,21 @@ nav {
     filter: drop-shadow(0 0 12px white);
   }
 
-  .left {
+  .right {
+    display: flex;
+    width: 30%;
+    justify-content:flex-start;
+    gap: 10px;
+    margin-right: 0vh;
+    
+  }
+
+  .left{
     display: flex;
     width: 35%;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content:first baseline;
+    gap: 5px;
+    margin-left: 0px;
   }
   .center {
     display: flex;
@@ -98,4 +108,19 @@ nav {
   }
   * {
     text-decoration: none;
+  }
+
+  .navbar{
+    background-color: none;
+    font-family: Arial;
+    align-content: center;
+    position: relative;
+    
+  }
+
+  .dropdown{
+    float: right;
+    overflow: hidden;
+   
+
   }

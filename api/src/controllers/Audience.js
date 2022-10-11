@@ -5,7 +5,7 @@ const getAudiences = async (req, res, next) => {
     const audiences = await Audience.findAll();
 
     if (audiences.length) res.status(200).json(audiences);
-    else res.status(204).send('No se encontraron audiencias');
+    else res.status(204).send('No audiences found');
 
   } catch (error) {
     next(error);
@@ -30,7 +30,7 @@ const getVideogamesByAudience = async (req, res, next) => {
     if (gamesByAudience.videogames.length) {
       res.status(200).json(gamesByAudience);
     } else {
-      res.status(201).send('No hay videojuegos para esa audiencia');
+      res.status(201).send('There are no video games for that audience');
     }
 
   } catch (error) {

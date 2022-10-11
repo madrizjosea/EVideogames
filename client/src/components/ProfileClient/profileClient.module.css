@@ -1,6 +1,6 @@
 .pic {
-    width: 75px;
-    height: 75px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -9,12 +9,61 @@
     background-color: rgb(89, 90, 89);
     background-image: url(../image/Fondonavbar.JPG);
     display: flex;
-    flex-direction: row;
-    justify-content:space-around;
+    flex-direction:row-reverse;
+    justify-content:center;
     align-items: center;
     border-radius: 5%;
-    height: 100px;
-    width: 900px;
-    margin: 20px;
+    height: 330px;
+    width: 600px;
+    margin:90px;
     color: white;
+    border-bottom: 10px;
+    
+    
+}
+
+.img{
+    border-radius: 50%;
+    height: 90%;
+    width: 90%;
+    margin-right: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.photoContainer{
+
+    width: 250px;
+    height: 220px;
+    margin-top: 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+.name{
+    font-family: Montserrat;
+    font-size: 25px;
+    justify-content: center;
+    padding: 15px;
+    margin: 15px auto;
+    display:flexbox;
+    
+
+}
+
+.email{
+    font-family: Montserrat;
+    font-size: 25px;
+    justify-content: center;
+    margin-right:  10px;
+    padding: 15px;
+    margin: 15px auto;
+    display:flexbox;
+
 }

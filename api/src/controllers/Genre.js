@@ -6,7 +6,7 @@ const getGenres = async (req, res, next) => {
     const genres = await Genre.findAll();
 
     if (genres.length) res.status(200).json(genres);
-    else res.status(204).send('No se encontró ningún género');
+    else res.status(204).send('No gender found');
   } catch (error) {
     next(error);
   }
@@ -31,7 +31,7 @@ const getVidegamesByGenre = async (req, res, next) => {
     if (gamesByGenre.videogames.length) {
       res.status(200).json(gamesByGenre);
     } else {
-      res.status(201).send('No hay videojuegos con ese género');
+      res.status(201).send('There are no video games with that genre');
     }
   } catch (error) {
     next(error);
