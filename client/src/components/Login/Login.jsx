@@ -75,14 +75,14 @@ export default function Login(){
     useEffect(()=>{
         /* global google */
         google.accounts.id.initialize({
-            client_id: '621995996270-p9h5r8tc618nuq79hnl1avt92h8pdv8m.apps.googleusercontent.com',
+            client_id: process.env.REACT_APP_GOOGLE,
             callback: handleCallback
         })
         google.accounts.id.renderButton(
             document.getElementById('signInDiv'),
             { theme: 'outline', size: 'large'}
         )
-    }, [])
+    }, [token])
     return(
     <div className={style.userbody}>
         {!token 
