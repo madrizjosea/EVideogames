@@ -57,7 +57,7 @@ const uploadImage = (files) => {
     return(
         <form>
         <div className={Style.cointainer}>
-        <h1 className={Style.textoUser}>Create User</h1>
+        <h1 className={Style.textoUser}>Register</h1>
         <br />
         <input className="texto" type='file' onChange={(event) => {event.preventDefault()
             setImage(event.target.files[0])
@@ -95,7 +95,7 @@ const uploadImage = (files) => {
         </div>
         <br />
         <div>
-         <button className={Style.register} onClick={handleClick}>Registrarse</button>
+         <button className={Style.register} onClick={handleClick}>Register</button>
         </div>     
         {result===201 && <p className="danger">The email is already associated with an account</p>}
         {result===200 && <p className="texto">User created successfully</p>}
@@ -110,12 +110,12 @@ const validate = (input) => {
     if(!input.name){
         error.name = 'data needed'
     }else if(!/^[a-zA-Z\s]*$/.test(input.name)){
-        error.name = 'El dato ingresado no es valido'
+        error.name = 'The data entered is not valid'
     }
     if(!input.email){
         error.email = 'data needed'
     }else if(!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(input.email)){
-        error.email = 'El dato ingresado no es valido'
+        error.email = 'The data entered is not valid'
     }
     if(!input.password){
         error.password = 'data needed'
