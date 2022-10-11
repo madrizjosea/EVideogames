@@ -10,12 +10,15 @@
     background-color: rgb(89, 90, 89);
     background-image: url(../image/Fondonavbar.JPG);
     display: flex;
-    flex-direction: row;
-    justify-content:space-around;
+    flex-direction:row-reverse;
+    justify-content:center;
     align-items: center;
     border-radius: 5%;
-    height: 100px;
-    width: 900px;
-    margin: 20px;
+    height: 330px;
+    width: 600px;
+    margin:90px;
     color: white;
+    border-bottom: 10px;
+    font-family: Montserrat;
+    font-size: 25px;
 }
