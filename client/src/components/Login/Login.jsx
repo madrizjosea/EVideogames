@@ -75,7 +75,7 @@ export default function Login(){
     useEffect(()=>{
         /* global google */
         google.accounts.id.initialize({
-            client_id: process.env.REACT_APP_GOOGLE,
+            client_id: '457033819245-sr363vifu4knned0rpmedj9bv65fio0n.apps.googleusercontent.com', //process.env.REACT_APP_GOOGLE
             callback: handleCallback
         })
         google.accounts.id.renderButton(

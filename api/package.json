@@ -29,7 +29,8 @@
     "passport-local": "^1.0.0",
     "pg": "^8.5.1",
     "sequelize": "^6.3.5",
-    "sha1": "^1.1.1"
+    "sha1": "^1.1.1",
+    "stripe": "^10.13.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
