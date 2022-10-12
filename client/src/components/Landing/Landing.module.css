@@ -11,17 +11,22 @@
     flex-direction: column;
     justify-content: space-around;
     background-color: rgb(46, 44, 44);
+    margin-right: 50vh;
+    padding: 30px 55px;
+    border-radius: 5rem;
     
 }
 .landingContainer button {
-    padding: 10px 15px;
-    border-radius: 15px;
+    padding: 30px 55px;
+    border-radius: 10rem;
     outline: none;
     cursor: pointer;
     border: 1px solid black;
     align-items: center;
     background-color: black;
     width: auto;
+    margin-right: 50vh;
+    margin-top: 400px;
   }
 
   
@@ -39,6 +44,7 @@
     cursor: pointer;
     position: relative;
     border-radius: 10%;
+    padding: 30px 55px;
     }
 
     .center{

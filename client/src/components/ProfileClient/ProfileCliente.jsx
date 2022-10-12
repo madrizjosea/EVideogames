@@ -1,6 +1,6 @@
 import React /* { useEffect } */ from "react";
 import jwtDecode from "jwt-decode";
-import style from "./profileClient.module.css";
+import Style from "./profileClient.module.css";
 //import ProfileClient from "./ProfileClient.jsx";
 //import { useDispatch, useSelector } from "react-redux";
 //import { deleteUsers, getAllUsers } from "../../redux/actions";
@@ -26,10 +26,12 @@ export default function Profile () {
     
         return (
  
-            <div className={style.userbody}>
-                <img src={decodedtoken.image || decodedtoken.picture} alt="No hay imagen" />
-                <p>Name: {decodedtoken.name}</p>
-                <p>Email: {decodedtoken.email}</p>
+            <div className={Style.userbody}>
+                <div className={Style.photoContainer}>
+                <img className ={Style.img}src={decodedtoken.image || decodedtoken.picture} alt="No hay imagen" />
+                </div>
+                <p className= {Style.name}><b>Name:</b> {decodedtoken.name}</p>
+                <p className= {Style.email}><b>Email: </b>{decodedtoken.email}</p>
             </div>
         )
     };

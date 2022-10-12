@@ -75,7 +75,7 @@ export default function Login(){
     useEffect(()=>{
         /* global google */
         google.accounts.id.initialize({
-            client_id: '457033819245-sr363vifu4knned0rpmedj9bv65fio0n.apps.googleusercontent.com', //process.env.REACT_APP_GOOGLE
+            client_id: process.env.REACT_APP_GOOGLE,
             callback: handleCallback
         })
         google.accounts.id.renderButton(
@@ -89,7 +89,7 @@ export default function Login(){
         ?
         
         <div>
-        <h1>Login</h1>
+        <h1 className={style.Login} >Login</h1>
         <input placeholder="Email" onChange={e => setLoginUsername(e.target.value)}/>
         <input type='password' placeholder="Password" onChange={e => setLoginPassword(e.target.value)}/>
         <button onClick={login}>Login</button> 
