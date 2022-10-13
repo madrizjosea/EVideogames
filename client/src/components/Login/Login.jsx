@@ -16,6 +16,24 @@ export default function Login(){
     const [errors, setErrors] = useState()
     const [token, setToken] = useLocalStorage('logged', '')
 
+    function getCookie(c_name) {
+        if (document.cookie.length > 0) {
+           let c_start = document.cookie.indexOf(c_name + "=");
+            if (c_start !== -1) {
+                c_start = c_start + c_name.length + 1;
+               let c_end = document.cookie.indexOf(";", c_start);
+                if (c_end === -1) {
+                    c_end = document.cookie.length;
+                }
+                return unescape(document.cookie.substring(c_start, c_end));
+            }
+        }
+        return "";
+    }
+    const cookie = getCookie('token')
+
+    console.log('cookies', document.cookie)
+    console.log('token', token,'cookie', cookie)
     
     const login = () => {
         
@@ -33,7 +51,7 @@ export default function Login(){
         if(!res.data.user) { setErrors(res.data.message) }
         else{
         document.cookie = `token=${res.data.token}; path=/; samesite=strict`
-        let tokencode = document.cookie.replace('token=', '')
+        let tokencode = getCookie('token')
         
         let decodedtoken = jwtDecode(tokencode)
        
@@ -44,7 +62,8 @@ export default function Login(){
     }
 
     function logout(){
-        document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+        document.cookie= 'token=null'
+       
         setToken(false)
         setValue(false)
         setCart([])
@@ -52,9 +71,9 @@ export default function Login(){
         console.log(value)
     }
 
-    function handleSignout(event){
+    function handleSignout(){
         setUser({});
-        document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+        document.cookie= 'token=null'
         setToken(false)
         setValue(false)
         setCart([])
@@ -114,7 +133,7 @@ export default function Login(){
         <div></div>
         }
         {token ?
-        <button onClick={(e) => handleSignout(e)}>Sign Out</button> : 
+        <button onClick={handleSignout}>Sign Out</button> : 
         <div></div>
         }
         </div>
@@ -122,3 +141,4 @@ export default function Login(){
     </div>
     )
 }
+// document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });

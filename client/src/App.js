@@ -37,8 +37,8 @@ function App() {
         </Route>
         <Route element={<ProtectedProfile/>}>
         <Route exact path={'/Profile'} element={<><Navbar/><Profile/></>}></Route>
-        <Route exact path={'/Payment'} element={<><Navbar/><Stripe/></>}></Route>
         </Route>
+        <Route exact path={'/Payment'} element={<><Navbar/><Stripe/></>}></Route>
       </Routes>
       </UserContext.Provider>
     </div>
