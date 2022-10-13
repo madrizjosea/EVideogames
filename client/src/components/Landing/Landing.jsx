@@ -1,11 +1,14 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Style from './Landing.module.css'
-import logo from "../image/Logo.JPG";
+import logo from "../image/Logo Games.JPG";
 import { Link } from "react-router-dom";
 
-const Landing = () => {
 
+
+
+
+const Landing = () => {
     const history = useNavigate();
 
     const handleclick = () => {
@@ -27,7 +30,6 @@ const Landing = () => {
              />
          </Link>
          </button>
-           
             </div>
             
 

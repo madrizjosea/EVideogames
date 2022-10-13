@@ -86,11 +86,13 @@ router.post("/Google", async (req, res, next) => {
 
       console.log("user validate", userValidate);
       if (
-         email === "eze-leiva@gmail.com" ||
          email === "@gmail.com" ||
          email === "@gmail.com" ||
          email === "@gmail.com" ||
-      ) {
+         email === "@gmail.com" ||
+         email === "@gmail.com" 
+         ) {
+      
          isAdmin = true;
       }
       if (Object.entries(userValidate).length === 0) {
@@ -180,14 +182,14 @@ router.post("/", async (req, res, next) => {
          <b> Hello ${name} you register in Eccomerce Clothes, wellcome Fashion and Style for life<b>`, // html body
       });
 
-      if (
-         email === "eze-leiva@gmail.com" ||
+      if(
          email === "@gmail.com" ||
          email === "@gmail.com" ||
          email === "@gmail.com" ||
          email === "@gmail.com" ||
-       
-      ) {
+         email === "@gmail.com" 
+      )
+      {
          isAdmin = true;
       }
       if (Object.entries(userValidate).length === 0) {

@@ -2,9 +2,23 @@ const { Router } = require('express');
 const router = Router();
 const { User } = require('../db')
 const sha1 = require('sha1')
+const jwt = require("jsonwebtoken")
+const passport = require('passport')
 
-router.get('/', (req, res) => {
-    res.send('Conexion exitosa')
+router.get('/restricted',
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        res.send('secreto')
+    })
+
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.findAll();
+        if (users.length) res.status(200).json(users);
+        else res.status(404).send('No se encontraron users.');
+    } catch (err) {
+        console.log('GET USERS ERROR--->', err);
+    }
 })
 
 router.get('/:id', async (req, res) => {
@@ -85,20 +99,21 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body
+
+    const userWithEmail = await User.findOne({ where: { email } }).catch((err) => {
+        console.log("Error " + err)
+    });
+    if (!userWithEmail)
+        return res.json({ message: "Email or password does not match" })
+
+    if (userWithEmail.password !== password)
+        return res.json({ message: "Email or password does not match" })
+
+    const jwtToken = jwt.sign({ id: userWithEmail.id, email: userWithEmail.email, name:userWithEmail.name, image:userWithEmail.image, role:userWithEmail.role }, process.env.JWT_SECRET)  // 'ext' is expiration time
+    res.json({user: userWithEmail, token: jwtToken})
+})
+
 module.exports = router;
 
-/* {
-    "name":"pepe",
-    "email":"email@gmail.com",
-    "password":"1234",
-    "role":"user"
-} */
-
-/* const foundMail = await User.findAll(
-        {
-            where :{
-                email: email
-                }})
-    if(foundMail.length>0){
-        res.send('foundMail')
-    }else{  */

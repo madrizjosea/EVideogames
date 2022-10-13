@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+.gamebody {
+    background-color: rgb(89, 90, 89);
+    background-image: url(../image/Fondonavbar.JPG);
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    border-radius: 5%;
+    height: 200px;
+    width: 400px;
+    margin: 20px;
+}
