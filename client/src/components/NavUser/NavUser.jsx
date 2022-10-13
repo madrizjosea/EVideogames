@@ -2,32 +2,32 @@
 // import { IconContext } from "react-icons";
 // import Style from "./navUser.module.css"
 // import { useDispatch ,useSelector} from "react-redux";
-// // import { Logout } from "../../redux/actions";
-// // import { useAuth } from "../../context/authContext";
+// // // import { Logout } from "../../redux/actions";
+// // // import { useAuth } from "../../context/authContext";
 
-// function NavUser() {
-//   //login Google
-//   const { logout, user } = useAuth();
-//   const user2 = useSelector((state) => state.user_login);
+// // function NavUser() {
+// //   //login Google
+// //   const { logout, user } = useAuth();
+// //   const user2 = useSelector((state) => state.user_login);
 
-//   const handleLogout = async () => {
-//     try {
-//       await logout();
-//       dispatch(Logout());
-//     } catch (error) {
-//       console.error(error.message);
-//     }
-//   };
-
-
+// //   const handleLogout = async () => {
+// //     try {
+// //       await logout();
+// //       dispatch(Logout());
+// //     } catch (error) {
+// //       console.error(error.message);
+// //     }
+// //   };
 
 
-//   // login email
-//   const dispatch = useDispatch()
 
-//   // function OnLogout() {
 
-//   // }
+// //   // login email
+// //   const dispatch = useDispatch()
+
+// //   // function OnLogout() {
+
+// //   // }
 
 
 //   return (
@@ -41,7 +41,7 @@
 //           <i className={Style.fa_fa_caret_down}></i>
 //         </button>
 //         <div className={Style.dropdown_content}>
-//           <a href="#" onClick={handleLogout}>Logout</a>
+//           <a href="#" onClick={handleLogout}>Login</a>
 //           <a href="/profile">Profile</a>
 //           {user2.id!=undefined && user2.id!=false &&
 //           user2.isAdmin!=undefined && user2.isAdmin==true &&

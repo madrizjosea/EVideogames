@@ -57,18 +57,18 @@ const uploadImage = (files) => {
     return(
         <form>
         <div className={Style.cointainer}>
-        <h1 className={Style.textoUser}>Create User</h1>
+        <h1 className={Style.textoUser}>Register</h1>
         <br />
         <input className="texto" type='file' onChange={(event) => {event.preventDefault()
             setImage(event.target.files[0])
             }}/>
-        <button className= {Style.ImgLoad} onClick={uploadImage}>Subir Imagen</button>
+        <button className= {Style.ImgLoad} onClick={uploadImage}>Upload Image</button>
         <Image 
         style={{width: 200}} 
         cloudName='dnf3cz1f3' 
         publicId = {input.image}/>
         <div>
-            <label className={Style.textoNombre}>Nombre:</label>
+            <label className={Style.textoNombre}>Name:</label>
             <br />
             <input className={error.name && 'danger'} type='text' name="name" onChange={handleChange} value={input.name}/>
             {error.name && 
@@ -95,10 +95,10 @@ const uploadImage = (files) => {
         </div>
         <br />
         <div>
-         <button className={Style.register} onClick={handleClick}>Registrarse</button>
+         <button className={Style.register} onClick={handleClick}>Register</button>
         </div>     
-        {result===201 && <p className="danger">El mail ya esta asociado a una cuenta</p>}
-        {result===200 && <p className="texto">Usuario creado exitosamente</p>}
+        {result===201 && <p className="danger">The email is already associated with an account</p>}
+        {result===200 && <p className="texto">User created successfully</p>}
         <br/>
         </div>
         </form>
@@ -108,19 +108,19 @@ const uploadImage = (files) => {
 const validate = (input) => {
     let error = {};
     if(!input.name){
-        error.name = 'Se necesitan datos'
+        error.name = 'data needed'
     }else if(!/^[a-zA-Z\s]*$/.test(input.name)){
-        error.name = 'El dato ingresado no es valido'
+        error.name = 'The data entered is not valid'
     }
     if(!input.email){
-        error.email = 'Se necesitan datos'
+        error.email = 'data needed'
     }else if(!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(input.email)){
-        error.email = 'El dato ingresado no es valido'
+        error.email = 'The data entered is not valid'
     }
     if(!input.password){
-        error.password = 'Se necesitan datos'
+        error.password = 'data needed'
     }else if(!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(input.password)){
-        error.password = 'El dato ingresado no es valido'
+        error.password = 'The data entered is not valid'
     }
     return error
 }
