@@ -6,7 +6,8 @@ import {
     GET_GAME,
     ADD_GAME,
     EDIT_GAME,
-    DELETE_GAME
+    DELETE_GAME,CLEAR_DETAIL,
+    PAGE
 } from '../types.js';
 
 export function getAllGames() {
@@ -61,3 +62,23 @@ export function deleteGame(id) {
     };
 }
 
+
+//Ezequiel para mostrar
+//! clear detail 
+
+export function clearDetail (){
+    return {
+        type: CLEAR_DETAIL,
+        payload: []
+    }
+    
+}
+
+//guardar pagina 
+
+export function savePage(payload){
+    return({
+        type:PAGE,
+        payload
+    })
+}
