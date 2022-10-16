@@ -5,6 +5,9 @@ import { getGame } from '../../redux/actions/games';
 import { UserContext } from '../../Context/UserContext';
 import styles from './Details.module.css';
 import { useState } from 'react';
+import {clearDetail} from "../../redux/actions/games/index"
+
+
 
 export default function Details() {
   const { id } = useParams();
@@ -17,6 +20,12 @@ export default function Details() {
 console.log(cart)
   useEffect(() => {
     dispatch(getGame(id));
+
+//* limpiamos el estado cuando renderiza clear detail
+
+    return(()=>{
+      dispatch(clearDetail())   
+    })
   }, [dispatch, id]);
   //console.log(details)
 

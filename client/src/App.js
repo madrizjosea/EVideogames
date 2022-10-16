@@ -14,6 +14,8 @@ import ProtectedDashboard from './components/ProtectedRoutes/ProtectedDashboard'
 import ProtectedProfile from './components/ProtectedRoutes/ProtectedProfile.jsx';
 import Profile from './components/ProfileClient/ProfileCliente.jsx';
 import Cart from './components/Cart/Cart.jsx';
+import About from './components/About/About.jsx'
+import Page404 from './components/Page404/Page404.jsx';
 import Stripe from './components/Payment/Stripe.js';
 
 function App() {
@@ -33,10 +35,16 @@ function App() {
         <Route exact path={'/Cart'} element={<><Navbar/><Cart/></>}></Route>
         <Route element={<ProtectedDashboard/>}>
         <Route exact path={'/Dashboard'} element={<><Navbar/><Dashboard/></>}></Route>
+
         <Route exact path={'/AddGame'} element={<><Navbar /><AddGame /></>}></Route>
+        <Route exact path={'/About'} element={About}/>
+        <Route exact path={'*'} element={Page404}/>
         </Route>
+
+
         <Route element={<ProtectedProfile/>}>
         <Route exact path={'/Profile'} element={<><Navbar/><Profile/></>}></Route>
+        
         </Route>
         <Route exact path={'/Payment'} element={<><Navbar/><Stripe/></>}></Route>
       </Routes>
