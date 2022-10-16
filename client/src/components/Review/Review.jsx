@@ -48,3 +48,6 @@ export default function AddVideogame() {
         </div>
     )
 };
+
+
+// Rating Component: https://mui.com/material-ui/react-rating/ 
