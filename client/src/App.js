@@ -22,10 +22,11 @@ function App() {
  const [value, setValue] = useLocalStorage('user', '')
  const [cart, setCart] = useLocalStorage('cart', [])
  const [order, setOrder] = useLocalStorage('order', '')
+ const [total, setTotal] = useLocalStorage('total', 0)
 
   return (
     <div>
-      <UserContext.Provider value={{value, setValue, cart, setCart, order, setOrder}}>
+      <UserContext.Provider value={{value, setValue, cart, setCart, order, setOrder, total, setTotal}}>
       <Routes>
         <Route exact path={'/'} element={<Landing/>}></Route>
         <Route exact path={'/Main'} element={<><Navbar/><Main/></>}></Route>

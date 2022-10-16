@@ -13,7 +13,7 @@ export default function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const details = useSelector(state => state.games.game);
-  const { cart, setCart } = useContext(UserContext)
+  const { cart, setCart, order, setOrder, total, setTotal} = useContext(UserContext)
   const [msg, setmsg] = useState('')
   
   
@@ -31,9 +31,29 @@ console.log(cart)
 
   const onClick = () => {
     let arrcart = [...cart]
+    if(cart.length<1){
+      arrcart.push(details)
+      setTotal(total + details.price)
+      setOrder(arrcart)
+      setCart(arrcart)
+      setmsg('Juego agregado al carrito')
+    }else{
+      let idarr = []
+    for(let i = 0; i<cart.length; i++)
+{
+  idarr.push(cart[i].id)
+}
+  const incluye = idarr.includes(details.id)
+  if(!incluye){
     arrcart.push(details)
+    setTotal(total + details.price)
     setCart(arrcart)
+    setOrder(arrcart)
     setmsg('Juego agregado al carrito')
+  }else{
+    setmsg('Juego ya esta en el carrito')
+  }
+  }
   }
 
  
