@@ -15,6 +15,7 @@ import ProtectedProfile from './components/ProtectedRoutes/ProtectedProfile.jsx'
 import Profile from './components/ProfileClient/ProfileCliente.jsx';
 import Cart from './components/Cart/Cart.jsx';
 import Stripe from './components/Payment/Stripe.js';
+import Review from './components/Review/Review.jsx';
 
 function App() {
  const [value, setValue] = useLocalStorage('user', '')
@@ -39,6 +40,7 @@ function App() {
         <Route exact path={'/Profile'} element={<><Navbar/><Profile/></>}></Route>
         </Route>
         <Route exact path={'/Payment'} element={<><Navbar/><Stripe/></>}></Route>
+        <Route exact path={'/Review'} element={<><Navbar/><Review/></>}></Route>
       </Routes>
       </UserContext.Provider>
     </div>
