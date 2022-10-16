@@ -16,14 +16,16 @@ import Profile from './components/ProfileClient/ProfileCliente.jsx';
 import Cart from './components/Cart/Cart.jsx';
 import About from './components/About/About.jsx'
 import Page404 from './components/Page404/Page404.jsx';
-
+import Stripe from './components/Payment/Stripe.js';
 
 function App() {
  const [value, setValue] = useLocalStorage('user', '')
  const [cart, setCart] = useLocalStorage('cart', [])
+ const [order, setOrder] = useLocalStorage('order', '')
+
   return (
     <div>
-      <UserContext.Provider value={{value, setValue, cart, setCart}}>
+      <UserContext.Provider value={{value, setValue, cart, setCart, order, setOrder}}>
       <Routes>
         <Route exact path={'/'} element={<Landing/>}></Route>
         <Route exact path={'/Main'} element={<><Navbar/><Main/></>}></Route>
@@ -44,6 +46,7 @@ function App() {
         <Route exact path={'/Profile'} element={<><Navbar/><Profile/></>}></Route>
         
         </Route>
+        <Route exact path={'/Payment'} element={<><Navbar/><Stripe/></>}></Route>
       </Routes>
       </UserContext.Provider>
     </div>

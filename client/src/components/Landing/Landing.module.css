@@ -50,11 +50,9 @@
     .center{
     align-items: center;
     border-radius: 50rem;
-    margin-left: 50rem;
+    margin-left: 35rem;
     height: max-content;
-    align-items: flex-end;
-   float: inline-end;
-   position: relative;
+    position: relative;
    
     }
     .center:hover    {
