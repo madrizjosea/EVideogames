@@ -65,16 +65,14 @@ export default function AddVideogame() {
     }
 
     function audiencetHandler(e) {
-        console.log(e.target);
         setInput({
-            ...input, audiences: e.target.value
+            ...input, 
+            audiences: [e.target.value]
         })
         console.log(input);
     }
 
     function genreHandler(e) {
-        console.log(e.target);
-
         if (input.genres?.length >= 3) {
             alert('You can only select up to 3 genres.');
         } else if (input.genres?.includes(e.target.value)) {
