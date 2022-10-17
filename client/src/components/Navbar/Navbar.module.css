@@ -1,126 +1,156 @@
 nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #131313;
-  }
-  ul{
-    list-style-type: none;
-  }
-  
-  li {
-    float: left;
-  }
-  
-.navlink {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover:not(.active) {
-    background-color: w;
-  }
-  
-  .active {
-    background-color: #cc0707;
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #131313;
+}
+ul {
+  list-style-type: none;
+}
 
-  .NavBarComplete{
-    background: url("../image/fondonavbar3.JPG");
-    box-sizing: border-box;
-    display: flex;
+li {
+  float: left;
+}
+
+.navlink {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: w;
+}
+
+.active {
+  background-color: #cc0707;
+}
+
+.NavBarComplete {
+  background: url("../image/fondonavbar3.JPG");
+  box-sizing: border-box;
+  display: flex;
+
+  flex-direction: column;
+  width: 100%;
+  font: bold 16px sans-serif;
+  padding: 3px 5px;
+}
+
+@media screen and (min-width: 1024px) {
+  .NavBarComplete {
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    font: bold 16px sans-serif;
-    padding: 3px 5px;
   }
+}
 
-  .letra{
-    justify-content: space-between;
-    color: white;
-    text-decoration: none;
-    width: 100px;
-    padding: 10px 15px;
-    outline: none;
-    cursor: pointer;
-    border-radius: 0px;
-    border: none;
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    top: 60vh;
-    margin-right:6px;
-    display: flexbox;
-    text-overflow: ellipsis;
-  }
+.letra {
+  justify-content: space-between;
+  color: white;
+  text-decoration: none;
+  width: 100px;
+  padding: 10px 15px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0px;
+  border: none;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  top: 60vh;
+  margin-right: 6px;
+  display: flexbox;
+  text-overflow: ellipsis;
+}
 
-  .liFormat {
-    margin-left: 15px;
-  }
+.liFormat {
+  margin-left: 15px;
+}
 
-  .letra:hover {
-    color:red;
-  }
+.letra:hover {
+  color: red;
+}
 
+.NavBarComplete .logo {
+  border-radius: 5rem;
+  width: 90px;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+@media screen and (min-width: 1024px) {
   .NavBarComplete .logo {
     border-radius: 5rem;
     margin-left: 3rem;
+    position: unset;
+    transform: unset;
+    left: unset;
   }
-  .logo:hover {
-    transform: scale(1.025, 1.025);
-    filter: drop-shadow(0 0 12px white);
-  }
+}
 
+.logo:hover {
+  transform: scale(1.025, 1.025);
+  filter: drop-shadow(0 0 12px white);
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  gap: 10px;
+  margin-right: 0vh;
+  margin-top: 5rem;
+}
+
+@media screen and (min-width: 1024px) {
   .right {
-    display: flex;
     width: 30%;
-    justify-content:flex-start;
-    gap: 10px;
-    margin-right: 0vh;
-    
+    justify-content: flex-start;
+    flex-direction: row;
+    margin: unset;
+    margin-top: unset;
   }
+}
 
-  .left{
-    display: flex;
-    width: 35%;
-    justify-content:first baseline;
-    gap: 5px;
-    margin-left: 0px;
-  }
-  .center {
-    display: flex;
-    /* align-items: center; */
-    justify-content: space-evenly;
-    width: 40%;
-    
-  }
-  
-  .NavUl {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0;
-    width: 50%;
-  }
-  * {
-    text-decoration: none;
-  }
+.left {
+  display: flex;
+  width: 35%;
+  justify-content: first baseline;
+  gap: 5px;
+  margin-left: 0px;
+}
+.center {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-evenly;
+  width: 40%;
+}
 
-  .navbar{
-    background-color: none;
-    font-family: Arial;
-    align-content: center;
-    position: relative;
-    
-  }
+.NavUl {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+  width: 50%;
+}
+* {
+  text-decoration: none;
+}
 
-  .dropdown{
-    float: right;
-    overflow: hidden;
-   
+.navbar {
+  background-color: none;
+  font-family: Arial;
+  align-content: center;
+  position: relative;
+}
 
-  }
+.dropdown {
+  float: right;
+  overflow: hidden;
+}

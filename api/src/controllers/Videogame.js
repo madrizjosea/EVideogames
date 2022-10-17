@@ -34,7 +34,7 @@ const getVideogames = async (req, res, next) => {
     });
 
     if (videogames.length) res.status(200).json(videogames);
-    else res.status(204).send('No se encontraron videojuegos.');
+    else res.status(204).send('No video games found.');
   } catch (error) {
     next(error);
   }
@@ -60,7 +60,7 @@ const getVideogameById = async (req, res, next) => {
     });
 
     if (videogame) res.status(200).json(videogame);
-    else res.status(201).send('No existe un videojuego con ese ID');
+    else res.status(201).send('There is no game with that ID');
   } catch (error) {
     next(error);
   }

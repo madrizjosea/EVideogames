@@ -1,9 +1,14 @@
 .cointainerCard {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; */
     /* margin: 0; */
     /* background-image: url(../image/Fondonavbar.JPG); */
     /* background-image: url(../image/Fondo2.png); */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(23rem, 24rem));
+    gap: 20px;
+    justify-content: center;
+
 }
