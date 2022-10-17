@@ -18,7 +18,8 @@ const initialState = {
     allGames: [],
     games: [],
     game: {},
-    page:1
+    allGenres: [],
+    allAudiencess:[]
 };
 
 export default function games(state = initialState, action) {

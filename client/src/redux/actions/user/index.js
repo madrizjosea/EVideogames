@@ -38,7 +38,7 @@ export function addUser(payload) {
 
 export function editUser(id, payload) {
     return async function (dispatch) {
-        const user = await axios.put(`/users/`, payload);
+        const user = await axios.put(`/users/${id}`, payload);
         dispatch({ type: EDIT_USER, payload: user.data })
     };
 };

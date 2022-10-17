@@ -1,277 +1,244 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { addGame} from "../../redux/actions/games/index";
-import { useDispatch, useSelector } from "react-redux";
-import style from "./AddGame.module.css"
-import {getGenres} from  "../../redux/actions/genres/index"
-function validate(input){  //usado para validad errores 
+import React from "react";
+import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { addGame } from '../../redux/actions/games/index.js';
 
-    let errors = {};
+function validation(input) {
+    let err = {};
+    if (!input.name) {
+        err.name = 'Can not be empty';
+    } else if (input.name.length > 25) {
+        err.name = 'Should contain less than 25 characters';
+    }
 
-    if(input.name.length >= 0 && !input.name.match(/^[a-zA-Z_]+( [a-zA-Z_]+)*$/)){
-        errors.name = 'Solo se permiten letras y sin espacios al final!'
+    if (!input.description) {
+        err.description = 'Can not be empty.';
     }
-     if (!input.description){
-        errors.description = "Se requiere una descripción";
-    }
-    if (!input.released){
-        errors.released = "Se requiere una fecha de lanzamiento";
-    } else if (/^\d{2}\/\d{2}\/\d{4}$/.test(input.released) === false){
-        errors.released = "Formato de fecha debe ser DD/MM/AAAA"
-    }
-    if (!input.rating){
-        errors.rating = "Se requiere una puntuación de Rating. El Rating debe ser desde 0.1 hasta 5 puntos";
-    } else if (/^[+-]?\d+([,.]\d+)?$/.test(input.rating) === false){
-        errors.rating = "Formato de Rating debe ser como de minimo 0.1 hasta 5"
-    }
-    if(input.image.length > 0 && !input.image.match(/^(ftp|http|https):\/\/[^ "]+$/)){
-        errors.image = 'La imagen tiene que ser un URL'
-    }else errors.image = null
 
-    return errors;
+    if (!input.image) {
+        err.image = 'Can not be empty.';
+    } else if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(input.image)) {
+        err.image = 'Should be a valid image url.';
+    }
+
+    if (!input.releaseDate) {
+        err.releaseDate = 'Can not be empty.';
+    } else if (!/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/.test(input.releaseDate)) {
+        err.releaseDate = 'Should be a valid date(yyyy-mm-dd).';
+    }
+
+    if (!input.rating) {
+        err.rating = 'Can not be empty.';
+    } else if (!/^[0-9]+$/.test(input.rating)) {
+        err.rating = 'Should only contain numbers.';
+    } else if (!/^(?=.*[1-5])\d+(?:\.[05]0?)?$/.test(input.rating)) {
+        err.rating = 'Should be between 1 and 5(only 0.5 decimals are valid).';
+    }
+
+    return err;
 }
 
-
-export default function AddGame(){
+export default function AddVideogame() {
 
     const dispatch = useDispatch();
 
-    const genres = useSelector((state) => state.genres);
-
-    const [errors, setErrors] = useState({});
-
-    let platforms = [
-        "PC",
-        "PlayStation 5",
-        "Xbox One",
-        "PlayStation 4",
-        "Xbox Series S/X",
-        "Nintendo Switch",
-        "iOS",
-        "Android",
-        "Nintendo 3DS",
-        "Nintendo DS",
-        "Nintendo DSi",
-        "macOS",
-        "Linux",
-        "Xbox 360",
-        "Xbox",
-        "PlayStation 3",
-        "PlayStation 2",
-        "PlayStation",
-        "PS Vita",
-        "PSP",
-        "Wii U",
-        "Wii",
-        "GameCube",
-        "Nintendo 64",
-        "Game Boy Advance",
-        "Game Boy Color",
-        "Game Boy",
-        "SNES",
-        "NES",
-        "Classic Macintosh",
-        "Apple II",
-        "Commodore / Amiga",
-        "Atari 7800",
-        "Atari 5200",
-        "Atari 2600",
-        "Atari Flashback",
-        "Atari 8-bit",
-        "Atari ST",
-        "Atari Lynx",
-        "Atari XEGS",
-        "Genesis",
-        "SEGA Saturn",
-        "SEGA CD",
-        "SEGA 32X",
-        "SEGA Master System",
-        "Dreamcast",
-        "3DO",
-        "Jaguar",
-        "Game Gear",
-        "Neo Geo",
-      ];
-
+    const [err, setErr] = useState({});
     const [input, setInput] = useState({
-        name: "",
-	    description: "",
-	    released:"",
-        rating:"",
-        platforms: [],
-        genres:[],
-	    image: ""
+        name: '',
+        description: '',
+        image: '',
+        releaseDate: '',
+        rating: '',
+        audiences: [],
+        genres: [],
     });
 
-    useEffect(() => {
-        dispatch(getGenres());
-    }, [dispatch]);
-    
-    
-
-    function handleChange(e){ //funcion para modificar el input segun lo que se escriba
+    function changeHandler(e) {
         setInput({
-            ...input,
-            [e.target.name]: e.target.value //ademas de lo que tiene agrega el target.value de lo que esta modificando segun el target.name
-        });
-        setErrors(validate({ //tambien setea el estado de error usando la funcion creada arriba, usamos el validate para ver si cumplimos o no con los requisitos
-            ...input,
-            [e.target.name]: e.target.value
-        }));
-    }
-
-    function handleGenres(e){
-        setInput({
-            ...input,
-            genres: [...input.genres, e.target.value] //cuando le mando un genero, me trae lo que ya habia y me concatena el nuevo genero a agregar al input
+            ...input, [e.target.name]: e.target.value
         })
+        setErr(validation({
+            ...input, [e.target.name]: e.target.value
+        }))
+        console.log(input);
+        console.log(err);
     }
 
-    function handlePlatforms(e){
+    function audiencetHandler(e) {
         setInput({
-            ...input,
-            platforms: [...input.platforms, e.target.value]
+            ...input, 
+            audiences: [e.target.value]
         })
+        console.log(input);
     }
-    
-    function handleSubmit(e){
-        e.preventDefault();
-        if(!input.name || !input.description || !input.released || !input.released.includes("/") || !input.rating || input.rating > 5 || input.rating <= 0 || !input.rating.includes(".") || input.platforms.length < 1 || input.genres.length < 1 || !input.image || !input.image.includes("https")){
-            e.preventDefault();
-            alert("Falta una propiedad para crear tu Videojuego!")
+
+    function genreHandler(e) {
+        if (input.genres?.length >= 3) {
+            alert('You can only select up to 3 genres.');
+        } else if (input.genres?.includes(e.target.value)) {
+            alert('You already chose this genre.');
         } else {
-            dispatch(addGame(input)); //despacho al store la creacion del videojuego con lo que el usuario dio por input
-            alert("Videojuego creado con éxito!");
-            setInput({  //limpio el input luego de crear el juego
-            name: "",
-            description: "",
-            released:"",
-            rating:"",
-            platforms: [],
-            genres:[],
-            image: ""
-            
+            setInput({
+                ...input,
+                genres: [...input.genres, e.target.value]
+            })
+        }
+        e.target.value = 'default';
+        console.log(input.genres);
+        console.log(err.genres);
+    }
+
+    function deleteHandler(e) {
+        e.preventDefault();
+        console.log(e.target.value);
+        setInput({
+            ...input,
+            genres: input.genres.filter(g => g !== e.target.value)
+        });
+    }
+
+    function submitHandler(e) {
+        e.preventDefault();
+        if (!err.name &&
+            !err.description &&
+            !err.image &&
+            !err.releaseDate &&
+            !err.rating) {
+
+            alert("New Game has been succesfully added!");
+
+            dispatch(addGame(input));
+
+            setInput({
+                name: '',
+                description: '',
+                image: '',
+                releaseDate: '',
+                rating: '',
+                audiences: [],
+                genres: [],
             });
+        } else {
+            return alert("Make sure all the fields are correct.");
         }
     }
 
-    function handleDeletePlatforms(e){ //funcion para eliminar plataformas que no queremos crear
-        setInput({
-            ...input,
-            platforms: input.platforms.filter(data => data !==e) //filtro las plataformas por todo lo que no sea el elemento a eliminar
-        })
-    }
-
-    function handleDeleteGenre(e){  //funcion para eliminar generos que no queremos crear
-        setInput({
-            ...input,
-            genres: input.genres.filter(data => data !== e) //filtro los generos por todo lo que no sea el elemento a eliminar
-        })
-    }
-
     return (
-        <div className={style.div}>
-            <Link to="/home">
-                <button className={style.boton}>Volver al Home</button>
-            </Link>
-            <form className={style.form} onSubmit={e => handleSubmit(e)}>
-                <h1 className={style.h1}>Crea tu juego</h1>
+
+        <div id="containerForm">
+            <form id="Form" onSubmit={e => submitHandler(e)}>
+
+                <h1>New Videogame</h1>
+
                 <div>
-                    <input
-                       className={style.input}
-                       type="text"
-                       value={input.name}
-                       name="name"
-                       onChange={e => handleChange(e)}
-                       required
-                       placeholder="Introduzca un Nombre"
-                    />
-                    {errors.name && (
-                        <p className={style.error}>{errors.name}</p>  //si un error existe renderiza el texto de error
-                    )}
+                    <p className="labelForm">Name:</p>
+
+                    <div>
+                        <input value={input.name} type="text" name="name" onChange={(e) => changeHandler(e)} />
+                    </div>
+                    {err.name &&
+                        <span className="error">{err.name}</span>
+                    }
                 </div>
+
                 <div>
-                    <input
-                       className={style.input}
-                       type="text"
-                       value={input.description}
-                       name="description"
-                       onChange={e => handleChange(e)}
-                       required
-                       placeholder="Introduzca una Descripción"
-                    />
-                    {errors.description && (
-                        <p className={style.error}>{errors.description}</p>
-                    )}
+                    <p className="labelForm">Description:</p>
+
+                    <div>
+                        <input value={input.description} type="text" name="description" onChange={(e) => changeHandler(e)} />
+                    </div>
+                    {err.description &&
+                        <span className="error">{err.description}</span>
+                    }
                 </div>
+
                 <div>
-                    <input
-                       className={style.input}
-                       type="text"
-                       value={input.released}
-                       name="released"
-                       onChange={e => handleChange(e)}
-                       required
-                       placeholder="Introduzca una Fecha de lanzamiento"
-                    />
-                    {errors.released && (
-                        <p className={style.error}>{errors.released}</p>
-                    )}
+                    <p className="labelForm">Image:</p>
+
+                    <div>
+                        <input value={input.image} type="text" name="image" onChange={(e) => changeHandler(e)} />
+                    </div>
+                    {err.image &&
+                        <span className="error">{err.image}</span>
+                    }
                 </div>
+
                 <div>
-                    <input
-                       className={style.input}
-                       type="text"
-                       value={input.rating}
-                       name="rating"
-                       onChange={e => handleChange(e)}
-                       required
-                       placeholder="Introduzca un Rating"
-                    />
-                    {errors.rating && (
-                        <p className={style.error}>{errors.rating}</p>
-                    )}
+                    <p className="labelForm">Release Date:</p>
+
+                    <div>
+                        <input value={input.releaseDate} type="text" name="releaseDate" onChange={(e) => changeHandler(e)} />
+                    </div>
+                    {err.releaseDate &&
+                        <span className="error">{err.releaseDate}</span>
+                    }
                 </div>
+
                 <div>
-                    <input
-                       className={style.input}
-                       type="text"
-                       value={input.image}
-                       name="image"
-                       onChange={e => handleChange(e)}
-                       required
-                       placeholder="Introduzca una imagen"
-                    />
-                    {errors.image && (
-                        <p className={style.error}>{errors.image}</p>
-                    )}
+                    <p className="labelForm">Rating:</p>
+
+                    <div >
+                        <input value={input.rating} type="text" name="rating" onChange={(e) => changeHandler(e)} />
+                    </div>
+                    {err.rating &&
+                        <span className="error">{err.rating}</span>
+                    }
                 </div>
-                <select className={style.select1} onChange={e => handleGenres(e)}>
-                    <option hidden={true}>Género</option>
-                    {genres.map(data => (
-                        <option value={data.name}>{data.name}</option>
-                    ))}
-                </select>
-                <select className={style.select2} onChange={e => handlePlatforms(e)}>
-                    <option hidden={true}>Plataforma</option>
-                    {platforms.map(data => (
-                        <option value={data}>{data}</option>
-                    ))}
-                </select>
-                <button className={style.botonCrear} type="submit">Crear juego</button>
+
+
+                <div id="audiences">
+                    <div>
+                        <p>Audiences:</p>
+
+                        <select className="input" onChange={(e) => audiencetHandler(e)} defaultValue='default'>
+                            <option value='default' disabled='default' hidden>Select Audiences</option>
+                            <option>Teen</option>
+                            <option>Everyone</option>
+                            <option>Everyone 10+</option>
+                            <option>Mature</option>
+                            <option>Adults Only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="genres">
+                    <div>
+                        <p>Genres:</p>
+
+                        <select className="input" onChange={(e) => genreHandler(e)} defaultValue='default'>
+                            <option value='default' disabled='default' hidden>Select Genres</option>
+                            <option>Action</option>
+                            <option>Indie</option>
+                            <option>Adventure</option>
+                            <option>RPG</option>
+                            <option>Strategy</option>
+                            <option>Shooter</option>
+                            <option>Casual</option>
+                            <option>Simulation</option>
+                            <option>Puzzle</option>
+                            <option>Arcade</option>
+                            <option>Platformer</option>
+                            <option>Racing</option>
+                            <option>Massively Multiplayer</option>
+                            <option>Sports</option>
+                            <option>Fighting</option>
+                            <option>Family</option>
+                            <option>Board Games</option>
+                            <option>Educational</option>
+                            <option>Card</option>
+                        </select>
+                    </div>
+
+                    <div id="genresContainer">
+                        {input.genres.map((g, i) => {
+                            return <li className="saved" value={g.name} key={i}> {g} <button value={g} onClick={(e) => deleteHandler(e)}> X </button> </li>
+                        }
+                        )}
+                    </div>
+                </div>
+
+                <button type="submit">Submit</button>
             </form>
-            <div>
-                {input.genres.map(data => ( //renderiza cada genero que se vaya añadiendo al input como un boton
-                    <div className={style.divG}>
-                        <button className={style.botonG} onClick={() => handleDeleteGenre(data)}>{data}</button>
-                    </div>
-                ))} {/* agarra mis generos y va renderizando cada cosa que selecciono */}
-                {input.platforms.map(data => (
-                    <div className={style.divP}>
-                        <button className={style.botonP} onClick={() => handleDeletePlatforms(data)}>{data}</button>
-                    </div>
-                ))}
-            </div>
         </div>
     )
-}
+};

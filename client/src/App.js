@@ -17,6 +17,7 @@ import Cart from './components/Cart/Cart.jsx';
 import About from './components/About/About.jsx'
 import Page404 from './components/Page404/Page404.jsx';
 import Stripe from './components/Payment/Stripe.js';
+import Review from './components/Review/Review.jsx';
 
 function App() {
  const [value, setValue] = useLocalStorage('user', '')
@@ -48,6 +49,7 @@ function App() {
         
         </Route>
         <Route exact path={'/Payment'} element={<><Navbar/><Stripe/></>}></Route>
+        <Route exact path={'/Review'} element={<><Navbar/><Review/></>}></Route>
       </Routes>
       </UserContext.Provider>
     </div>

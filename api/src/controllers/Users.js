@@ -83,7 +83,7 @@ router.put('/:id', async (req, res) => {
 
         res.status(200).json(user);
     } catch (err) {
-        console.log('INACTIVE USER ERROR--->', err);
+        console.log('PUT USER ERROR--->', err);
     }
 });
 
@@ -111,8 +111,8 @@ router.post('/login', async (req, res) => {
     if (userWithEmail.password !== password)
         return res.json({ message: "Email or password does not match" })
 
-    const jwtToken = jwt.sign({ id: userWithEmail.id, email: userWithEmail.email, name:userWithEmail.name, image:userWithEmail.image, role:userWithEmail.role }, process.env.JWT_SECRET)  // 'ext' is expiration time
-    res.json({user: userWithEmail, token: jwtToken})
+    const jwtToken = jwt.sign({ id: userWithEmail.id, email: userWithEmail.email, name: userWithEmail.name, image: userWithEmail.image, role: userWithEmail.role }, process.env.JWT_SECRET)  // 'ext' is expiration time
+    res.json({ user: userWithEmail, token: jwtToken })
 })
 
 module.exports = router;

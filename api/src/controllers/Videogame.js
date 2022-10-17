@@ -78,7 +78,7 @@ const addVideogame = async (req, res) => {
   } = req.body;
 
   try {
-    if (name && description && image && releaseDate && rating) {
+    if (name && description && image ) {
       const newGame = await Videogame.create({
         name,
         description,

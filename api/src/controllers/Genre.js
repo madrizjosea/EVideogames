@@ -6,7 +6,7 @@ const getGenres = async (req, res, next) => {
     const genres = await Genre.findAll();
 
     if (genres.length) res.status(200).json(genres);
-    else res.status(204).send('No gender found');
+    else res.status(204).send('No genre found');
   } catch (error) {
     next(error);
   }
