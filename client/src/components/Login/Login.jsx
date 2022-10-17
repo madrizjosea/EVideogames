@@ -88,18 +88,18 @@ export default function Login(){
         {!token 
         ?
         
-        <div>
+        <div className={style.containerLogin}>
         <h1 className={style.Login} >Login</h1>
-        <input placeholder="Email" onChange={e => setLoginUsername(e.target.value)}/>
-        <input type='password' placeholder="Password" onChange={e => setLoginPassword(e.target.value)}/>
-        <button onClick={login}>Login</button> 
+        <input className={style.imputlogin} placeholder="Email" onChange={e => setLoginUsername(e.target.value)}/>
+        <input className={style.imputlogin} type='password' placeholder="Password" onChange={e => setLoginPassword(e.target.value)}/>
+        <button className={style.buttonlogin} onClick={login}>Login</button> 
         </div>
         
         : !token.iss ?
         
         
         
-        <button onClick={logout}>Logout</button>
+        <button  className ={style.buttonlogout} onClick={logout}>Logout</button>
             : 
             <div></div>
     }

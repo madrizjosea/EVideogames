@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     try {
         const users = await User.findAll();
         if (users.length) res.status(200).json(users);
-        else res.status(404).send('No se encontraron users.');
+        else res.status(404).send('No users found.');
     } catch (err) {
         console.log('GET USERS ERROR--->', err);
     }
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const { name, email, password, role, image } = req.body
-    if (!name || !email || !password || !role) { return res.status(401).send("Falta enviar datos obligatorios") }
+    if (!name || !email || !password || !role) { return res.status(401).send("Missing to send mandatory data") }
     sha1(password)
     try {
         const foundMail = await User.findAll(
@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
                 }
             })
         if (foundMail.length > 0) {
-            res.status(201).send('El email ya esta asociado a una cuenta existente')
+            res.status(201).send('The email is already associated with an existing account')
         } else {
             User.create({
                 name,
@@ -59,10 +59,10 @@ router.post('/', async (req, res) => {
                 role,
                 image,
             })
-            res.send('Usuario creado exitosamente')
+            res.send('User created successfully')
         }
     } catch (error) {
-        res.send('No se pudo crear el usuario')
+        res.send('Failed to create user')
     }
 }
 )

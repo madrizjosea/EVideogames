@@ -47,6 +47,11 @@ export default function NavBar(props) {
            />
          </Link>
          <ul className={Style.NavUl}>
+           
+           </ul>
+           </div>
+           <div className={Style.navbar}>
+           <div className={Style.right}>
            <li>
              <Link to={"/Main"} className={Style.letra}>
               GAMES
@@ -57,11 +62,6 @@ export default function NavBar(props) {
                REGISTER
              </Link>
            </li>
-           </ul>
-           </div>
-           <div className={Style.navbar}>
-           <div className={Style.right}>
-           
            <li>
              <Link to={"/Dashboard"} className={Style.letra}>
             DASHBOARD
