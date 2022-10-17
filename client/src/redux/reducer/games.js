@@ -10,6 +10,8 @@ import {
     ADD_GAME,
     EDIT_GAME,
     DELETE_GAME,
+   CLEAR_DETAIL,PAGE
+
 } from '../actions/types.js';
 
 const initialState = {
@@ -114,6 +116,20 @@ export default function games(state = initialState, action) {
             return {
                 ...state
             };
+//* poner cuando las cart renderizen en el estado
+            case CLEAR_DETAIL:
+                return {
+                  ...state,
+                  recipes: action.payload,
+                  detail: action.payload
+//* para poder guardar la pagina                  
+                };
+                 case PAGE:
+                return {
+                  ...state,
+                  pages: action.payload
+                }
+
 
         default:
             return {

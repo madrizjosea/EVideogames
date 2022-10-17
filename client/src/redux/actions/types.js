@@ -39,3 +39,11 @@ export const EMPTY_CART = 'EMPTY_CART';
 
 
 
+//* Variables Eze
+
+export const CLEAR_DETAIL="CLEAR_DETAIL"
+
+export const PAGE = "PAGE"
+
+
+

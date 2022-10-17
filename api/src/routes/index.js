@@ -4,6 +4,7 @@ const Genre = require('./Genre.js');
 const Audience = require('./Audience.js');
 const UsersController = require('../controllers/Users');
 const OrdersController = require('../controllers/Orders');
+const ReviewRoutes = require('./ReviewRoutes.js');
 const router = Router();
 
 // Videogames
@@ -16,5 +17,7 @@ router.use('/genres', Genre);
 router.use('/audiences', Audience);
 // Orders
 router.use('/orders', OrdersController);
+// Reviews
+router.use('/reviews', ReviewRoutes);
 
 module.exports = router;

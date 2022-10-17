@@ -5,19 +5,26 @@ import Videogamescards from "../VideogameCards/VideogamesCards";
 import './Main.css'
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../redux/actions/games";
+import { Link } from "react-router-dom";
 
-
+import {savePage} from "../../redux/actions/games/index"
 
 
 export default function Main() {
 
+  const pages1 = useSelector(((state)=>state.page))
+
     const [buscar, setBuscar] = useState()
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(pages1);
     const [postperPage, setPostPerPage] = useState(8);
     const [order, setOrder] = useState('asc')
     const [order2, setOrder2] = useState('asc')
     const [genre, setGenre] = useState('')
     console.log(setPostPerPage)
+
+
+
+    
 
     const dispatch = useDispatch();
     const games = useSelector(state => state.games.allGames);
@@ -89,6 +96,20 @@ export default function Main() {
         const firstPostIndex = lastPostIndex - postperPage;
         const currentPost = results.slice(firstPostIndex, lastPostIndex)
 
+
+        //* Funcion para poder guardar la pagina en detalles
+
+        function handlePage(e){
+          dispatch(savePage(currentPage))
+        }
+        
+
+
+
+
+
+
+
     return games ? (<div>
         <br/>
             <div className="divcontainer">
@@ -131,8 +152,11 @@ export default function Main() {
           </div>
           <br/>
         <div>
-            <Videogamescards gamedata={currentPost}/>
-            <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
+        < Link onClick={(e)=>handlePage(e)} to = {'/Details/'}>
+            <Videogamescards gamedata={currentPost}/> 
+            </Link>
+            <Pagination
+             totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
         </div>
       
     </div>

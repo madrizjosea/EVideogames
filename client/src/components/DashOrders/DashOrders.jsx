@@ -21,12 +21,24 @@ export default function DashUsers() {
     const firstPostIndex = lastPostIndex - postperPage;
     const currentPost = orders.slice(firstPostIndex, lastPostIndex)
 
+    function handlerPrev(){
+        if(currentPage <= 1) return;
+        Pagination(currentPage - 1);
+    }
+
+    function handlerNext(){
+        if(currentPage >= currentPage.length) return;
+        Pagination(currentPage + 1);
+    }
     return (
         <div>
             <div>
                 { orders.length ? <DashOrdersCards orders={orders} /> : <p>NO ORDERS</p>}
+                <button onClick={()=> handlerPrev()} >{"<"}</button>
                 { orders.length ? <Pagination totalPosts={orders.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
+                <button onClick={()=> handlerNext()} >{">"}</button>
             </div>
+        
         </div>
     )
 }
