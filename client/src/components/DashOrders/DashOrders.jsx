@@ -10,7 +10,7 @@ export default function DashOrders() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/orders')
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/orders`)
             .then(r => r.json())
             .then((recurso) => {
                 setOrders(recurso)

@@ -21,37 +21,33 @@ import Review from './components/Review/Review.jsx';
 import DashOrders from './components/DashOrders/DashOrders.jsx';
 
 function App() {
- const [value, setValue] = useLocalStorage('user', '')
- const [cart, setCart] = useLocalStorage('cart', [])
- const [order, setOrder] = useLocalStorage('order', '')
- const [total, setTotal] = useLocalStorage('total', 0)
+  const [value, setValue] = useLocalStorage('user', '')
+  const [cart, setCart] = useLocalStorage('cart', [])
+  const [order, setOrder] = useLocalStorage('order', '')
+  const [total, setTotal] = useLocalStorage('total', 0)
 
   return (
     <div>
-      <UserContext.Provider value={{value, setValue, cart, setCart, order, setOrder, total, setTotal}}>
-      <Routes>
-        <Route exact path={'/'} element={<Landing/>}></Route>
-        <Route exact path={'/Main'} element={<><Navbar/><Main/></>}></Route>
-        <Route exact path={'/CreateUser'} element={<><Navbar/><CreateUser/></>}></Route>
-        <Route exact path={'/Details/:id'} element={<><Navbar/><Details/></>}></Route>
-        <Route exact path={'/Login'} element={<><Navbar/><Login/></>}></Route>
-        <Route exact path={'/Cart'} element={<><Navbar/><Cart/></>}></Route>
-        <Route element={<ProtectedDashboard/>}>
-        <Route exact path={'/Dashboard'} element={<><Navbar/><Dashboard/></>}></Route>
-        <Route exact path={'/DashOrders'} element={<><Navbar/><DashOrders /></>}></Route>
-        <Route exact path={'/AddGame'} element={<><Navbar /><AddGame /></>}></Route>
-        <Route exact path={'/About'} element={About}/>
-        <Route exact path={'*'} element={Page404}/>
-        </Route>
-
-
-        <Route element={<ProtectedProfile/>}>
-        <Route exact path={'/Profile'} element={<><Navbar/><Profile/></>}></Route>
-        
-        </Route>
-        <Route exact path={'/Payment'} element={<><Navbar/><Stripe/></>}></Route>
-        <Route exact path={'/Review'} element={<><Navbar/><Review/></>}></Route>
-      </Routes>
+      <UserContext.Provider value={{ value, setValue, cart, setCart, order, setOrder, total, setTotal }}>
+        <Routes>
+          <Route exact path={'/'} element={<Landing />}></Route>
+          <Route exact path={'/Main'} element={<><Navbar /><Main /></>}></Route>
+          <Route exact path={'/CreateUser'} element={<><Navbar /><CreateUser /></>}></Route>
+          <Route exact path={'/Details/:id'} element={<><Navbar /><Details /></>}></Route>
+          <Route exact path={'/Login'} element={<><Navbar /><Login /></>}></Route>
+          <Route exact path={'/Cart'} element={<><Navbar /><Cart /></>}></Route>
+          <Route element={<ProtectedDashboard />}>
+            <Route exact path={'/Dashboard'} element={<><Navbar /><Dashboard /></>}></Route>
+            <Route exact path={'/AddGame'} element={<><Navbar /><AddGame /></>}></Route>
+            <Route exact path={'/About'} element={About} />
+            <Route exact path={'*'} element={Page404} />
+          </Route>
+          <Route element={<ProtectedProfile />}>
+            <Route exact path={'/Profile'} element={<><Navbar /><Profile /></>}></Route>
+          </Route>
+          <Route exact path={'/Payment'} element={<><Navbar /><Stripe /></>}></Route>
+          <Route exact path={'/Review'} element={<><Navbar /><Review /></>}></Route>
+        </Routes>
       </UserContext.Provider>
     </div>
   );
