@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
-import DashOrdersCards from '../DashUserCards/DashUserCards';
+import DashOrdersCards from '../DashOrdersCards/DashOrdersCards';
 
-export default function DashUsers() {
+export default function DashOrders() {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postperPage, setPostPerPage] = useState(12);

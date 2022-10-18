@@ -18,6 +18,7 @@ import About from './components/About/About.jsx'
 import Page404 from './components/Page404/Page404.jsx';
 import Stripe from './components/Payment/Stripe.js';
 import Review from './components/Review/Review.jsx';
+import DashOrders from './components/DashOrders/DashOrders.jsx';
 
 function App() {
  const [value, setValue] = useLocalStorage('user', '')
@@ -37,7 +38,7 @@ function App() {
         <Route exact path={'/Cart'} element={<><Navbar/><Cart/></>}></Route>
         <Route element={<ProtectedDashboard/>}>
         <Route exact path={'/Dashboard'} element={<><Navbar/><Dashboard/></>}></Route>
-
+        <Route exact path={'/DashOrders'} element={<><Navbar/><DashOrders /></>}></Route>
         <Route exact path={'/AddGame'} element={<><Navbar /><AddGame /></>}></Route>
         <Route exact path={'/About'} element={About}/>
         <Route exact path={'*'} element={Page404}/>

@@ -3,13 +3,32 @@ import { UserContext } from "../../Context/UserContext";
 import style from './Cart.module.css'
 import CartCard from '../CartCard/CartCard';
 import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 export default function Cart() {
     
+    function getCookie(c_name) {
+        if (document.cookie.length > 0) {
+           let c_start = document.cookie.indexOf(c_name + "=");
+            if (c_start !== -1) {
+                c_start = c_start + c_name.length + 1;
+               let c_end = document.cookie.indexOf(";", c_start);
+                if (c_end === -1) {
+                    c_end = document.cookie.length;
+                }
+                return unescape(document.cookie.substring(c_start, c_end));
+            }
+        }
+        return "";
+    }
+    const cookie = getCookie('token')
+    
+    const user = jwtDecode(cookie)
+
     const history = useNavigate();
     const { cart, setCart, order, setOrder, total, setTotal } = useContext(UserContext)
     
-console.log('cart', cart)
+console.log('cart', cart, 'token', 'order', order)
 
 const reset = (e) => {
     setOrder('')
@@ -18,7 +37,8 @@ const reset = (e) => {
 
     const handleClick = () => {
         setOrder({
-            games: cart,
+            games: order,
+            user: user.id,
             total: total
         })
         history('/Payment')
@@ -30,7 +50,7 @@ const reset = (e) => {
         setTotal(total - price)
         //setCart(filteredGame)
     }
-    console.log('total', total,'order', order)
+    console.log('total', total,'order', order, 'cart', cart)
     return (
     <div><button onClick={reset}>Reset</button>
         {cart.length>0 ?
@@ -46,8 +66,8 @@ const reset = (e) => {
           /> )}
           Total: {total}
           <br/>
+        {cookie.length > 1 ? <button onClick={handleClick}>Comprar</button> : <div></div>}
           
-          <button onClick={handleClick}>Comprar</button>
         </div> 
         : <div className={style.userbody}>The cart is empty</div>}
       
