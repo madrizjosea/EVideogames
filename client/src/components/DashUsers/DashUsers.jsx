@@ -19,7 +19,7 @@ export default function DashUsers() {
         if (users.length < 1) {
             dispatch(getUsers());
         }
-    }, [dispatch, users]);
+    }, [dispatch]);
 
     const lastPostIndex = currentPage * postperPage;
     const firstPostIndex = lastPostIndex - postperPage;

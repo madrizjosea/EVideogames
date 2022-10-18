@@ -1,27 +1,42 @@
 import { NavLink } from 'react-router-dom';
 import style from './DashCardsGames.module.css';
-import { editGame } from '../../redux/actions/games';
+import { editGame, getAllGames } from '../../redux/actions/games';
+import { useDispatch } from 'react-redux';
 
 export default function DashCardsGames({ gamedata }) {
 
-    function checkHandler(e){
-        console.log(e.target.value);
+    const dispatch = useDispatch();
+
+    function availabilityHandler(e, availability, id, name) {
+        if (window.confirm(`Do you want to change ${name}'s availability?`)) {
+            if (e.target.value && e.target.value !== availability) {
+                dispatch(editGame(id, { isAvailable: e.target.value }));
+            }
+        }
+        dispatch(getAllGames());
+        e.target.value = 'default';
     }
 
     return (
         <div className={style.container}>
-            {gamedata.map((game) =>
-                <div className={style.game}>
-                    <div className={style.gamebody} key={game.id}>
+            {gamedata?.map((game) =>
+                <div className={style.game} key={game.id}>
+                    <div className={style.gamebody}>
                         <img className={style.img} src={game.image} alt={'game.image'}></img>
                         <div>
                             <p><NavLink className='navlink' to={`/Details/${game.id}`}>{game.name}</NavLink></p>
                             <p>Rating: {game.rating}</p>
-                            <p>Genres: {game.genres}</p>
-                            <label class="switch">
-                                <input type="checkbox" value={game.isAvailable} onChange={(e)=>checkHandler(e)}/>
-                            </label>
+                            <p>Genres:</p>
+                            {game.genres?.map((g, i) => (
+                                <p key={i} >{g.name}</p>
+                            ))}
                         </div>
+                        <p>Availability: {game.isAvailable === true ? 'Available' : 'Unavailable'}</p>
+                        <select onChange={(e) => availabilityHandler(e, game.isAvailable, game.id, game.name)} defaultValue="default">
+                            <option value='default' disabled='default' hidden>Select Availability</option>
+                            <option value={true}>Available</option>
+                            <option value={false}>Unavailable</option>
+                        </select>
                     </div>
                 </div>
             )}

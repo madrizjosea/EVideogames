@@ -35,6 +35,14 @@ export default function DashGames() {
         setCurrentPage(1)
     }
 
+    function handlerPrev() {
+        setCurrentPage(currentPage - 1);
+    }
+
+    function handlerNext() {
+        setCurrentPage(currentPage + 1);
+    }
+
     let results = []
 
     if (!buscar) {
@@ -127,7 +135,7 @@ export default function DashGames() {
 
             <div>
                 <DashCardsGames gamedata={currentPost} />
-                {results.length ? <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined}
+                {results.length ? <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handlerPrev={handlerPrev} handlerNext={handlerNext} /> : undefined}
             </div>
         </div>
     )

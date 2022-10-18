@@ -125,7 +125,7 @@ const unavailableVideogame = async (req, res) => {
       const videogame = await Videogame.findOne({
           where: { id: id }
       });
-      videogame.set({
+      await videogame.update({
         isAvailable
       });
       await videogame.save();

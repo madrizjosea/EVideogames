@@ -70,17 +70,22 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
     const {
+        role,
         isActive
     } = req.body;
     try {
-        const user = await User.findOne({
-            where: { id: id }
-        });
-        user.set({
-            isActive
-        });
+        const user = await User.findByPk(id);
+        if (isActive !== null) {
+            await user.update({
+                isActive
+            });
+        }
+        if (role) {
+            await user.update({
+                role
+            });
+        }
         await user.save();
-
         res.status(200).json(user);
     } catch (err) {
         console.log('PUT USER ERROR--->', err);
