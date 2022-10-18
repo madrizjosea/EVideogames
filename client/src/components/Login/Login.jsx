@@ -62,7 +62,7 @@ export default function Login(){
     }
 
     function logout(){
-        document.cookie= 'token=null'
+        document.cookie= 'token='
        
         setToken(false)
         setValue(false)
@@ -73,7 +73,7 @@ export default function Login(){
 
     function handleSignout(){
         setUser({});
-        document.cookie= 'token=null'
+        document.cookie= 'token='
         setToken(false)
         setValue(false)
         setCart([])
@@ -101,10 +101,10 @@ export default function Login(){
             document.getElementById('signInDiv'),
             { theme: 'outline', size: 'large'}
         )
-    }, [token])
+    }, [cookie])
     return(
     <div className={style.userbody}>
-        {!token 
+        {!cookie 
         ?
         
         <div className={style.containerLogin}>
@@ -114,7 +114,7 @@ export default function Login(){
         <button className={style.buttonlogin} onClick={login}>Login</button> 
         </div>
         
-        : !token.iss ?
+        : !cookie.iss ?
         
         
         
@@ -127,12 +127,12 @@ export default function Login(){
             }
         
         <div>
-        {!token  ?
+        {!cookie ?
         <div id="signInDiv"></div>
         : 
         <div></div>
         }
-        {token ?
+        {cookie ?
         <button onClick={handleSignout}>Sign Out</button> : 
         <div></div>
         }
