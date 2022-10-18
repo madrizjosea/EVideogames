@@ -54,4 +54,20 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.put('/', async (req, res) => {
+    let { id, change } = req.body
+    try {
+        const order = await Order.findOne({where:{
+            id: id
+        }});
+        order.update({
+            state: change
+        })
+        res.send('Cambio exitoso')
+    } catch (error) {
+        console.log('Error ', error)
+        res.send('Error ', error)
+    }
+})
+
 module.exports = router;
