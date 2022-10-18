@@ -6,9 +6,11 @@ export default function OrderCard(orders){
     const { id, total, userId, state } = orders
 
     const [newState, setNewState] = useState(state)
+    const [changedState, setChangedState] = useState(state)
 
     const handleClick = async () => {
         const res = await axios.put('/orders', { id:id, change: newState });
+        setChangedState(newState)
         console.log(res)
     }
 
@@ -21,8 +23,7 @@ export default function OrderCard(orders){
             <p className='card__name'>OrderId: {id}</p>
             <p className='card__rating'>UserId: {userId}</p>
             <p className='card__genres'>Amount: {total}</p>
-            <p className='card__genres'>State: {state}</p>
-            <label>Change State</label>
+            <p className='card__genres'>State: {changedState}</p>
             <select name="change state" onChange={handleSelect}>
             <option></option>
             <option>Payed</option>
