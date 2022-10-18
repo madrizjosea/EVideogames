@@ -1,20 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import style from './DashCardsGames.module.css';
-import { editGame } from '../../redux/actions/games';
+import { editGame, getAllGames } from '../../redux/actions/games';
 import { useDispatch } from 'react-redux';
 
 export default function DashCardsGames({ gamedata }) {
 
     const dispatch = useDispatch();
 
-    function checkHandler(e) {
-        console.log(e.target.value);
-        if (e.target.value === true) {
-            dispatch(editGame(e.target.id, { isAvailable: false }));
+    function availabilityHandler(e, availability, id, name) {
+        if (window.confirm(`Do you want to change ${name}'s availability?`)) {
+            if (e.target.value && e.target.value !== availability) {
+                dispatch(editGame(id, { isAvailable: e.target.value }));
+                dispatch(getAllGames());
+            }
         }
-        if (e.target.value === false) {
-            dispatch(editGame(e.target.id, { isAvailable: true }));
-        }
+        e.target.value = 'default';
     }
 
     return (
@@ -27,10 +27,16 @@ export default function DashCardsGames({ gamedata }) {
                             <p><NavLink className='navlink' to={`/Details/${game.id}`}>{game.name}</NavLink></p>
                             <p>Rating: {game.rating}</p>
                             <p>Genres:</p>
-                            {game.genres?.map((g,i) => (
+                            {game.genres?.map((g, i) => (
                                 <p key={i} >{g.name}</p>
                             ))}
                         </div>
+                        <p>Availability: {game.isAvailable === true ? 'Available' : 'Unavailable'}</p>
+                        <select onChange={(e) => availabilityHandler(e, game.isAvailable, game.id, game.name)} defaultValue="default">
+                            <option value='default' disabled='default' hidden>Select Availability</option>
+                            <option value={true}>Available</option>
+                            <option value={false}>Unavailable</option>
+                        </select>
                     </div>
                 </div>
             )}
