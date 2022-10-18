@@ -20,7 +20,7 @@ export default function Main() {
   const [order, setOrder] = useState('asc')
   const [order2, setOrder2] = useState('asc')
   const [genre, setGenre] = useState('')
-  console.log(setPostPerPage)
+
 
 
 
@@ -38,7 +38,7 @@ export default function Main() {
   }, [dispatch, games]);
 
 
-  console.log(games)
+
 
   let handleSelect = (e) => {
     setGenre(e.target.value)
@@ -75,7 +75,7 @@ export default function Main() {
       dato.genres.toLowerCase().includes(genre.toLowerCase())
     )
   }
-  console.log(genre)
+
   const sorting = (e) => {
     e.preventDefault()
     if (order === 'asc') {
@@ -87,7 +87,7 @@ export default function Main() {
       setOrder('asc')
     }
   }
-  console.log('result' + results)
+
   const sorting2 = (e) => {
     e.preventDefault()
     if (order2 === 'asc') {
@@ -161,9 +161,9 @@ export default function Main() {
     </div>
     <br />
     <div>
-      < Link onClick={(e) => handlePage(e)} to={'/Details/'}>
+      
         <Videogamescards gamedata={currentPost} />
-      </Link>
+      
       <Pagination
         totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handlerPrev={handlerPrev} handlerNext={handlerNext} />
     </div>

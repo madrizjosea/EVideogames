@@ -11,9 +11,9 @@ export default function DashCardsGames({ gamedata }) {
         if (window.confirm(`Do you want to change ${name}'s availability?`)) {
             if (e.target.value && e.target.value !== availability) {
                 dispatch(editGame(id, { isAvailable: e.target.value }));
-                dispatch(getAllGames());
             }
         }
+        dispatch(getAllGames());
         e.target.value = 'default';
     }
 

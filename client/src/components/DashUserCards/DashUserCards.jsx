@@ -7,8 +7,6 @@ export default function DashUserCards({ users }) {
 
     const dispatch = useDispatch();
 
-    const [render, setRender] = useState({});
-
     function roleChangeHandler(e, role, id, name) {
         if (window.confirm(`Do you want to change ${name}'s role?`)) {
             if (e.target.value && e.target.value !== role) {
@@ -18,7 +16,6 @@ export default function DashUserCards({ users }) {
         }
         e.target.value = 'default';
     }
-        
 
     function clickHandler(e) {
         if (window.confirm(`Do you want to permanently delete user ${e.target.name}?`)) dispatch(deleteUser(e.target.value));
@@ -38,11 +35,14 @@ export default function DashUserCards({ users }) {
                         <div>
                             <label>
                                 <p>Role: {u.role}</p>
-                                <select onChange={(e) => roleChangeHandler(e, u.role, u.id, u.name)} defaultValue="default">
-                                    <option value='default' disabled='default' hidden >Select role</option>
-                                    <option value='admin'>Admin</option>
-                                    <option value='user'>User</option>
-                                </select>
+                                {u.role ? (
+                                    <select onChange={(e) => roleChangeHandler(e, u.role, u.id, u.name)} defaultValue="default">
+                                        <option value='default' disabled='default' hidden >Select role</option>
+                                        <option value='admin'>Admin</option>
+                                        <option value='user'>User</option>
+                                    </select>
+                                ) : null}
+
                             </label>
                         </div>
                     </div>

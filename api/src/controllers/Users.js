@@ -73,7 +73,6 @@ router.put('/:id', async (req, res) => {
         role,
         isActive
     } = req.body;
-    console.log('mi dolor de cabeza----->', role);
     try {
         const user = await User.findByPk(id);
         if (isActive !== null) {
@@ -87,7 +86,6 @@ router.put('/:id', async (req, res) => {
             });
         }
         await user.save();
-        console.log('--->', user);
         res.status(200).json(user);
     } catch (err) {
         console.log('PUT USER ERROR--->', err);
