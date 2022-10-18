@@ -17,6 +17,15 @@ module.exports = sequelize => {
       total: {
         type: DataTypes.FLOAT,
       },
+      gamesid: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      state: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'Payed',
+      }
     },
     {
       timestamps: false,

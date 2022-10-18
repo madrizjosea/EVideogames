@@ -8,8 +8,14 @@ import { UserContext } from "../../Context/UserContext";
 
 export default function PaymentForm(){
 
-    const { order } = useContext(UserContext)
-    console.log(order)
+    const { order, setOrder } = useContext(UserContext)
+
+    var gamesid = []
+    
+    if(order.games){
+    order.games.forEach(game => gamesid.push(game.id))
+    }
+    console.log('order', order, 'gamesid', gamesid)
     const CARD_OPTIONS = {
         iconStyle: 'solid',
         style: {
@@ -47,12 +53,15 @@ export default function PaymentForm(){
             const {id} = paymentMethod
             const response = await axios.post('orders/payment', {
                 amount: order.total*100,
-                id
+                id,
+                gamesid: String(gamesid),
+                user: order.user
             })
 
             if(response.data.success){
                 console.log('Successful payment', response.data)
                 setSuccess(true)
+                setOrder('')
                 
             }
         } catch (error) {

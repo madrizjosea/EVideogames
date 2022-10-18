@@ -1,10 +1,13 @@
 const { Router } = require('express');
 const router = Router();
-const { Order } = require('../db')
+const { Order, User } = require('../db')
 const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST)
+var moment = require('moment')
+var date = moment().format('YYYY-MM-DD hh:mm:ss')
 
 router.post('/payment', async (req, res) => {
-    let {amount, id} = req.body
+    let { amount, id, user, gamesid } = req.body
+    
     try {
         const payment = await stripe.paymentIntents.create({
             amount,
@@ -13,12 +16,24 @@ router.post('/payment', async (req, res) => {
             payment_method: id,
             confirm: true
         })
-        console.log('Payment', payment)
+        const foundUser = await User.findAll({where:{
+            id: user
+            
+        }})
+        const newOrder = await foundUser[0].createOrder({
+            date: date,
+            total: amount,
+            gamesid,
+            
+          })
         res.json({
             message: 'Payment Successful',
             success: true,
-            payment: payment
+            payment: payment,
+            order: newOrder,
+            user: foundUser[0].id
         })
+        console.log('Payment', payment)
     } catch (error) {
         console.log('Error', error)
         res.json({

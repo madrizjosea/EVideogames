@@ -1,14 +1,15 @@
 import { useState, useContext } from 'react';
 import style from './CartCard.module.css'
 import { UserContext } from '../../Context/UserContext';
+import { useLocalStorage } from '../../customhooks/useLocalStorage';
 
 
 
 export default function CartCard ({id, name, image, rating, price, onClose}) {
 
     const { total, setTotal, order, setOrder } = useContext(UserContext)
-    const [quantity, setQuantity] = useState(1)
-    console.log('quantity', quantity, 'price', price, 'total', total,'order', order)
+    const [quantity, setQuantity] = useLocalStorage(1)
+    //console.log('quantity', quantity, 'price', price, 'total', total,'order', order)
 
     const add = e => {
         setTotal(total + price)
@@ -17,6 +18,7 @@ export default function CartCard ({id, name, image, rating, price, onClose}) {
         let arrorder = [...order]
         arrorder.push(found)
         setOrder(arrorder)
+        console.log('found', found, 'arrorder',arrorder)
     }
 
     const sub = e => {
@@ -28,7 +30,12 @@ export default function CartCard ({id, name, image, rating, price, onClose}) {
         const arrorder = [...order]
         arrorder.splice(index, 1)
         setOrder(arrorder)
+        console.log('found', found, 'index', index, 'arrorder',arrorder)
         }
+    }
+
+    const reset = () => {
+        setTotal(0)
     }
 
     return (
@@ -51,6 +58,7 @@ export default function CartCard ({id, name, image, rating, price, onClose}) {
             <div>
                 <p>Total Price: {price * quantity}</p>
             </div>
+            <button onClick={reset}>reset</button>
             {quantity<2 ?
             <button onClick={onClose} className="btn btn-sm btn-danger">X</button>
             :
