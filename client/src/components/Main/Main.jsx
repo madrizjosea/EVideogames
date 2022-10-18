@@ -15,8 +15,8 @@ export default function Main() {
   const pages1 = useSelector(((state)=>state.page))
 
     const [buscar, setBuscar] = useState()
-    const [currentPage, setCurrentPage] = useState(pages1);
-    const [postperPage, setPostPerPage] = useState(8);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postperPage, setPostPerPage] = useState(12);
     const [order, setOrder] = useState('asc')
     const [order2, setOrder2] = useState('asc')
     const [genre, setGenre] = useState('')
@@ -47,6 +47,14 @@ export default function Main() {
             setBuscar(e.target.value)
             setCurrentPage(1)
          }
+
+      function handlerPrev() {
+        setCurrentPage(currentPage - 1);
+      }
+  
+      function handlerNext() {
+        setCurrentPage(currentPage + 1);
+      }
 
          let results = []
     
@@ -156,7 +164,7 @@ export default function Main() {
             <Videogamescards gamedata={currentPost}/> 
             </Link>
             <Pagination
-             totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
+             totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handlerPrev={handlerPrev} handlerNext={handlerNext}/>
         </div>
       
     </div>
