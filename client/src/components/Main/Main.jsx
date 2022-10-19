@@ -29,7 +29,7 @@ export default function Main() {
   const dispatch = useDispatch();
   const games = useSelector(state => state.games.allGames);
 
-  const available = games.filter(g => g.isAvailable === true )
+  
 
   useEffect(() => {
     if (games.length < 1) {
@@ -38,7 +38,7 @@ export default function Main() {
   }, [dispatch, games]);
 
 
-
+const available = games.filter(g => g.isAvailable === true )
 
   let handleSelect = (e) => {
     setGenre(e.target.value)
@@ -68,12 +68,13 @@ export default function Main() {
     )
   }
 
-
+console.log(games)
 
   if (genre) {
-    results = results.filter((dato) =>
+    results.forEach((game) => {console.log(game.genres)})
+   /*  results = results.filter((dato) =>
       dato.genres.toLowerCase().includes(genre.toLowerCase())
-    )
+    ) */
   }
 
   const sorting = (e) => {
