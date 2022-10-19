@@ -86,7 +86,7 @@ router.post("/Google", async (req, res, next) => {
 
       console.log("user validate", userValidate);
       if (
-         email === "@gmail.com" ||
+         email === "ezeleiva120@gmail.com" ||
          email === "@gmail.com" ||
          email === "@gmail.com" ||
          email === "@gmail.com" ||
@@ -109,12 +109,13 @@ router.post("/Google", async (req, res, next) => {
             },
          });
          await transporter.sendMail({
-            from: '"Ecommerce Clothes👻" <dominicode.xyz@gmail.com>', // sender address
-            to: email, // list of receivers
+            from: '"Ecommerce 👻" <cioecommersevideogames@gmail.com>', // sender address
+            to: User.username, // list of receivers
             subject: "Register successfully for google!", // Subject line
             // text: "Hello world?", // plain text body
             html: `
-            <b> Hello ${name} you Register for Google in Eccomerce Clothes, wellcome Fashion and Style for life<b>`, // html body
+           <a hrf="${verificationLink}">${verificationLink} </a>
+            <b> Hello ${name} you Register for Google in Eccomerce , wellcome <b>`, // html body
          });
          userValidate = User.findAll({
             where: { email: email },
@@ -174,16 +175,16 @@ router.post("/", async (req, res, next) => {
       });
       // send mail registro
       await transporter.sendMail({
-         from: '"Ecommerce Clothes👻" <dominicode.xyz@gmail.com>', // sender address
+         from: '"Ecommerce 👻" <cioecommersevideogames@gmail.com>', // sender address
          to: email, // list of receivers
          subject: "Register successfully!", // Subject line
          // text: "Hello world?", // plain text body
          html: `
-         <b> Hello ${name} you register in Eccomerce Clothes, wellcome Fashion and Style for life<b>`, // html body
+         <b> Hello ${name} you register in PF Ecommerce, wellcome <b>`, // html body
       });
 
       if(
-         email === "@gmail.com" ||
+         email === "ezeleiva120@gmail.com" ||
          email === "@gmail.com" ||
          email === "@gmail.com" ||
          email === "@gmail.com" ||
