@@ -8,7 +8,7 @@ import { UserContext } from "../../Context/UserContext";
 
 export default function PaymentForm(){
 
-    const { order, setOrder } = useContext(UserContext)
+    const { order, setOrder, setCart, setTotal } = useContext(UserContext)
 
     var gamesid = []
     
@@ -46,7 +46,6 @@ export default function PaymentForm(){
             type: 'card',
             card: elements.getElement(CardElement)
         })
-   
 
     if(!error){
         try {
@@ -62,7 +61,8 @@ export default function PaymentForm(){
                 console.log('Successful payment', response.data)
                 setSuccess(true)
                 setOrder('')
-                
+                setCart('')
+                setTotal(0)
             }
         } catch (error) {
             console.log('Error', error)

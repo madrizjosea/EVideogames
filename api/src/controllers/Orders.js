@@ -23,7 +23,7 @@ router.post('/payment', async (req, res) => {
         const newOrder = await foundUser[0].createOrder({
             date: date,
             total: amount,
-            gamesid,
+            gamesid: gamesid,
             
           })
         res.json({
