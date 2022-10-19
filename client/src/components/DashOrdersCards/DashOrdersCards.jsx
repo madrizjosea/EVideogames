@@ -1,5 +1,4 @@
 import OrderCard from '../OrderCard/OrderCard';
-import style from './DashOrdersCards.module.css';
 
 export default function DashOrdersCards({ orders }) {
   return (
