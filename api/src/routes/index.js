@@ -5,6 +5,7 @@ const Audience = require('./Audience.js');
 const UsersController = require('../controllers/Users');
 const OrdersController = require('../controllers/Orders');
 const ReviewRoutes = require('./ReviewRoutes.js');
+const { createAccount } = require('../controllers/Account.js');
 const router = Router();
 
 // Videogames
@@ -19,5 +20,7 @@ router.use('/audiences', Audience);
 router.use('/orders', OrdersController);
 // Reviews
 router.use('/reviews', ReviewRoutes);
+// Accounts
+router.post('/accounts', createAccount);
 
 module.exports = router;
