@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import style from './OrderCard.module.css'
 import axios from '../../axios';
+import { Link } from 'react-router-dom';
 
 export default function OrderCard(orders){
     const { id, total, userId, state } = orders

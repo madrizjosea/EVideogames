@@ -22,13 +22,15 @@ export default function Cart() {
         return "";
     }
     const cookie = getCookie('token')
+    let user = ''
+    if(cookie)
+    {user = jwtDecode(cookie)}
     
-    const user = jwtDecode(cookie)
 
     const history = useNavigate();
     const { cart, setCart, order, setOrder, total, setTotal } = useContext(UserContext)
     
-console.log('cart', cart, 'token', 'order', order)
+console.log('cart', cart, 'token', 'order', order, 'user', user)
 
 const reset = (e) => {
     setOrder('')

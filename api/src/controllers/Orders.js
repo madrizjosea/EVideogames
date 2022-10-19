@@ -34,7 +34,7 @@ router.post('/payment', async (req, res) => {
       success: true,
       payment: payment,
       order: newOrder,
-      user: foundUser[0].id,
+      user: foundAccount[0].id,
     });
     console.log('Payment', payment);
   } catch (error) {
