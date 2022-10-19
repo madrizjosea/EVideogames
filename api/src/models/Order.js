@@ -17,15 +17,19 @@ module.exports = sequelize => {
       total: {
         type: DataTypes.FLOAT,
       },
-      gamesid: {
+      username: {
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      games: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
       state: {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: 'Payed',
-      }
+      },
     },
     {
       timestamps: false,

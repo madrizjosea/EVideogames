@@ -14,12 +14,12 @@ const getReviews = async (req, res, next) => {
 
 // Todas las reseñas de un usuario
 const getReviewsByUser = async (req, res, next) => {
-  const { userId } = req.params;
+  const { email } = req.params;
 
   try {
     const reviewsByUser = await Review.findAll({
       where: {
-        userId,
+        accountEmail: email,
       },
     });
 
@@ -50,11 +50,11 @@ const getReviewsByVideogame = async (req, res, next) => {
 
 // Crear una reseña
 const createReview = async (req, res, next) => {
-  const { content, rating, userId, videogameId } = req.body;
+  const { content, rating, email, videogameId } = req.body;
   try {
     const userGameReview = await Review.findAll({
       where: {
-        userId,
+        accountEmail: email,
         videogameId,
       },
     });
@@ -70,7 +70,7 @@ const createReview = async (req, res, next) => {
       });
 
       if (newReview) {
-        await newReview.setUser(userId);
+        await newReview.setAccount(email);
         await newReview.setVideogame(videogameId);
         res.status(201).json(newReview);
       } else {
@@ -84,11 +84,11 @@ const createReview = async (req, res, next) => {
 
 // Actualizar una reseña
 const updateReview = async (req, res, next) => {
-  const { reviewId, content, rating, userId } = req.body;
+  const { reviewId, content, rating, email } = req.body;
 
   try {
     const foundReview = await Review.findByPk(reviewId);
-    if (foundReview && foundReview.userId === userId) {
+    if (foundReview && foundReview.accountEmail === email) {
       await foundReview.update({
         content,
         rating,
