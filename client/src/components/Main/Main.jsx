@@ -144,12 +144,13 @@ export default function Main() {
       <br />
       <div>
         <Videogamescards gamedata={currentPost} />
-        <Pagination
-          totalPosts={results.length}
-          postPerPage={postperPage}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
+        {results.length > 1 ? (
+          <Pagination
+            totalPosts={results.length}
+            postPerPage={postperPage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />) : null}
       </div>
     </div>
   ) : (

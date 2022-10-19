@@ -37,7 +37,7 @@ export default function GameReviews(game) {
                 {reviews.length ? (
                     <ReviewCards reviews={reviews} />
                 ) : 'NO REVIEWS'}
-                {reviews.length ? <Pagination totalPosts={reviews.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handlerPrev={handlerPrev} handlerNext={handlerNext} /> : undefined}
+                {reviews.length > 1 ? <Pagination totalPosts={reviews.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handlerPrev={handlerPrev} handlerNext={handlerNext} /> : undefined}
             </div>
         </div>
     )

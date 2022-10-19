@@ -49,7 +49,7 @@ export default function DashUsers() {
 
             <div>
                 <DashUserCards users={users} />
-                {users.length ? <Pagination totalPosts={users.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
+                {users.length > 1 ? <Pagination totalPosts={users.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
             </div>
         </div>
     )

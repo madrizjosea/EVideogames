@@ -17,3 +17,5 @@ export default function ReviewCards({ reviews }) {
         </div>
     );
 }
+
+// Rating Component: https://mui.com/material-ui/react-rating/ 

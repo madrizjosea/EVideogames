@@ -135,7 +135,7 @@ export default function DashGames() {
 
             <div>
                 <DashCardsGames gamedata={currentPost} />
-                {results.length ? <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handlerPrev={handlerPrev} handlerNext={handlerNext} /> : undefined}
+                {results.length > 1 ? <Pagination totalPosts={results.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handlerPrev={handlerPrev} handlerNext={handlerNext} /> : undefined}
             </div>
         </div>
     )

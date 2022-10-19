@@ -35,7 +35,7 @@ export default function DashOrders() {
             <div>
                 { orders.length ? <DashOrdersCards orders={orders} /> : <p>NO ORDERS</p>}
                 <button onClick={()=> handlerPrev()} >{"<"}</button>
-                { orders.length ? <Pagination totalPosts={orders.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
+                { orders.length > 1 ? <Pagination totalPosts={orders.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
                 <button onClick={()=> handlerNext()} >{">"}</button>
             </div>
         
