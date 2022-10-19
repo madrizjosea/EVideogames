@@ -8,7 +8,7 @@ import { UserContext } from "../../Context/UserContext";
 
 export default function PaymentForm(){
 
-    const { order, setOrder } = useContext(UserContext)
+    const { value, order, setOrder } = useContext(UserContext)
 
     var gamesid = []
     
@@ -52,12 +52,13 @@ export default function PaymentForm(){
         try {
             const {id} = paymentMethod
             const response = await axios.post('orders/payment', {
-                amount: order.total*100,
+                amount: order.total,
                 id,
                 gamesid: String(gamesid),
-                user: order.user
+                user: order.user,
+                email: value.email
             })
-
+            console.log(value.email)
             if(response.data.success){
                 console.log('Successful payment', response.data)
                 setSuccess(true)
