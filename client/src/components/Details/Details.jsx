@@ -6,7 +6,7 @@ import { UserContext } from '../../Context/UserContext';
 import styles from './Details.module.css';
 import { useState } from 'react';
 import {clearDetail} from "../../redux/actions/games/index"
-
+import GameReviews from '../GameReviews/GameReviews.jsx';
 
 
 export default function Details() {
@@ -82,6 +82,9 @@ console.log(cart)
           </div>
         </div>
         <p className={styles.description}>{details.description}</p>
+      </div>
+      <div>
+         <GameReviews game={details.id} /> {/*---> REVIEWS <---*/}
       </div>
     </section>
   ) : <h1>Loading...</h1>;

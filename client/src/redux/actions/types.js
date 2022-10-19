@@ -37,12 +37,15 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const EMPTY_CART = 'EMPTY_CART';
 
+//-------------------REVIEWS----------------------//
 
+export const GET_REVIEWS_BY_GAME = 'GET_REVIEWS_BY_GAME';
+export const GET_REVIEWS_BY_USER = 'GET_REVIEWS_BY_USER';
+
+//------------------------------------------------//
 
 //* Variables Eze
-
 export const CLEAR_DETAIL="CLEAR_DETAIL"
-
 export const PAGE = "PAGE"
 
 
