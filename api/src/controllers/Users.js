@@ -15,26 +15,24 @@ router.get(
 
 router.get('/', async (req, res) => {
   try {
-    const users = await User.findAll();
-    if (users.length) res.status(200).json(users);
+    const accounts = await Account.findAll();
+    if (accounts.length) res.status(200).json(accounts);
     else res.status(404).send('No users found.');
   } catch (err) {
     console.log('GET USERS ERROR--->', err);
   }
 });
 
-router.get('/:id', async (req, res) => {
-  let { id } = req.params;
+router.get('/:email', async (req, res) => {
+  const { email } = req.params;
   try {
-    const user = await User.findOne({
-      where: { id: id },
-    });
-    if (user.length !== 0) {
-      res.status(200).json(user);
+    const account = await Account.findByPk(email);
+    if (account) {
+      res.status(200).json(account);
     } else {
       res.status(400).send('not found');
     }
-    res.status(200).json(user);
+    res.status(200).json(account);
   } catch (err) {
     console.log('GET USER BY ID ERROR--->', err);
   }
@@ -57,17 +55,16 @@ router.post('/', async (req, res) => {
         .status(201)
         .send('The email is already associated with an existing account');
     } else {
-      
       await User.create({
-        name,
         email,
         password,
-        role,
-        image,
       });
 
       await Account.create({
+        name,
         email,
+        role,
+        image,
       });
 
       res.send('User created successfully');
@@ -77,34 +74,45 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
-  const { id } = req.params;
+router.put('/:email', async (req, res) => {
+  const { email } = req.params;
   const { role, isActive } = req.body;
   try {
-    const user = await User.findByPk(id);
+    const account = await Account.findByPk(email);
     if (isActive !== null) {
-      await user.update({
+      await account.update({
         isActive,
       });
     }
     if (role) {
-      await user.update({
+      await account.update({
         role,
       });
     }
-    await user.save();
-    res.status(200).json(user);
+    await account.save();
+    res.status(200).json(account);
   } catch (err) {
     console.log('PUT USER ERROR--->', err);
   }
 });
 
-router.delete('/:id', async (req, res) => {
-  let { id } = req.params;
+router.delete('/:email', async (req, res) => {
+  let { email } = req.params;
   try {
-    await User.destroy({
-      where: { id: id },
+    await Account.destroy({
+      where: { email },
     });
+
+    const user = await User.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (user) {
+      await user.destroy();
+    }
+
     res.status(200).send('User has been deleted');
   } catch (err) {
     console.log('DELETE USER BY ID ERROR--->', err);
@@ -113,7 +121,7 @@ router.delete('/:id', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-
+  let loggedAccount = {};
   const userWithEmail = await User.findOne({ where: { email } }).catch(err => {
     console.log('Error ' + err);
   });
@@ -123,17 +131,21 @@ router.post('/login', async (req, res) => {
   if (userWithEmail.password !== password)
     return res.json({ message: 'Email or password does not match' });
 
+  if (userWithEmail) {
+    loggedAccount = await Account.findByPk(email);
+  }
+
   const jwtToken = jwt.sign(
     {
-      id: userWithEmail.id,
-      email: userWithEmail.email,
-      name: userWithEmail.name,
-      image: userWithEmail.image,
-      role: userWithEmail.role,
+      id: loggedAccount.id,
+      email: loggedAccount.email,
+      name: loggedAccount.name,
+      image: loggedAccount.image,
+      role: loggedAccount.role,
     },
     process.env.JWT_SECRET
   ); // 'ext' is expiration time
-  res.json({ user: userWithEmail, token: jwtToken });
+  res.json({ user: loggedAccount, token: jwtToken });
 });
 
 module.exports = router;

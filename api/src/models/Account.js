@@ -10,6 +10,21 @@ module.exports = sequelize => {
         primaryKey: true,
         unique: true,
       },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: DataTypes.STRING,
+      },
+      role: {
+        type: DataTypes.ENUM('user', 'admin'),
+      },
+      isActive: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false,
+      },
     },
     {
       timestamps: false,
