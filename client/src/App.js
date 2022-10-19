@@ -40,13 +40,14 @@ function App() {
             <Route exact path={'/Dashboard'} element={<><Navbar /><Dashboard /></>}></Route>
             <Route exact path={'/AddGame'} element={<><Navbar /><AddGame /></>}></Route>
             <Route exact path={'/About'} element={About} />
-            <Route exact path={'*'} element={Page404} />
+            
           </Route>
           <Route element={<ProtectedProfile />}>
             <Route exact path={'/Profile'} element={<><Navbar /><Profile /></>}></Route>
           </Route>
           <Route exact path={'/Payment'} element={<><Navbar /><Stripe /></>}></Route>
           <Route exact path={'/Review'} element={<><Navbar /><Review /></>}></Route>
+          <Route exact path={'*'} element={Page404} ></Route>
         </Routes>
       </UserContext.Provider>
     </div>

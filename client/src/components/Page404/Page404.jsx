@@ -9,7 +9,7 @@ export default function Page404(){
     
     <div>
      <div className={Style.divfoto}>
-          <img  alt="foto" src={Error4042}></img>
+          <img  alt="foto" src={Error4042}/> 
         </div>
 
         </div>
