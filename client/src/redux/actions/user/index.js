@@ -36,16 +36,16 @@ export function addUser(payload) {
     };
 };
 
-export function editUser(id, payload) {
+export function editUser(email, payload) {
     return async function (dispatch) {
-        const user = await axios.put(`/users/${id}`, payload);
+        const user = await axios.put(`/users/${email}`, payload);
         dispatch({ type: EDIT_USER, payload: user.data })
     };
 };
 
-export function deleteUser(id) {
+export function deleteUser(email) {
     return async function (dispatch) {
-        await axios.delete(`/users/${id}`);
+        await axios.delete(`/users/${email}`);
         dispatch({ type: DELETE_USER });
     };
 };
