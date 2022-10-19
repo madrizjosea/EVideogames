@@ -8,11 +8,7 @@ import { UserContext } from "../../Context/UserContext";
 
 export default function PaymentForm(){
 
-<<<<<<< HEAD
-    const { order, setOrder, setCart, setTotal } = useContext(UserContext)
-=======
-    const { value, order, setOrder } = useContext(UserContext)
->>>>>>> dev
+    const { value, order, setOrder, setCart, setTotal } = useContext(UserContext)
 
     var gamesid = []
     
@@ -61,7 +57,7 @@ export default function PaymentForm(){
                 user: order.user,
                 email: value.email
             })
-            console.log(value.email)
+            console.log(response.data)
             if(response.data.success){
                 console.log('Successful payment', response.data)
                 setSuccess(true)

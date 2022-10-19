@@ -16,7 +16,7 @@ export default function DashOrders() {
                 setOrders(recurso)
             })
     }, []);
-
+    console.log(orders)
     const lastPostIndex = currentPage * postperPage;
     const firstPostIndex = lastPostIndex - postperPage;
     const currentPost = orders.slice(firstPostIndex, lastPostIndex)
