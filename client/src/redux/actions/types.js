@@ -43,6 +43,8 @@ export const GET_REVIEWS_BY_GAME = 'GET_REVIEWS_BY_GAME';
 export const GET_REVIEWS_BY_USER = 'GET_REVIEWS_BY_USER';
 
 //------------------------------------------------//
+//------------------ORDERS-------------------//
+export const GET_ORDERS = 'GET_ORDERS'; //✓
 
 //* Variables Eze
 export const CLEAR_DETAIL="CLEAR_DETAIL"
