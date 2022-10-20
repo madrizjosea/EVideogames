@@ -5,16 +5,16 @@ import {
     ADD_REVIEW
 } from '../types.js';
 
-export function getReviewsByGame(email) {
+export function getReviewsByUser(email) {
     return async function (dispatch) {
-        await axios.get(`/users/byUser/${email}`);
+        await axios.get(`/reviews/byUser/${email}`);
         dispatch({ type: GET_REVIEWS_BY_GAME })
     } 
 }
 
-export function getReviewsByUser(videogameId) {
+export function getReviewsByGame(videogameId) {
     return async function (dispatch) {
-        await axios.get(`/users/byGame/${videogameId}`);
+        await axios.get(`/reviews/byGame/${videogameId}`);
         dispatch({ type: GET_REVIEWS_BY_USER })
     } 
 }

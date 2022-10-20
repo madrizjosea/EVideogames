@@ -12,7 +12,9 @@ function validation(input) {
     return err;
 }
 
-export default function AddReview() {
+export default function AddReview({videogameId, email}) {
+
+    console.log(videogameId, email);
 
     const dispatch = useDispatch();
 
@@ -36,17 +38,20 @@ export default function AddReview() {
         setErr(validation({
             ...input, [e.target.name]: e.target.value
         }))
-        console.log(input);
-        console.log(err);
     }
 
     function submitHandler(e) {
         e.preventDefault();
         if (!err.content) {
 
-            alert("Review succesfully added!");
+            dispatch(addReview({
+                rating: input.rating,
+                content: input.content,
+                videogameId,
+                email
+            }));
 
-            dispatch(addReview(input));
+            alert("Review succesfully added!");
 
             setInput({
                 rating: 0,

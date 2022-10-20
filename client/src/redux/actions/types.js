@@ -3,6 +3,8 @@
 export const GET_ALL_GAMES = 'GET_ALL_GAMES'; //✓
 export const GET_GAME_QUERY = 'GET_GAME_QUERY'; //✓
 
+export const GET_USER_GAMES = 'GET_USER_GAMES'; //✓
+
 export const GET_GENRES = 'GET_GENRES'; //✓
 export const GENRE_FILTER = 'GENRE_FILTER'; //✓
 

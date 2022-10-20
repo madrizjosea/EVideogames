@@ -1,33 +1,38 @@
 import React, { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getGame } from '../../redux/actions/games';
+import { getGame , getUserGames } from '../../redux/actions/games';
 import { UserContext } from '../../Context/UserContext';
 import styles from './Details.module.css';
 import { useState } from 'react';
 import {clearDetail} from "../../redux/actions/games/index"
 import GameReviews from '../GameReviews/GameReviews.jsx';
-
+import AddReview  from '../AddReview/AddReview.jsx';
 
 export default function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const details = useSelector(state => state.games.game);
-  const { cart, setCart, order, setOrder, total, setTotal} = useContext(UserContext)
+  const userGames = useSelector(state=> state.games.userGames);
+  
+  const { value, cart, setCart, order, setOrder, total, setTotal} = useContext(UserContext)
   const [msg, setmsg] = useState('')
   
-  
-console.log(cart)
+
   useEffect(() => {
     dispatch(getGame(id));
-
+    if (value) {
+      dispatch(getUserGames(value.email));
+    }
 //* limpiamos el estado cuando renderiza clear detail
 
-    return(()=>{
-      dispatch(clearDetail())   
-    })
+    // return(()=>{
+    //   dispatch(clearDetail())   
+    // })
   }, [dispatch, id]);
   //console.log(details)
+
+  //const canReview = userGames.videogames
 
   const onClick = () => {
     let arrcart = [...cart]
@@ -83,9 +88,13 @@ console.log(cart)
         </div>
         <p className={styles.description}>{details.description}</p>
       </div>
+      
+      { userGames.videogames?.find( g => g.id === details.id ) ? <AddReview videogameId={details.id} email={value.email} /> : null }
+      
       <div>
-         <GameReviews game={details.id} /> {/*---> REVIEWS <---*/}
+         <GameReviews videogameId={details.id} /> {/*---> REVIEWS <---*/}
       </div>
+      
     </section>
   ) : <h1>Loading...</h1>;
 }

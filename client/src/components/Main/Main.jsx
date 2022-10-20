@@ -1,10 +1,11 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Pagination from '../Pagination/Pagination';
 import Videogamescards from '../VideogameCards/VideogamesCards';
 import './Main.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllGames } from '../../redux/actions/games';
+import { getAllGames, getUserGames } from '../../redux/actions/games';
+import { UserContext } from '../../Context/UserContext';
 
 export default function Main() {
   const [buscar, setBuscar] = useState();
@@ -12,12 +13,16 @@ export default function Main() {
   const [order, setOrder] = useState('asc');
   const [order2, setOrder2] = useState('asc');
   const [genre, setGenre] = useState('');
+  const { value } = useContext(UserContext);
   // console.log(setPostPerPage);
 
   const dispatch = useDispatch();
   const games = useSelector(state => state.games.allGames);
 
   useEffect(() => {
+    if (value) {
+      dispatch(getUserGames(value.email));
+    }
     if (games.length < 1) {
       dispatch(getAllGames());
     }

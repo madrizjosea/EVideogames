@@ -5,7 +5,7 @@ import { getReviewsByGame } from "../../redux/actions/reviews";
 import Pagination from "../Pagination/Pagination";
 import ReviewCards from '../ReviewCards/ReviewCards.jsx';
 
-export default function GameReviews(game) {
+export default function GameReviews({videogameId}) {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postperPage, setPostPerPage] = useState(3);
@@ -15,7 +15,7 @@ export default function GameReviews(game) {
 
     useEffect(() => {
         if (reviews.length < 1) {
-            dispatch(getReviewsByGame(game.id));
+            dispatch(getReviewsByGame(videogameId));
         }
     }, [dispatch]);
 
