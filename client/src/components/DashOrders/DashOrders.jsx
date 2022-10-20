@@ -1,44 +1,42 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import Pagination from "../Pagination/Pagination";
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { getOrders } from '../../redux/actions/orders';
+import Pagination from '../Pagination/Pagination';
 import DashOrdersCards from '../DashOrdersCards/DashOrdersCards';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function DashOrders() {
+  const dispatch = useDispatch();
+  const orders = useSelector(state => state.orders.allOrders);
+  const [currentPage, setCurrentPage] = useState(1);
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postperPage, setPostPerPage] = useState(12);
-    const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    dispatch(getOrders());
+  }, [dispatch]);
 
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_BASE_URL}/orders`)
-            .then(r => r.json())
-            .then((recurso) => {
-                setOrders(recurso)
-            })
-    }, []);
+  const postperPage = 12;
+  const lastPostIndex = currentPage * postperPage;
+  const firstPostIndex = lastPostIndex - postperPage;
+  const currentPost = orders.slice(firstPostIndex, lastPostIndex);
 
-    const lastPostIndex = currentPage * postperPage;
-    const firstPostIndex = lastPostIndex - postperPage;
-    const currentPost = orders.slice(firstPostIndex, lastPostIndex)
+  return (
+    <div>
+      <div>
+        {orders.length ? (
+          <DashOrdersCards orders={currentPost} />
+        ) : (
+          <p>NO ORDERS</p>
+        )}
 
-    function handlerPrev(){
-        if(currentPage <= 1) return;
-        Pagination(currentPage - 1);
-    }
-
-    function handlerNext(){
-        if(currentPage >= currentPage.length) return;
-        Pagination(currentPage + 1);
-    }
-    return (
-        <div>
-            <div>
-                { orders.length ? <DashOrdersCards orders={orders} /> : <p>NO ORDERS</p>}
-                <button onClick={()=> handlerPrev()} >{"<"}</button>
-                { orders.length ? <Pagination totalPosts={orders.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : undefined }
-                <button onClick={()=> handlerNext()} >{">"}</button>
-            </div>
-        
-        </div>
-    )
+        {orders.length ? (
+          <Pagination
+            totalPosts={orders.length}
+            postPerPage={postperPage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        ) : null}
+      </div>
+    </div>
+  );
 }
