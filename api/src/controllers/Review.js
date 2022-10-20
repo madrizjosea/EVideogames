@@ -50,7 +50,7 @@ const getReviewsByVideogame = async (req, res, next) => {
 
 // Crear una reseña
 const createReview = async (req, res, next) => {
-  const { content, rating, email, videogameId } = req.body;
+  const { content, rating, email, videogameId, userImage, username } = req.body;
   try {
     const userGameReview = await Review.findAll({
       where: {
@@ -67,6 +67,8 @@ const createReview = async (req, res, next) => {
       const newReview = await Review.create({
         content,
         rating,
+        username,
+        userImage,
       });
 
       if (newReview) {

@@ -27,7 +27,7 @@ export default function DashUserCards({ users }) {
       {users.map(u => (
         <div key={u.email}>
           <div className={style.userbody}>
-            <button
+            <button className={style.namemail}
               name={u.name}
               value={u.email}
               onClick={e => clickHandler(e)}

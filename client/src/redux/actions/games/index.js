@@ -77,7 +77,6 @@ export function deleteGame(id) {
 export function clearDetail (){
     return {
         type: CLEAR_DETAIL,
-        payload: []
     }
     
 }
