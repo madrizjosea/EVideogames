@@ -22,7 +22,6 @@ const Library = () => {
 
   return (
     <div>
-      <h1>My Games</h1>
       <Videogamescards gamedata={currentPost} canReview={true}/>
       {userGames.videogames?.length > 1 ? (
         <Pagination

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from '../../axios';
 import { UserContext } from '../../Context/UserContext';
-import Style from "../Payment/paymentForm.module.css";
+import Style from './paymentForm.module.css';
 
 export default function PaymentForm() {
   const { value, order, setOrder, setCart, setTotal } = useContext(UserContext);
@@ -70,7 +70,7 @@ export default function PaymentForm() {
       console.log(error.message);
     }
   };
-  
+
   return (
     <>
       {!success ? (

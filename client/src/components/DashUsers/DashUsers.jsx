@@ -14,9 +14,7 @@ export default function DashUsers() {
   const users = useSelector(state => state.users.allUsers);
 
   useEffect(() => {
-    if (users.length < 1) {
-      dispatch(getUsers());
-    }
+    dispatch(getUsers());
   }, [dispatch, users.length]);
 
   const postperPage = 12;
@@ -43,7 +41,9 @@ export default function DashUsers() {
         </div>
 
         <div>
-          <button className={style.order}type="button">Order by Name</button>
+          <button className={style.order} type="button">
+            Order by Name
+          </button>
         </div>
       </div>
 
