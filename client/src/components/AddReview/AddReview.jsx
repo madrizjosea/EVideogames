@@ -6,6 +6,7 @@ import {
   addReview,
   getReviewsByGame,
 } from '../../redux/actions/reviews/index.js';
+import style from './AddReview.module.css';
 
 function validation(input) {
   let err = {};
@@ -46,7 +47,6 @@ export default function AddReview({ videogameId, userData }) {
   }
 
   function submitHandler(e) {
-    e.preventDefault();
     if (!err.content) {
       dispatch(
         addReview({
@@ -58,9 +58,9 @@ export default function AddReview({ videogameId, userData }) {
           username: userData.name,
         })
       );
-      
+
       alert('Review succesfully added!');
-      
+
       setInput({
         rating: 0,
         content: '',
@@ -73,25 +73,27 @@ export default function AddReview({ videogameId, userData }) {
 
   return (
     <div id="containerForm">
-      <form id="Form" onSubmit={e => submitHandler(e)}>
-        <p className="labelForm">Review:</p>
+      <form id="Form" onSubmit={e => submitHandler(e)} className={style.addReview}>
+        <div className={style.title}>Write Review:</div>
 
-        <Rating
-          name="rating"
-          value={input.rating}
-          onChange={e => changeHandler(e)}
-        />
 
-        <div className="err">
-          <input
-            value={input.content}
-            type="text"
-            name="content"
+        <div className={style.rtng}>
+          <Rating
+            name="rating"
+            value={input.rating}
             onChange={e => changeHandler(e)}
           />
         </div>
 
-        <button type="submit">Submit</button>
+        <div className="err">
+          <textarea className={style.reviewText}
+            value={input.content}
+            type="text"
+            name="content"
+            onChange={e => changeHandler(e)} />
+        </div>
+
+        <button className={style.btt} type="submit">Submit</button>
       </form>
     </div>
   );
