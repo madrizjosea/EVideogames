@@ -24,7 +24,9 @@ export default function PaymentForm() {
         fontSize: '16px',
         fontSmoothing: 'antialiased',
         ':-webkit-autofill': { color: '#fce883' },
-        ':-placeolder': { color: '#87bbfd' },
+        '::placeholder': {
+          color: '#fff',
+        },
       },
       invalid: {
         iconColor: '#ffc7ee',
@@ -72,21 +74,22 @@ export default function PaymentForm() {
   };
 
   return (
-    <>
+    <div className={Style.payment}>
       {!success ? (
-        <form onSubmit={handleSubmit}>
+        <form classname={Style.vertical} onSubmit={handleSubmit}>
+          <h1 className={Style.ask}>Please Fill Payment Details</h1>
           <fieldset className="FormGroup">
             <div className="FormRow">
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button>Pay</button>
+          <button className={Style.pay}>Pay</button>
         </form>
       ) : (
-        <div className={Style.containerPayment}>
-          <h2 className={Style.payment}>¡Payment Successful!</h2>
+        <div className={Style.success}>
+          <h2 className={Style.alert}>¡Payment Successful!</h2>
         </div>
       )}
-    </>
+    </div>
   );
 }
