@@ -3,6 +3,8 @@
 export const GET_ALL_GAMES = 'GET_ALL_GAMES'; //✓
 export const GET_GAME_QUERY = 'GET_GAME_QUERY'; //✓
 
+export const GET_USER_GAMES = 'GET_USER_GAMES'; //✓
+
 export const GET_GENRES = 'GET_GENRES'; //✓
 export const GENRE_FILTER = 'GENRE_FILTER'; //✓
 
@@ -37,13 +39,20 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const EMPTY_CART = 'EMPTY_CART';
 
+//-------------------REVIEWS----------------------//
+
+export const GET_REVIEWS_BY_GAME = 'GET_REVIEWS_BY_GAME';
+export const GET_REVIEWS_BY_USER = 'GET_REVIEWS_BY_USER';
+export const ADD_REVIEW = 'ADD_REVIEW';
+
 //------------------ORDERS-------------------//
+
 export const GET_ORDERS = 'GET_ORDERS'; //✓
 
+//------------------------------------------------//
+
 //* Variables Eze
-
 export const CLEAR_DETAIL="CLEAR_DETAIL"
-
 export const PAGE = "PAGE"
 
 
