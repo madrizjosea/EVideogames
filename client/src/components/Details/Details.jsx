@@ -23,7 +23,7 @@ export default function Details() {
 
   useEffect(() => {
     dispatch(getGame(id));
-    if (value) {
+    if (value.email) {
       dispatch(getUserGames(value.email));
       dispatch(getReviewsByUser(value.email));
     }
@@ -84,16 +84,18 @@ export default function Details() {
             <button>Write review</button> */}
           </div>
           <div className={styles.ratings}>
-            <p>{details.audiences[0].name}</p>
-            <p><Rating name="half-rating-read" value={details.rating} precision={0.5} readOnly /></p>
-            
+            {details.audiences[0] ? <p>{details.audiences[0].name}</p> : null}
+            {details.rating ? <p>Rating {details.rating}</p> : null}
           </div>
         </div>
         <p className={styles.description}>{details.description}</p>
       </div>
 
       {userGames.videogames?.find(g => g.id === details.id) &&
-      !userReviews.find(r => r.videogameId === id) ? (
+      !userReviews.length ? (
+        <AddReview videogameId={details.id} userData={value} />
+      ) : userGames.videogames?.find(g => g.id === details.id) &&
+        !userReviews?.find(r => r.videogameId === id) ? (
         <AddReview videogameId={details.id} userData={value} />
       ) : null}
 
