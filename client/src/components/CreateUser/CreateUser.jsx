@@ -62,11 +62,7 @@ const uploadImage = (files) => {
         <input className="texto" type='file' onChange={(event) => {event.preventDefault()
             setImage(event.target.files[0])
             }}/>
-        <button className= {Style.ImgLoad} onClick={uploadImage}>Upload Image</button>
-        <Image 
-        style={{width: 200}} 
-        cloudName='dnf3cz1f3' 
-        publicId = {input.image}/>
+       
         <div>
             <label className={Style.textoNombre}>Name:</label>
             <br />
@@ -74,12 +70,14 @@ const uploadImage = (files) => {
             {error.name && 
             <p className="danger">{error.name}</p>
             }
+           
         </div>
+        
         <br />
         <div>
             <label className={Style.textoEmail}>Email:</label>
             <br />
-            <input className={error.email && 'danger'} type='text' name="email" onChange={handleChange} value={input.email}/>
+            <input className={error.email && 'danger' || Style.email} type='text' name="email" onChange={handleChange} value={input.email}/>
             {error.email && 
             <p className="danger">{error.email}</p>
             }
@@ -100,7 +98,13 @@ const uploadImage = (files) => {
         {result===201 && <p className="danger">The email is already associated with an account</p>}
         {result===200 && <p className="texto">User created successfully</p>}
         <br/>
+        <button className= {Style.ImgLoad} onClick={uploadImage}>Upload Image</button>
+        <Image 
+        style={{width: 200}} 
+        cloudName='dnf3cz1f3' 
+        publicId = {input.image}/>
         </div>
+        
         </form>
     )
 }

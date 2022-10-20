@@ -25,22 +25,25 @@
     -moz-appearance: none; */
     appearance: none;
     font-family: "Montserrat",Sans-serif;
-    color: #636363;
+    color: white;
     border: 2px solid #636363;
-    background-color: #fff;
+    background-color: black;
     width: 500px;
     height: 800px;
     font-size: 20px;
     font-weight: 300;
     line-height: 20px;
-
+    /* background-image: url(../image/fondo-card.JPG); */
+    box-shadow: 6px 6px 10px rgb(99, 97, 97);
+    margin-top: 30px;
+    border: 2px solid #aa0520;
+    padding: 20px;
      
 }
 }
 
 .input{
     background: linear-gradient(to right, rgb(220, 54, 54) 0%, rgb(229, 91, 121) 51%, rgb(220, 54, 104) 100%);
-
     border: none;
     color: white;
     padding: 10px 22px;
@@ -64,36 +67,57 @@
 .name{
     width: 80%;
     height: 20px;
-    background-color: #d6d1d1;
+    background-color: rgba(58,58,58,.486);
+    color: black;
+}
+
+.name:hover{
+    background-color: white;
     color: black;
 }
 .description{
     width: 80%;
     height: 20px;
-    background-color: #d6d1d1;
+    background-color: rgba(58,58,58,.486);
+    color: black;
+}
+.description:hover{
+    background-color: white;
     color: black;
 }
 
 .image{
     width: 80%;
     height: 20px;
-    background-color: #d6d1d1;
+    background-color: rgba(58,58,58,.486);
+    color: black;
+}
+
+.image:hover{
+    background-color: white;
     color: black;
 }
 .release{
     width: 80%;
     height: 20px;
-    background-color: #d6d1d1;
+    background-color: rgba(58,58,58,.486);
     color: black;
 
+}
+.release:hover{
+    background-color: white;
+    color: black;
 }
 
 .rating{
     width: 80%;
     height: 20px;
-    background-color: #d6d1d1;
+    background-color: rgba(58,58,58,.486);
     color: black;
-
+}
+.rating:hover{
+    background-color: white;
+    color: black;
 }
 
 .submit{

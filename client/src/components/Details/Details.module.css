@@ -7,14 +7,14 @@
 
 .leftSide {
   text-align: center;
-  color:black;
+  color:white;
   font-weight: 600;
   font-size: 25px;
 }
 
 .confirmation {
   text-align: center;
-  color: black;
+  color: white;
   font-weight: 600;
   font-size: 15px;
 }
@@ -32,7 +32,7 @@
 
 .description {
   width: 600px;
-  color: black;
+  color: white;
   text-align: justify;
   font-size: 14px;
 }
@@ -45,7 +45,7 @@
 }
 
 .btns h2 {
-  color: black;
+  color: white;
 }
 
 .btns button {
@@ -65,18 +65,18 @@
 
 .ratings p {
   padding: 5px 15px;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 5px;
 }
 
 .middle{
-  color: black;
+  color: white;
 }
 
 .addCart{
-  background-color: black;
+  background-color: white;
   border: none;
-  color: white;
+  color: black;
   padding: 10px 22px;
   text-decoration: none;
   display: inline-block;
