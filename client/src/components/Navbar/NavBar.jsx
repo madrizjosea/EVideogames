@@ -10,6 +10,8 @@ import Style from "../Navbar/Navbar.module.css"
 // import NavUser from "../NavUser/NavUser";
 // import { IconContext } from "react-icons";
 // import { Badge } from '@mui/material';
+import { useState, useContext } from "react";
+import { UserContext } from "../../Context/UserContext";
 
 
 
@@ -31,6 +33,8 @@ export default function NavBar(props) {
 //    var carry = carryProducts[index];
 //    Cantidad=Cantidad+carry.amount
 //  }
+
+const { value, setValue } = useContext(UserContext)
 
  return (
    <header>
@@ -58,25 +62,32 @@ export default function NavBar(props) {
              </Link>
            </li>
            <li>
-             <Link to={"/CreateUser"} className={Style.letra}>
-               REGISTER
-             </Link>
+           {value ? null : (
+                <Link to={"/CreateUser"} className={Style.letra}>
+                  REGISTER
+                </Link>
+              )}
            </li>
            <li>
-             <Link to={"/Dashboard"} className={Style.letra}>
-            DASHBOARD
-             </Link>
+           {value.role === 'admin' ? (
+                <Link to={"/Dashboard"} className={Style.letra}>
+                  DASHBOARD
+                </Link>
+              ) : null}
            </li>
            <li>
-         
-             <Link to={"/Login"} className={Style.letra}>
-              LOGIN
-             </Link>
+           {value ? null : (
+                <Link to={"/Login"} className={Style.letra}>
+                  LOGIN
+                </Link>
+              )}
            </li>
            <li>
-             <Link to={"/Profile"} className={Style.letra}>
-            PROFILE
-             </Link>
+           {value ? (
+                <Link to={"/Profile"} className={Style.letra}>
+                  PROFILE
+                </Link>
+              ) : null}
            </li>
            <li>
              <Link to={"/Cart"} className={Style.letra}>

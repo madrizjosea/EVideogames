@@ -58,7 +58,8 @@
         justify-content: center;
         list-style-type: none;
         cursor: pointer;
-        background-color:#b41d1d;
+        background: linear-gradient(to right, rgb(220, 54, 54) 0%, rgb(229, 91, 121) 51%, rgb(220, 54, 104) 100%);
+
         color: white;
         padding: 11px 22px;
         border-radius: 8px;
