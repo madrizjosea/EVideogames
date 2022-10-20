@@ -17,6 +17,14 @@ export default function DashUsers() {
     dispatch(getUsers());
   }, [dispatch, users.length]);
 
+  function handlerPrev() {
+    setCurrentPage(currentPage - 1);
+  }
+
+  function handlerNext() {
+    setCurrentPage(currentPage + 1);
+  }
+
   const postperPage = 12;
   const lastPostIndex = currentPage * postperPage;
   const firstPostIndex = lastPostIndex - postperPage;
@@ -26,27 +34,6 @@ export default function DashUsers() {
 
   return (
     <div>
-      <div id={style.sort}>
-        <div>
-          <label className={style.search}>Search: </label>
-          <input placeholder="Name..."></input>
-        </div>
-
-        <div>
-          <label className={style.roles}>Roles</label>
-          <select>
-            <option>admin</option>
-            <option>user</option>
-          </select>
-        </div>
-
-        <div>
-          <button className={style.order} type="button">
-            Order by Name
-          </button>
-        </div>
-      </div>
-
       <div>
         <DashUserCards users={currentPost} />
         {users.length ? (
@@ -55,6 +42,8 @@ export default function DashUsers() {
             postPerPage={postperPage}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
+            handlerPrev={handlerPrev}
+            handlerNext={handlerNext}
           />
         ) : null}
       </div>

@@ -60,6 +60,7 @@ export function editGame(id , payload) {
     return async function (dispatch) {
         const game = await axios.put(`/videogames/${id}`, payload);
         dispatch({ type: EDIT_GAME, payload: game.data })
+        dispatch(getAllGames())
     };
 };
 

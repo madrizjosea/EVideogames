@@ -13,7 +13,7 @@ export default function Login() {
   const [user, setUser] = useState({});
   const [logginUsername, setLoginUsername] = useState('');
   const [logginPassword, setLoginPassword] = useState('');
-  const { value, setValue, setCart } = useContext(UserContext);
+  const { value, setValue, setCart, setTotal } = useContext(UserContext);
   const [errors, setErrors] = useState();
   const [token, setToken] = useLocalStorage('logged', '');
 
@@ -58,13 +58,15 @@ export default function Login() {
       }
     });
   };
-
+  
   function logout() {
     document.cookie = 'token=';
 
     setToken(false);
     setValue(false);
+    setTotal(0);
     setCart([]);
+    navigate('/Main');
 
   }
 
@@ -74,6 +76,9 @@ export default function Login() {
     setToken(false);
     setValue(false);
     setCart([]);
+    setTotal(0);
+    navigate('/Main');
+
   }
   function handleCallback(response) {
     document.cookie = `token=${response.credential}; path=/; samesite=strict`;
@@ -87,6 +92,7 @@ export default function Login() {
     setUser(userObject);
     setValue(userObject);
     setToken(userObject);
+    navigate('/Main');
   }
   console.log(value);
 
@@ -110,16 +116,28 @@ export default function Login() {
             className={style.imputlogin}
             placeholder="Email"
             onChange={e => setLoginUsername(e.target.value)}
+            autoComplete="off"
           />
           <input
             className={style.imputlogin}
             type="password"
             placeholder="Password"
             onChange={e => setLoginPassword(e.target.value)}
+            autoComplete="off"
           />
           <button className={style.buttonlogin} onClick={login}>
             Login
           </button>
+          <div className={style.googlebtn}>
+            {!cookie ? <div id="signInDiv"></div> : <div></div>}
+            {cookie ? (
+              <button className={style.buttonsigout} onClick={handleSignout}>
+                Sign Out
+              </button>
+            ) : (
+              <div></div>
+            )}
+          </div>
         </div>
       ) : !cookie.iss ? (
         <button className={style.buttonlogout} onClick={logout}>
@@ -129,17 +147,6 @@ export default function Login() {
         <div></div>
       )}
       {errors && <p className="danger">{errors}</p>}
-
-      <div>
-        {!cookie ? <div id="signInDiv"></div> : <div></div>}
-        {cookie ? (
-          <button className={style.buttonsigout} onClick={handleSignout}>
-            Sign Out
-          </button>
-        ) : (
-          <div></div>
-        )}
-      </div>
     </div>
   );
 }

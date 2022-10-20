@@ -43,20 +43,21 @@ export default function Cart() {
       user: user.id,
       total: total,
     });
+    setTotal(0);
     history("/Payment");
   };
 
   const onClose = (id, price, quant) => {
     //let arr = [...cart]
     setCart((games) => games.filter((c) => c.id !== id));
-    setTotal(total - price);
+    setTotal((total - price));
     //setCart(filteredGame)
   };
   console.log("total", total, "order", order, "cart", cart);
   return (
     <div>
       {cart.length > 0 ? (
-        <div className="cards">
+        <div className={style.cards}>
           {cart.map((c) => (
             <CartCard
               key={c.id}
@@ -68,7 +69,7 @@ export default function Cart() {
               onClose={() => onClose(c.id, c.price)}
             />
           ))}
-          Total: {total}
+          Total: ${total}
           <br />
           {cookie.length > 1 ? (
             <button className={style.compra} onClick={handleClick}>Comprar</button>

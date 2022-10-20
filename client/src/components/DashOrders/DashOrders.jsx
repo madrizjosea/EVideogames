@@ -14,6 +14,14 @@ export default function DashOrders() {
     dispatch(getOrders());
   }, [dispatch]);
 
+  function handlerPrev() {
+    setCurrentPage(currentPage - 1);
+  }
+
+  function handlerNext() {
+    setCurrentPage(currentPage + 1);
+  }
+
   const postperPage = 12;
   const lastPostIndex = currentPage * postperPage;
   const firstPostIndex = lastPostIndex - postperPage;
@@ -22,11 +30,7 @@ export default function DashOrders() {
   return (
     <div>
       <div>
-        {orders.length ? (
-          <DashOrdersCards orders={currentPost} />
-        ) : (
-          <p>NO ORDERS</p>
-        )}
+        {orders.length ? <DashOrdersCards orders={currentPost} /> : null}
 
         {orders.length ? (
           <Pagination
@@ -34,6 +38,8 @@ export default function DashOrders() {
             postPerPage={postperPage}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
+            handlerPrev={handlerPrev}
+            handlerNext={handlerNext}
           />
         ) : null}
       </div>

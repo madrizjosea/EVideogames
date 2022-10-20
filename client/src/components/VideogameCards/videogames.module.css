@@ -6,9 +6,12 @@
     /* margin: 0; */
     /* background-image: url(../image/Fondonavbar.JPG); */
     /* background-image: url(../image/Fondo2.png); */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(23rem, 24rem));
-    gap: 20px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fill, minmax(23rem, 24rem)); */
+    gap: 25px;
     justify-content: center;
 
 }

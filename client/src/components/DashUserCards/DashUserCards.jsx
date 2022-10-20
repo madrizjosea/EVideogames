@@ -28,7 +28,7 @@ export default function DashUserCards({ users }) {
         <div key={u.email}>
           <div className={style.userbody}>
             <button
-              className={style.namemail}
+              className="prev-next"
               name={u.name}
               value={u.email}
               onClick={e => clickHandler(e)}
@@ -54,6 +54,7 @@ export default function DashUserCards({ users }) {
                 <p className={style.role}>Role: {u.role}</p>
                 {u.role ? (
                   <select
+                  className={style.selec}
                     key={u.email + 0}
                     onChange={e =>
                       roleChangeHandler(e, u.role, u.email, u.name)
@@ -61,7 +62,7 @@ export default function DashUserCards({ users }) {
                     defaultValue="default"
                   >
                     <option
-                      className={style.selec}
+                      
                       key={u.email + 1}
                       value="default"
                       disabled="default"

@@ -86,6 +86,14 @@ export default function Main() {
     }
   };
 
+  function handlerPrev() {
+    setCurrentPage(currentPage - 1);
+  }
+
+  function handlerNext() {
+    setCurrentPage(currentPage + 1);
+  }
+
   const postperPage = 12;
   const lastPostIndex = currentPage * postperPage;
   const firstPostIndex = lastPostIndex - postperPage;
@@ -95,61 +103,60 @@ export default function Main() {
 
   return games ? (
     <div>
-      <br />
-      <div className="divcontainer">
-        <label className="texto" htmlFor="title">
-          Game Title
-        </label>
-        {
-          <input
-            placeholder="Buscar"
-            type="text"
-            value={buscar}
-            onChange={searcher}
-          ></input>
-        }
-      </div>
-      <br />
-      <div className="divcontainer">
-        {
+      <div className="con">
+        <div className="divcontainer">
+          <label className="texto" htmlFor="title">
+            Game Title
+          </label>
+          {
+            <input
+              placeholder="Buscar"
+              type="text"
+              value={buscar}
+              onChange={searcher}
+            ></input>
+          }
+        </div>
+        <div className="divcontainer">
+          {
+            <div className="div">
+              <button className="button" type="button" onClick={sorting}>
+                Order by Name
+              </button>
+            </div>
+          }
           <div className="div">
-            <button className="button" type="button" onClick={sorting}>
-              Order by Name
+            <button className="button" type="button" onClick={sorting2}>
+              Order by Rating
             </button>
           </div>
-        }
-        <div className="div">
-          <button className="button" type="button" onClick={sorting2}>
-            Order by Rating
-          </button>
+        </div>
+        <div className="divcontainer">
+          <label className="texto">Genres</label>
+          <select name="filtro" onChange={handleSelect}>
+            <option value="">All Genres</option>
+            <option>Action</option>
+            <option>Indie</option>
+            <option>Adventure</option>
+            <option>RPG</option>
+            <option>Strategy</option>
+            <option>Shooter</option>
+            <option>Casual</option>
+            <option>Simulation</option>
+            <option>Puzzle</option>
+            <option>Arcade</option>
+            <option>Platformer</option>
+            <option>Racing</option>
+            <option>Massively Multiplayer</option>
+            <option>Sports</option>
+            <option>Fighting</option>
+            <option>Family</option>
+            <option>Board Games</option>
+            <option>Educational</option>
+            <option>Card</option>
+          </select>
         </div>
       </div>
-      <div className="divcontainer">
-        <label className="texto">Genres</label>
-        <select name="filtro" onChange={handleSelect}>
-          <option value="">All Genres</option>
-          <option>Action</option>
-          <option>Indie</option>
-          <option>Adventure</option>
-          <option>RPG</option>
-          <option>Strategy</option>
-          <option>Shooter</option>
-          <option>Casual</option>
-          <option>Simulation</option>
-          <option>Puzzle</option>
-          <option>Arcade</option>
-          <option>Platformer</option>
-          <option>Racing</option>
-          <option>Massively Multiplayer</option>
-          <option>Sports</option>
-          <option>Fighting</option>
-          <option>Family</option>
-          <option>Board Games</option>
-          <option>Educational</option>
-          <option>Card</option>
-        </select>
-      </div>
-      <br />
       <div>
         <Videogamescards gamedata={currentPost} />
         {results.length > 1 ? (
@@ -158,7 +165,10 @@ export default function Main() {
             postPerPage={postperPage}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
-          />) : null}
+            handlerPrev={handlerPrev}
+            handlerNext={handlerNext}
+          />
+        ) : null}
       </div>
     </div>
   ) : (
