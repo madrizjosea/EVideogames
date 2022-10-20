@@ -46,7 +46,7 @@ export default function Profile () {
  
             <div className={Style.userbody}>
                 <div className={Style.photoContainer}>
-                <img className ={Style.img}src={decodedtoken.image || decodedtoken.picture} alt="No hay imagen" />
+                <img className ={Style.img}src={decodedtoken.image || decodedtoken.picture} alt="There is no image" />
                 </div>
                 <div>
                 <p className= {Style.name}><b>Name:</b> {decodedtoken.name}</p>

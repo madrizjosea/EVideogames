@@ -45,12 +45,12 @@ export default function DashUserCards({ users }) {
               alt={'u.img'}
             ></img>
             <div>
-              <p>{u.name}</p>
-              <p>Email: {u.email}</p>
+              <p className={style.name}>{u.name}</p>
+              <p className={style.email}>Email: {u.email}</p>
             </div>
             <div>
               <label>
-                <p>Role: {u.role}</p>
+                <p className={style.role}>Role: {u.role}</p>
                 {u.role ? (
                   <select
                     key={u.email + 0}
@@ -59,7 +59,7 @@ export default function DashUserCards({ users }) {
                     }
                     defaultValue="default"
                   >
-                    <option key={u.email + 1} value="default" disabled="default" hidden>
+                    <option className={style.selec} key={u.email + 1} value="default" disabled="default" hidden>
                       Select role
                     </option>
                     <option key={u.email + 2} value="admin">Admin</option>

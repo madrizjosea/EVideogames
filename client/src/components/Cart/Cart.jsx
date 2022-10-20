@@ -71,7 +71,7 @@ export default function Cart() {
           Total: {total}
           <br />
           {cookie.length > 1 ? (
-            <button onClick={handleClick}>Comprar</button>
+            <button className={style.compra} onClick={handleClick}>Comprar</button>
           ) : (
             <div></div>
           )}

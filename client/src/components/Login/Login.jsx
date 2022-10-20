@@ -5,12 +5,8 @@ import { useLocalStorage } from '../../customhooks/useLocalStorage';
 import { UserContext } from '../../Context/UserContext';
 import jwt_decode from 'jwt-decode';
 import style from './Login.module.css';
-import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-
-  const navigate = useNavigate();
-
   const [user, setUser] = useState({});
   const [logginUsername, setLoginUsername] = useState('');
   const [logginPassword, setLoginPassword] = useState('');
@@ -58,7 +54,6 @@ export default function Login() {
         setToken(decodedtoken);
         setValue(decodedtoken);
         console.log(value);
-        navigate("/Main");
       }
     });
   };
