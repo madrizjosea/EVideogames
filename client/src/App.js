@@ -19,6 +19,7 @@ import Page404 from './components/Page404/Page404.jsx';
 import Stripe from './components/Payment/Stripe.js';
 import Review from './components/Review/Review.jsx';
 import DashOrders from './components/DashOrders/DashOrders.jsx';
+import Newsletter from './components/Newsletter/Newsletter.jsx';
 
 function App() {
   const [value, setValue] = useLocalStorage('user', '')

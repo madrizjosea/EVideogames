@@ -1,6 +1,7 @@
 import React/* , {useContext} */ from "react";
 import jwtDecode from "jwt-decode";
 import Style from "./profileClient.module.css";
+import Newsletter from "../Newsletter/Newsletter";
 // import { UserContext } from "../../Context/UserContext";
 //import ProfileClient from "./ProfileClient.jsx";
 //import { useDispatch, useSelector } from "react-redux";
@@ -40,6 +41,7 @@ export default function Profile () {
                 <div>
                 <p className= {Style.name}><b>Name:</b> {decodedtoken.name}</p>
                 <p className= {Style.email}><b>Email: </b>{decodedtoken.email}</p>
+                <Newsletter/>
                 <button className ={Style.buttonsigout} >Sign Out</button>
                 </div>
             </div>
