@@ -31,7 +31,6 @@ export default function Profile() {
   let decodedtoken = '';
   if (cookie) {
     decodedtoken = jwtDecode(cookie);
-    console.log(decodedtoken);
   }
 
   function handleSignout() {
@@ -47,8 +46,10 @@ export default function Profile() {
         <img
           className={Style.img}
           src={
-            decodedtoken.image
-              ? decodedtoken.image
+            value.image
+              ? value.image
+              : value.picture
+              ? value.picture
               : 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg'
           }
           alt="No hay imagen"

@@ -33,9 +33,6 @@ export default function Login() {
   }
   const cookie = getCookie('token');
 
-  console.log('cookies', document.cookie);
-  console.log('token', token, 'cookie', cookie);
-
   const login = () => {
     axios({
       method: 'POST',
@@ -69,7 +66,6 @@ export default function Login() {
     setValue(false);
     setCart([]);
 
-    console.log(value);
   }
 
   function handleSignout() {
