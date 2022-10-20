@@ -43,21 +43,15 @@ export default function CartCard ({id, name, image, rating, price, onClose}) {
         <div key={id} className={style.userbody} >
             <img className={style.pic} src={image ? image : 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg'} alt={'u.img'}></img>
             <div>
-                <p>{name}</p>
-                <p>Rating: {rating}</p>
+                <ul className={style.name}>{name}</ul>
+                </div>    
+                <div>
+                <ul className={style.rating}>Rating: {rating}</ul>
             </div>
             <div>
-                <p>Unit Price: {price}</p>
+                <p className={style.price}>Price: {price}</p>
             </div>
-            <label>Quantity</label>
-            <button onClick={add}>Add</button>
-            <button onClick={sub}>Sub</button>
-            <div>
-                <p>Quantity: {quantity}</p>
-            </div>
-            <div>
-                <p>Total Price: {price * quantity}</p>
-            </div>
+           
             <button onClick={reset}>reset</button>
             {quantity<2 ?
             <button onClick={onClose} className="btn btn-sm btn-danger">X</button>

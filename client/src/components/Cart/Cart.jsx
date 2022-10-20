@@ -54,7 +54,7 @@ const reset = (e) => {
     }
     console.log('total', total,'order', order, 'cart', cart)
     return (
-    <div><button onClick={reset}>Reset</button>
+    <div>
         {cart.length>0 ?
         <div className='cards'>
         { cart.map(c => <CartCard
