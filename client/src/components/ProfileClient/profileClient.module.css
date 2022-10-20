@@ -6,19 +6,25 @@
 }
 
 .userbody {
-    background-color: rgb(65, 64, 64);
+    /* background-image: url(../image/fondo-card.JPG); */
     /* background-image: url(../image/Fondonavbar.JPG); */
     display: flex;
     flex-direction:row-reverse;
     justify-content:center;
     align-items: center;
     border-radius: 5%;
-    height: fit-content;
-    width: fit-content;
-    margin:90px;
+    height: 330px;
+    width: 600px;
+    margin:30vh;
     color: white;
     border-bottom: 10px;
-    
+    border: 2px solid #636363;
+    box-shadow: 6px 6px 10px rgb(99, 97, 97);
+    border: 2px solid #aa0520;
+    background-color: black;
+    margin: auto;
+   margin-top: 50px;
+
     
 }
 

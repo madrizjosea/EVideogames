@@ -1,6 +1,6 @@
 
 .userbody{
-background-color: white;
+  background-color:rgb(18, 19, 19) ;
 height: 100vh;
 width: 100%;
 display: flex;
@@ -8,10 +8,11 @@ justify-content: center;
 align-items: center;
 flex-direction: column;
 
+
 }
 .containerLogin{
 width: 30%;
-background-color: #d9d9d9;
+background-color: black;
 height: 300px;
 display: flex;
 justify-content: center;
@@ -19,6 +20,10 @@ align-items: center;
 flex-direction: column;
 padding: 30px;
 border-radius: 19px;
+box-shadow: 6px 6px 10px rgb(99, 97, 97);
+margin-bottom: 10px;
+border: 2px solid #aa0520;
+padding: 20px;
 }
 
 .imputlogin{
@@ -32,17 +37,18 @@ border-radius: 19px;
     color: #5d9ea6;
 }
 .buttonlogin{
-    background-color: #011826;
+    background-color: white;
     border: 1px solid #011826;
     width: 187px;
     height: 48px;
-    color: white;
+    color: black;
     font-size: 14px;
     border-radius: 31px;
     cursor: pointer;
 }
 .buttonlogin:hover{
-  background-color:  #5d9ea6;
+  background: linear-gradient(to right, rgb(220, 54, 54) 0%, rgb(229, 91, 121) 51%, rgb(220, 54, 104) 100%);
+
   color: black;
 
 }
@@ -83,4 +89,10 @@ color:white;
 .buttonsigout:hover{
 background-color:  black;
 color: white;
+}
+
+.Login{
+  color: white;
+  padding: 20px;
+  margin-top: 3px ;
 }
