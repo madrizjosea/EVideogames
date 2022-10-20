@@ -108,7 +108,7 @@ export default function CreateUser() {
           {error.password && <p className="danger">{error.password}</p>}
         </div>
         <br />
-        
+
         <div className={Style.browse}>
           <input
             className="texto"
@@ -124,12 +124,14 @@ export default function CreateUser() {
           </button>
         </div>
 
+        <div className={Style.udCon}>
+          <Image
+            className={Style.uploaded}
+            cloudName="dnf3cz1f3"
+            publicId={input.image}
+          />
+        </div>
 
-        <Image
-          style={{ width: 200 }}
-          cloudName="dnf3cz1f3"
-          publicId={input.image}
-        />
         <div>
           <button className={Style.register} onClick={handleClick}>
             Register
