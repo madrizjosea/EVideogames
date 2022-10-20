@@ -13,7 +13,6 @@ export default function DashCardsGames({ gamedata }) {
         dispatch(editGame(id, { isAvailable: e.target.value }));
       }
     }
-    dispatch(getAllGames());
     e.target.value = 'default';
   }
 

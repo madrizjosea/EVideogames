@@ -34,27 +34,6 @@ export default function DashUsers() {
 
   return (
     <div>
-      <div id={style.sort}>
-        <div>
-          <label className={style.search}>Search: </label>
-          <input placeholder="Name..."></input>
-        </div>
-
-        <div>
-          <label className={style.roles}>Roles</label>
-          <select>
-            <option>admin</option>
-            <option>user</option>
-          </select>
-        </div>
-
-        <div>
-          <button className={style.order} type="button">
-            Order by Name
-          </button>
-        </div>
-      </div>
-
       <div>
         <DashUserCards users={currentPost} />
         {users.length ? (

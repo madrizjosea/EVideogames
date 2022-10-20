@@ -30,11 +30,7 @@ export default function DashOrders() {
   return (
     <div>
       <div>
-        {orders.length ? (
-          <DashOrdersCards orders={currentPost} />
-        ) : (
-          <p>NO ORDERS</p>
-        )}
+        {orders.length ? <DashOrdersCards orders={currentPost} /> : null}
 
         {orders.length ? (
           <Pagination

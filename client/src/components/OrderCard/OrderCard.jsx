@@ -28,12 +28,14 @@ export default function OrderCard(orders) {
 
   return (
     <div className={style.userbody}>
-      <p className={style.card__name}>User: {name}</p>
-      <p className={style.card__email}>Email: {email}</p>
+      <p className={style.card__name}>{name}</p>
+      <p className={style.card__email}>{email}</p>
       <p className={style.card__total}>Amount: {total}</p>
       <p className={style.card__state}>State: {changedState}</p>
-      <select name="change state" onChange={handleSelect}>
-        <option></option>
+      <select className={style.select} name="change state" onChange={handleSelect}>
+        <option value="" hidden>
+          Status
+        </option>
         <option>Payed</option>
         <option>Completed</option>
         <option>Cancelled</option>
