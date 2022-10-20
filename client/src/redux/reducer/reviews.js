@@ -1,11 +1,12 @@
 import {
     GET_REVIEWS_BY_GAME,
-    GET_REVIEWS_BY_USER
+    GET_REVIEWS_BY_USER,
+    ADD_REVIEW
 } from '../actions/types.js';
 
 const initialState = {
-    userReviews: [],
     gameReviews: [],
+    userReviews: [],
 };
 
 export default function reviews(state = initialState, action) {
@@ -14,13 +15,18 @@ export default function reviews(state = initialState, action) {
         case GET_REVIEWS_BY_GAME:
             return {
                 ...state,
-                allGames: action.payload,
+                gameReviews: action.payload,
             };
 
         case GET_REVIEWS_BY_USER:
             return {
                 ...state,
-                games: action.payload,
+                userReviews: action.payload,
+            };
+
+        case ADD_REVIEW:
+            return {
+                ...state,
             };
 
         default:

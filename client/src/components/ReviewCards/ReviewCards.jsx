@@ -7,7 +7,7 @@ export default function ReviewCards({ reviews }) {
             {reviews?.map((r) =>
                 <div key={r.id}>
                     <div>
-                        <Rating name="read-only" value={r.rating} readOnly />
+                        <Rating name="half-rating-read" value={r.rating} precision={0.5} readOnly />
                     </div>
                     <div>
                         {r.content}

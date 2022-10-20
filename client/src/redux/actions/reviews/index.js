@@ -1,12 +1,13 @@
 import axios from '../../../axios';
 import {
     GET_REVIEWS_BY_GAME,
-    GET_REVIEWS_BY_USER
+    GET_REVIEWS_BY_USER,
+    ADD_REVIEW
 } from '../types.js';
 
-export function getReviewsByGame(userId) {
+export function getReviewsByGame(email) {
     return async function (dispatch) {
-        await axios.get(`/users/byUser/${userId}`);
+        await axios.get(`/users/byUser/${email}`);
         dispatch({ type: GET_REVIEWS_BY_GAME })
     } 
 }
@@ -17,3 +18,10 @@ export function getReviewsByUser(videogameId) {
         dispatch({ type: GET_REVIEWS_BY_USER })
     } 
 }
+
+export function addReview(payload) {
+    return async function (dispatch) {
+        const review = await axios.post('/reviews/create', payload);
+        dispatch({ type: ADD_REVIEW, payload: review.data })
+    };
+};
