@@ -1,19 +1,24 @@
 import { useState } from 'react';
 import style from './OrderCard.module.css';
 import axios from '../../axios';
+import { getUsers } from '../../redux/actions/user';
+import { useDispatch } from 'react-redux';
 
 export default function OrderCard(orders) {
+  const dispatch = useDispatch();
   const { id, email, total, state, name, games } = orders;
   const [newState, setNewState] = useState(state);
   const [changedState, setChangedState] = useState(state);
 
   const handleClick = async () => {
-    await axios.put('/orders', {
-      id: id,
-      change: newState,
-      accountEmail: email,
-      games,
-    });
+    await axios
+      .put('/orders', {
+        id: id,
+        change: newState,
+        accountEmail: email,
+        games,
+      })
+      .then(dispatch(getUsers()));
     setChangedState(newState);
   };
 
@@ -33,7 +38,9 @@ export default function OrderCard(orders) {
         <option>Completed</option>
         <option>Cancelled</option>
       </select>
-      <button className={style.change}onClick={handleClick}>Change State</button>
+      <button className={style.change} onClick={handleClick}>
+        Change State
+      </button>
     </div>
   );
 }

@@ -9,7 +9,6 @@ export default function DashUserCards({ users }) {
     if (window.confirm(`Do you want to change ${name}'s role?`)) {
       if (e.target.value && e.target.value !== role) {
         dispatch(editUser(email, { role: e.target.value }));
-        dispatch(getUsers());
       }
     }
     e.target.value = 'default';
@@ -18,8 +17,9 @@ export default function DashUserCards({ users }) {
   function clickHandler(e) {
     if (
       window.confirm(`Do you want to permanently delete user ${e.target.name}?`)
-    )
-      dispatch(deleteUser(e.target.value));
+    ) {
+      dispatch(deleteUser(e.target.value))
+    }
   }
 
   return (
@@ -27,7 +27,8 @@ export default function DashUserCards({ users }) {
       {users.map(u => (
         <div key={u.email}>
           <div className={style.userbody}>
-            <button className={style.namemail}
+            <button
+              className={style.namemail}
               name={u.name}
               value={u.email}
               onClick={e => clickHandler(e)}
@@ -59,11 +60,21 @@ export default function DashUserCards({ users }) {
                     }
                     defaultValue="default"
                   >
-                    <option className={style.selec} key={u.email + 1} value="default" disabled="default" hidden>
+                    <option
+                      className={style.selec}
+                      key={u.email + 1}
+                      value="default"
+                      disabled="default"
+                      hidden
+                    >
                       Select role
                     </option>
-                    <option key={u.email + 2} value="admin">Admin</option>
-                    <option key={u.email + 3} value="user">User</option>
+                    <option key={u.email + 2} value="admin">
+                      Admin
+                    </option>
+                    <option key={u.email + 3} value="user">
+                      User
+                    </option>
                   </select>
                 ) : null}
               </label>
