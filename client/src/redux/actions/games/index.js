@@ -2,6 +2,7 @@ import axios from '../../../axios';
 import {
     GET_ALL_GAMES,
     GET_GAME_QUERY,
+    GET_USER_GAMES,
     NAME_ORDER,
     GET_GAME,
     ADD_GAME,
@@ -25,6 +26,13 @@ export function getGameQuery(query) {
         } catch {
             dispatch({ type: GET_GAME_QUERY, payload: '' });
         }
+    };
+};
+
+export function getUserGames(email) {
+    return async function (dispatch) {
+        const userGames = await axios.get(`/library/${email}`);
+        dispatch({ type: GET_USER_GAMES, payload: userGames.data });
     };
 };
 
