@@ -66,7 +66,7 @@ const uploadImage = (files) => {
         <div>
             <label className={Style.textoNombre}>Name:</label>
             <br />
-            <input className={error.name && 'danger'} type='text' name="name" onChange={handleChange} value={input.name}/>
+            <input className={error.name && 'danger' || Style.name} type='text' name="name" onChange={handleChange} value={input.name}/>
             {error.name && 
             <p className="danger">{error.name}</p>
             }
@@ -86,7 +86,7 @@ const uploadImage = (files) => {
         <div>
             <label className={Style.textoPassword}>Password:</label>
             <br />
-            <input className={error.password && 'danger'} type='password' name="password" onChange={handleChange} value={input.password}/>
+            <input className={error.password && 'danger' || Style.password} type='password' name="password" onChange={handleChange} value={input.password}/>
             {error.password && 
             <p className="danger">{error.password}</p>
             }

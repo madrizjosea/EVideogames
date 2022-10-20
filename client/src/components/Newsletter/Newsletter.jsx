@@ -2,6 +2,7 @@ import React from "react";
 import emailjs from "emailjs-com"
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
+import Style from "../Newsletter/newsletter.module.css";
 
 export default function Newsletter(){
 
@@ -50,7 +51,7 @@ export default function Newsletter(){
     return(
         <div>{!success ?
             <div>
-                <button onClick={handleClick}>Receive our Newsletter</button>
+                <button className={Style.Newsletter} onClick={handleClick}>Receive our Newsletter</button>
                 {confirm ?
                 <form onSubmit={sendMail}>
                     <input hidden type="text" placeholder="name" name='name' value={decodedtoken.name}/>
@@ -58,8 +59,8 @@ export default function Newsletter(){
                     <input hidden type="text" placeholder="subject" name="subject" value='Newsletter'/>
                     <textarea hidden name="message" id="" cols="30" rows="8" value='Subscribe to newsletter'></textarea>
                     <div>
-                    <label>Are you sure?</label>
-                    <input type="submit" value="Yes"/> 
+                    <label  className={Style.confirmacion}>Are you sure?</label>
+                    <input className={Style.si}type="submit" value="Yes"/> 
                     </div>
                     </form>
                     :
