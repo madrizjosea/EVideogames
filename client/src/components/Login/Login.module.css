@@ -1,6 +1,6 @@
 
 .userbody{
-background-color:  #5d9ea6;
+background-color: white;
 height: 100vh;
 width: 100%;
 display: flex;
@@ -11,7 +11,7 @@ flex-direction: column;
 }
 .containerLogin{
 width: 30%;
-background-color: white;
+background-color: #d9d9d9;
 height: 300px;
 display: flex;
 justify-content: center;
@@ -49,7 +49,7 @@ border-radius: 19px;
 @media screen and (min-width: 1024px) {
 
 .buttonlogout {
-    background-color: #bdcad3;
+    background-color: #828385;
     border: 1px solid #f1f4f6;
     width: 187px;
     height: 48px;
@@ -63,3 +63,24 @@ border-radius: 19px;
   }
 }
 
+.buttonlogout:hover{
+background-color:  black;
+color:white;
+}
+
+.buttonsigout{
+  background-color: #828385;
+    border: 1px solid #011826;
+    width: 187px;
+    height: 48px;
+    color: black;
+    font-size: 14px;
+    border-radius: 31px;
+    cursor: pointer;
+
+}
+
+.buttonsigout:hover{
+background-color:  black;
+color: white;
+}

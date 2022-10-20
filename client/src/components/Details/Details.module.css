@@ -7,30 +7,32 @@
 
 .leftSide {
   text-align: center;
-  color: #fff;
+  color:black;
   font-weight: 600;
   font-size: 25px;
 }
 
 .confirmation {
   text-align: center;
-  color: #fff;
+  color: black;
   font-weight: 600;
   font-size: 15px;
 }
 
 .imageContainer {
   margin: 10px 25px;
+  height: 50px;
 }
 
 .imageContainer img {
-  border-radius: 10px;
-  width: 500px;
+  border-radius: 40px;
+  width: 550px;
+
 }
 
 .description {
   width: 600px;
-  color: #fff;
+  color: black;
   text-align: justify;
   font-size: 14px;
 }
@@ -43,7 +45,7 @@
 }
 
 .btns h2 {
-  color: #fff;
+  color: black;
 }
 
 .btns button {
@@ -65,4 +67,27 @@
   padding: 5px 15px;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.middle{
+  color: black;
+}
+
+.addCart{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 20%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.addCart:hover{
+    background-color:rgb(117, 114, 114);
+    color: white
 }
