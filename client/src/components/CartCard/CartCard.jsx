@@ -36,6 +36,7 @@ export default function CartCard ({id, name, image, rating, price, onClose}) {
 
     const reset = () => {
         setTotal(0)
+        setQuantity(1)
     }
 
     return (
@@ -58,7 +59,7 @@ export default function CartCard ({id, name, image, rating, price, onClose}) {
             <div>
                 <p>Total Price: {price * quantity}</p>
             </div>
-            <button onClick={reset}>reset</button>
+            {/* <button onClick={reset}>reset</button> */}
             {quantity<2 ?
             <button onClick={onClose} className="btn btn-sm btn-danger">X</button>
             :
