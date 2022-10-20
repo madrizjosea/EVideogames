@@ -54,7 +54,6 @@ export default function Main() {
     results = results.filter(game =>
       game.genres.find(g => g.name.toLowerCase() === genre.toLowerCase())
     );
-    console.log(results);
   }
 
   // console.log(results);
