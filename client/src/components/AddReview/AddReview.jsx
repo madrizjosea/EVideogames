@@ -14,8 +14,6 @@ function validation(input) {
 
 export default function AddReview({videogameId, email}) {
 
-    console.log(videogameId, email);
-
     const dispatch = useDispatch();
 
     const [err, setErr] = useState({});
@@ -25,7 +23,7 @@ export default function AddReview({videogameId, email}) {
     });
 
     function changeHandler(e) {
-        console.log(e.target.value);
+        
         if (e.target.name === 'rating') {
             setInput({
                 ...input, [e.target.name]: Number(e.target.value)

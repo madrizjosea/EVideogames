@@ -23,12 +23,11 @@ export default function OrderCard(orders) {
 
   return (
     <div className={style.userbody}>
-      <p className="card__rating">User: {name}</p>
       <p className="card__rating">Email: {email}</p>
       <p className="card__genres">Amount: {total}</p>
       <p className="card__genres">State: {changedState}</p>
-      <select name="change state" onChange={handleSelect}>
-        <option></option>
+      <select name="change state" defaultValue="default" onChange={handleSelect}>
+        <option value="default" disabled="default" hidden>Status</option>
         <option>Payed</option>
         <option>Completed</option>
         <option>Cancelled</option>

@@ -18,6 +18,8 @@ export default function GameReviews({videogameId}) {
             dispatch(getReviewsByGame(videogameId));
         }
     }, [dispatch]);
+    
+    console.log(reviews);
 
     function handlerPrev() {
         setCurrentPage(currentPage - 1);
@@ -36,7 +38,7 @@ export default function GameReviews({videogameId}) {
             <div>
                 {reviews.length ? (
                     <ReviewCards reviews={reviews} />
-                ) : 'NO REVIEWS'}
+                ) : null }
                 {reviews.length > 1 ? <Pagination totalPosts={reviews.length} postPerPage={postperPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handlerPrev={handlerPrev} handlerNext={handlerNext} /> : undefined}
             </div>
         </div>

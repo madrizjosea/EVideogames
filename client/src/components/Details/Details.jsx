@@ -8,6 +8,7 @@ import { useState } from 'react';
 import {clearDetail} from "../../redux/actions/games/index"
 import GameReviews from '../GameReviews/GameReviews.jsx';
 import AddReview  from '../AddReview/AddReview.jsx';
+import Rating from '@mui/material/Rating';
 
 export default function Details() {
   const { id } = useParams();
@@ -83,7 +84,8 @@ export default function Details() {
           </div>
           <div className={styles.ratings}>
             <p>{details.audiences[0].name}</p>
-            <p>Rating {details.rating}</p>
+            <p><Rating name="half-rating-read" value={details.rating} precision={0.5} readOnly /></p>
+            
           </div>
         </div>
         <p className={styles.description}>{details.description}</p>
