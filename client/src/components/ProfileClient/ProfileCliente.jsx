@@ -54,6 +54,7 @@ export default function Profile() {
           }
           alt="No hay imagen"
         />{" "}
+        
       </div>
       <div>
         <p className={Style.name}>

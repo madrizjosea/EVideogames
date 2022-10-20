@@ -64,15 +64,6 @@ export default function CreateUser() {
       <div className={Style.cointainer}>
         <h1 className={Style.textoUser}>Register</h1>
         <br />
-        <input
-          className="texto"
-          type="file"
-          onChange={event => {
-            event.preventDefault();
-            setImage(event.target.files[0]);
-          }}
-          autoComplete="off"
-        />
 
         <div>
           <label className={Style.textoNombre}>Name:</label>
@@ -117,6 +108,30 @@ export default function CreateUser() {
           {error.password && <p className="danger">{error.password}</p>}
         </div>
         <br />
+
+        <div className={Style.browse}>
+          <input
+            className="texto"
+            type="file"
+            onChange={event => {
+              event.preventDefault();
+              setImage(event.target.files[0]);
+            }}
+            autoComplete="off"
+          />
+          <button className={Style.ImgLoad} onClick={uploadImage}>
+            Upload Image
+          </button>
+        </div>
+
+        <div className={Style.udCon}>
+          <Image
+            className={Style.uploaded}
+            cloudName="dnf3cz1f3"
+            publicId={input.image}
+          />
+        </div>
+
         <div>
           <button className={Style.register} onClick={handleClick}>
             Register
@@ -129,14 +144,8 @@ export default function CreateUser() {
         )}
         {result === 200 && <p className="texto">User created successfully</p>}
         <br />
-        <button className={Style.ImgLoad} onClick={uploadImage}>
-          Upload Image
-        </button>
-        <Image
-          style={{ width: 200 }}
-          cloudName="dnf3cz1f3"
-          publicId={input.image}
-        />
+
+
       </div>
     </form>
   );
