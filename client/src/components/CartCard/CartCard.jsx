@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import style from './CartCard.module.css';
 import { UserContext } from '../../Context/UserContext';
 import { useLocalStorage } from '../../customhooks/useLocalStorage';
+import Rating from '@mui/material/Rating';
 
 export default function CartCard({ id, name, image, rating, price, onClose }) {
   const { total, setTotal, order, setOrder } = useContext(UserContext);
@@ -52,13 +53,23 @@ export default function CartCard({ id, name, image, rating, price, onClose }) {
           <ul className={style.name}>{name}</ul>
         </div>
         <div>
-          <ul className={style.rating}>Rating: {rating}</ul>
+          <ul className={style.rating}>
+            Rating:{' '}
+            {
+              <Rating
+                name="half-rating-read"
+                value={rating}
+                precision={0.5}
+                readOnly
+              />
+            }
+          </ul>
         </div>
         <div>
           <p className={style.price}>Price: ${price}</p>
         </div>
 
-        <button onClick={onClose} className="btn btn-sm btn-danger">
+        <button onClick={onClose} className="prev-next">
           X
         </button>
       </div>

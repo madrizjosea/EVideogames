@@ -1,12 +1,11 @@
-import Videogamecard from "../VideogameCard/VideogameCard";
-import Style from "./videogames.module.css";
+import Videogamecard from '../VideogameCard/VideogameCard';
+import Style from './videogames.module.css';
 
 export default function Videogamescards({ gamedata, canReview }) {
   return (
-    <div>
-      <div className={Style.cointainerCard}>
-        {gamedata?.map((game) =>
-        (<Videogamecard
+    <div className={Style.cointainerCard}>
+      {gamedata?.map(game => (
+        <Videogamecard
           key={game.id}
           name={game.name}
           image={game.image}
@@ -14,8 +13,8 @@ export default function Videogamescards({ gamedata, canReview }) {
           genres={game.genres}
           id={game.id}
           canReview={canReview}
-        />))}
-      </div>
+        />
+      ))}
     </div>
   );
 }

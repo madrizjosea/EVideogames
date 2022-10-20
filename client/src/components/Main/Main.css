@@ -1,60 +1,72 @@
 #filters {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 #cards {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .texto {
-    color: white;
-    margin-right: 8px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: bold
-
+  color: white;
+  margin-right: 8px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
 }
 
 .filtrado {
-    color: aliceblue;
-    width: 50%;
-    margin: auto;
+  color: aliceblue;
+  width: 50%;
+  margin: auto;
 }
 
 .button {
-    background-color: white;
-    border: none;
-    color: black;
-    padding: 10px 22px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 4px 2px;
-    cursor: pointer;
-    position: relative;
-    border-radius: 20%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: bold;
-    }
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 10px 22px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 20%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+}
 
-    .button:hover{
-        background: linear-gradient(to right, rgb(220, 54, 54) 0%, rgb(229, 91, 121) 51%, rgb(220, 54, 104) 100%);
+.button:hover {
+  background: linear-gradient(
+    to right,
+    rgb(220, 54, 54) 0%,
+    rgb(229, 91, 121) 51%,
+    rgb(220, 54, 104) 100%
+  );
 
-        color: white;
+  color: white;
+}
 
-    }
+.divcontainer {
+  align-content: center;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
 
-    .divcontainer{
-        align-content: center;
-        text-align: center;
-        width: 50%;
-        margin: 0 auto;
-    }
+.div {
+  display: inline-block;
+  width: 150px;
+  height: 120px;
+}
 
-    .div{
-        display: inline-block;
-        width:150px;
-        height:120px;
-    }
+.con {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 50px;
+}

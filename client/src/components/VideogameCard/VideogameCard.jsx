@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './VideogameCard.css';
+import Rating from '@mui/material/Rating';
 
 export default function Videogamecard({
   name,
@@ -18,7 +19,14 @@ export default function Videogamecard({
       </div>
       <div className="card__body">
         <p className="card__name">Name: {name}</p>
-        <p className="card__rating">Rating: {rating}</p>
+        <p className="card__rating">
+          <Rating
+            name="half-rating-read"
+            value={rating}
+            precision={0.5}
+            readOnly
+          />
+        </p>
         {genres ? (
           <div>
             <p className="card__genres">Genres:</p>

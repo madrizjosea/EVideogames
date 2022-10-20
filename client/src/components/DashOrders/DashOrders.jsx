@@ -14,6 +14,14 @@ export default function DashOrders() {
     dispatch(getOrders());
   }, [dispatch]);
 
+  function handlerPrev() {
+    setCurrentPage(currentPage - 1);
+  }
+
+  function handlerNext() {
+    setCurrentPage(currentPage + 1);
+  }
+
   const postperPage = 12;
   const lastPostIndex = currentPage * postperPage;
   const firstPostIndex = lastPostIndex - postperPage;
@@ -34,6 +42,8 @@ export default function DashOrders() {
             postPerPage={postperPage}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
+            handlerPrev={handlerPrev}
+            handlerNext={handlerNext}
           />
         ) : null}
       </div>
