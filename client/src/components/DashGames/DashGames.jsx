@@ -92,16 +92,16 @@ export default function DashGames() {
         <div>
             <div id={style.controls}>
                 <div>
-                    <label htmlFor="title">Search: </label>
+                    <label  className={style.text} htmlFor="title">Search: </label>
                     <input placeholder="Title..." type="text" value={buscar} onChange={searcher}></input>
                 </div>
 
-                <div>
-                    <a className="bttn" type='button' href='/AddGame'>New Game</a>
-                </div>
+                {/* <div>
+                    <a className={style.bttn} type='button' href='/AddGame'>New Game</a>
+                </div> */}
 
                 <div>
-                    <label>Genres</label>
+                    <label className={style.text}>Genres </label>
 
                     <select name='filtro' onChange={handleSelect}>
                         <option>Genres</option>
@@ -126,10 +126,14 @@ export default function DashGames() {
                         <option>Card</option>
                     </select>
                 </div>
+                {/* <div>
+                    <a className={style.bttn} type='button' href='/AddGame'>New Game</a>
+                </div> */}
 
                 <div>
-                    <button className="bttn" type='button' onClick={() => sorting()}>Order by Name</button>
-                    <button className="bttn" type='button' onClick={() => sorting2()}>Order by Rating</button>
+                    <a className={style.bttn} type='button' href='/AddGame'>New Game</a>
+                    <button className={style.bttn} type='button' onClick={() => sorting()}>Order by Name</button>
+                    <button className={style.bttn} type='button' onClick={() => sorting2()}>Order by Rating</button>
                 </div>
             </div>
 

@@ -133,7 +133,7 @@ export default function Login(){
         <div></div>
         }
         {cookie ?
-        <button onClick={handleSignout}>Sign Out</button> : 
+        <button className ={style.buttonsigout}  onClick={handleSignout}>Sign Out</button> : 
         <div></div>
         }
         </div>

@@ -1,65 +1,72 @@
 .texto {
     color: aliceblue;
     margin: auto;
+   
 }
 
-.landingCointainer {
-    /* background-image: url("https://i.ibb.co/LJs4Ydx/fonfolanding.jpg"); */
-    background-size: cover;
+.landingContainer {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background-color: rgb(46, 44, 44);
-    margin-right: 50vh;
-    padding: 30px 55px;
-    border-radius: 5rem;
-    
+  
+    background-image:  url(../image/Landing.jpg);
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+  
+     
 }
 .landingContainer button {
-    padding: 30px 55px;
+    padding: 40px 55px;
     border-radius: 10rem;
     outline: none;
     cursor: pointer;
     border: 1px solid black;
     align-items: center;
     background-color: black;
-    width: auto;
+    /* width: auto;
     margin-right: 50vh;
-    margin-top: 400px;
+    margin-top: 400px; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: "https://ibb.co/x6B0F5p";
+
   }
 
+ 
+     
   
+  .logo{
+    width: 120px;
+    height: 120%;
+    justify-content: center;
+    padding: 20px 30 px ;
+  }
+
+
 
 .button {
-    margin: auto;
+    /* margin: auto; */
     background-color: #d30606;
     border: none;
     color: rgb(3, 3, 3);
-    padding: 15px 32px;
+    padding: 10px 22px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
     position: relative;
-    border-radius: 10%;
+    border-radius: 40%;
     padding: 30px 55px;
     }
 
-    .center{
-    align-items: center;
-    border-radius: 50rem;
-    margin-left: 35rem;
-    height: max-content;
-    position: relative;
-   
-    }
-    .center:hover    {
-    transform: scale(1.025, 1.025);
-    filter: drop-shadow(0 0 12px white);
-
-    }
-
+  
 
   
+
+ 
+
+
+   

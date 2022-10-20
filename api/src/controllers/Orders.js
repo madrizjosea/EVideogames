@@ -63,7 +63,7 @@ router.put('/', async (req, res) => {
         order.update({
             state: change
         })
-        res.send('Cambio exitoso')
+        res.send('successful change')
     } catch (error) {
         console.log('Error ', error)
         res.send('Error ', error)
