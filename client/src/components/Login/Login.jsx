@@ -5,10 +5,9 @@ import { useLocalStorage } from '../../customhooks/useLocalStorage';
 import { UserContext } from '../../Context/UserContext';
 import jwt_decode from 'jwt-decode';
 import style from './Login.module.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-
   const navigate = useNavigate();
 
   const [user, setUser] = useState({});
@@ -58,7 +57,7 @@ export default function Login() {
         setToken(decodedtoken);
         setValue(decodedtoken);
         console.log(value);
-        navigate("/Main");
+        navigate('/Main');
       }
     });
   };
@@ -84,7 +83,11 @@ export default function Login() {
   function handleCallback(response) {
     document.cookie = `token=${response.credential}; path=/; samesite=strict`;
     var userObject = jwt_decode(response.credential);
-    axios.post('/accounts', { email: userObject.email });
+    axios.post('/accounts', {
+      email: userObject.email,
+      name: userObject.name,
+      image: userObject.image,
+    });
     console.log('Response:', userObject.email);
     setUser(userObject);
     setValue(userObject);
@@ -135,7 +138,9 @@ export default function Login() {
       <div>
         {!cookie ? <div id="signInDiv"></div> : <div></div>}
         {cookie ? (
-          <button  className ={style.buttonsigout}  onClick={handleSignout}>Sign Out</button>
+          <button className={style.buttonsigout} onClick={handleSignout}>
+            Sign Out
+          </button>
         ) : (
           <div></div>
         )}
