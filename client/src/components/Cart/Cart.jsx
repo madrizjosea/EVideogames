@@ -56,7 +56,7 @@ export default function Cart() {
   return (
     <div>
       {cart.length > 0 ? (
-        <div className="cards">
+        <div className={style.cards}>
           {cart.map((c) => (
             <CartCard
               key={c.id}
