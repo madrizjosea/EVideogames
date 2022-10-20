@@ -82,7 +82,7 @@ router.put('/', async (req, res) => {
       });
     }
 
-    res.send('Cambio exitoso');
+    res.send("successful change");
   } catch (error) {
     console.log('Error ', error);
     res.status(400).send('Error ', error);

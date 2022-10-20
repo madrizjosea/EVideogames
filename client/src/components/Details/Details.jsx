@@ -36,7 +36,7 @@ console.log(cart)
       setTotal(total + details.price)
       setOrder(arrcart)
       setCart(arrcart)
-      setmsg('Juego agregado al carrito')
+      setmsg('Game added to cart')
     }else{
       let idarr = []
     for(let i = 0; i<cart.length; i++)
@@ -49,9 +49,9 @@ console.log(cart)
     setTotal(total + details.price)
     setCart(arrcart)
     setOrder(arrcart)
-    setmsg('Juego agregado al carrito')
+    setmsg('Game added to cart')
   }else{
-    setmsg('Juego ya esta en el carrito')
+    setmsg('Game is already in the cart')
   }
   }
   }
@@ -71,7 +71,7 @@ console.log(cart)
           <h2>Release Date: {details.releaseDate}</h2>
           <div className={styles.btns}>
             <h2>Price: ${details.price}</h2>
-            <button onClick={onClick}>Add to Cart</button>
+            <button  className ={styles.addCart} onClick={onClick}>Add to Cart</button>
             { msg ? <p className={styles.confirmation}>{msg}</p> : <div></div>}
             {/* 
             <button>Write review</button> */}

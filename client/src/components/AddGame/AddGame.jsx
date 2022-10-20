@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { addGame } from '../../redux/actions/games/index.js';
+import Style from "../AddGame/AddGame.module.css";
 
 function validation(input) {
     let err = {};
@@ -125,16 +126,16 @@ export default function AddVideogame() {
 
     return (
 
-        <div id="containerForm">
+        <div className ={Style.container}id="containerForm">
             <form id="Form" onSubmit={e => submitHandler(e)}>
 
-                <h1>New Videogame</h1>
+                <h1 className ={Style.title}>New Videogame</h1>
 
                 <div>
                     <p className="labelForm">Name:</p>
 
                     <div>
-                        <input value={input.name} type="text" name="name" onChange={(e) => changeHandler(e)} />
+                        <input className ={Style.name} value={input.name} type="text" name="name" onChange={(e) => changeHandler(e)} />
                     </div>
                     {err.name &&
                         <span className="error">{err.name}</span>
@@ -145,7 +146,7 @@ export default function AddVideogame() {
                     <p className="labelForm">Description:</p>
 
                     <div>
-                        <input value={input.description} type="text" name="description" onChange={(e) => changeHandler(e)} />
+                        <input className={Style.description} value={input.description} type="text" name="description" onChange={(e) => changeHandler(e)} />
                     </div>
                     {err.description &&
                         <span className="error">{err.description}</span>
@@ -156,7 +157,7 @@ export default function AddVideogame() {
                     <p className="labelForm">Image:</p>
 
                     <div>
-                        <input value={input.image} type="text" name="image" onChange={(e) => changeHandler(e)} />
+                        <input className={Style.image} value={input.image} type="text" name="image" onChange={(e) => changeHandler(e)} />
                     </div>
                     {err.image &&
                         <span className="error">{err.image}</span>
@@ -167,7 +168,7 @@ export default function AddVideogame() {
                     <p className="labelForm">Release Date:</p>
 
                     <div>
-                        <input value={input.releaseDate} type="text" name="releaseDate" onChange={(e) => changeHandler(e)} />
+                        <input className={Style.release} value={input.releaseDate} type="text" name="releaseDate" onChange={(e) => changeHandler(e)} />
                     </div>
                     {err.releaseDate &&
                         <span className="error">{err.releaseDate}</span>
@@ -178,7 +179,7 @@ export default function AddVideogame() {
                     <p className="labelForm">Rating:</p>
 
                     <div >
-                        <input value={input.rating} type="text" name="rating" onChange={(e) => changeHandler(e)} />
+                        <input className={Style.rating} value={input.rating} type="text" name="rating" onChange={(e) => changeHandler(e)} />
                     </div>
                     {err.rating &&
                         <span className="error">{err.rating}</span>
@@ -190,7 +191,7 @@ export default function AddVideogame() {
                     <div>
                         <p>Audiences:</p>
 
-                        <select className="input" onChange={(e) => audiencetHandler(e)} defaultValue='default'>
+                        <select className={Style.input} onChange={(e) => audiencetHandler(e)} defaultValue='default'>
                             <option value='default' disabled='default' hidden>Select Audiences</option>
                             <option>Teen</option>
                             <option>Everyone</option>
@@ -205,7 +206,7 @@ export default function AddVideogame() {
                     <div>
                         <p>Genres:</p>
 
-                        <select className="input" onChange={(e) => genreHandler(e)} defaultValue='default'>
+                        <select className={Style.input} onChange={(e) => genreHandler(e)} defaultValue='default'>
                             <option value='default' disabled='default' hidden>Select Genres</option>
                             <option>Action</option>
                             <option>Indie</option>
@@ -237,7 +238,7 @@ export default function AddVideogame() {
                     </div>
                 </div>
 
-                <button type="submit">Submit</button>
+                <button className={Style.submit} type="submit">Submit</button>
             </form>
         </div>
     )

@@ -38,9 +38,12 @@ export default function Profile () {
                 <div className={Style.photoContainer}>
                 <img className ={Style.img}src={decodedtoken.image || decodedtoken.picture} alt="No hay imagen" />
                 </div>
+                <div>
                 <p className= {Style.name}><b>Name:</b> {decodedtoken.name}</p>
                 <p className= {Style.email}><b>Email: </b>{decodedtoken.email}</p>
                 <Newsletter/>
+                <button className ={Style.buttonsigout} >Sign Out</button>
+                </div>
             </div>
         )
     };

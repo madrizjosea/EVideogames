@@ -10,7 +10,7 @@ export default function Videogamecard({ name, image, rating, genres, id }) {
                 </Link>
             </div>
             <div className='card__body'>
-                <p className='card__name'>name: {name}</p>
+                <p className='card__name'>Name: {name}</p>
                 <p className='card__rating'>Rating: {rating}</p>
                 <p className='card__genres'>Genres:</p>
                 {genres?.map((g, i) => (
