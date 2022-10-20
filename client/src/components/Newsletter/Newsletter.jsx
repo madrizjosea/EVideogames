@@ -60,7 +60,7 @@ export default function Newsletter(){
                     <textarea hidden name="message" id="" cols="30" rows="8" value='Subscribe to newsletter'></textarea>
                     <div>
                     <label  className={Style.confirmacion}>Are you sure?</label>
-                    <input className={Style.si}type="submit" value="Yes"/> 
+                    <input className={Style.Newsletter}type="submit" value="Yes"/> 
                     </div>
                     </form>
                     :
