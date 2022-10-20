@@ -10,7 +10,7 @@ const {
 } = require('../controllers/Review.js');
 
 router.get('/', getReviews);
-router.get('/byUser/:userId', getReviewsByUser);
+router.get('/byUser/:email', getReviewsByUser);
 router.get('/byGame/:videogameId', getReviewsByVideogame);
 router.post('/create', createReview);
 router.put('/update', updateReview);

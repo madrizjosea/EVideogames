@@ -90,6 +90,13 @@ const { value, setValue } = useContext(UserContext)
               ) : null}
            </li>
            <li>
+           {value ? (
+                <Link to={"/Library"} className={Style.letra}>
+                  LIBRARY
+                </Link>
+              ) : null}
+           </li>
+           <li>
              <Link to={"/Cart"} className={Style.letra}>
               CART
              </Link>

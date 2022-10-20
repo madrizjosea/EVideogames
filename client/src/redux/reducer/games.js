@@ -1,6 +1,7 @@
 import {
     GET_ALL_GAMES,
     GET_GAME_QUERY,
+    GET_USER_GAMES,
     GET_GENRES,
     GENRE_FILTER,
     GET_AUDIENCES,
@@ -10,8 +11,8 @@ import {
     ADD_GAME,
     EDIT_GAME,
     DELETE_GAME,
-   CLEAR_DETAIL,PAGE
-
+    CLEAR_DETAIL, 
+    PAGE
 } from '../actions/types.js';
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
     games: [],
     game: {},
     allGenres: [],
-    allAudiencess:[]
+    allAudiencess: [],
+    userGames: []
 };
 
 export default function games(state = initialState, action) {
@@ -36,6 +38,12 @@ export default function games(state = initialState, action) {
                 ...state,
                 games: action.payload,
             };
+
+        case GET_USER_GAMES:
+            return {
+                ...state,
+                userGames : action.payload,
+            }
 
         case GET_GENRES:
             return {
@@ -98,19 +106,19 @@ export default function games(state = initialState, action) {
             return {
                 ...state
             };
-//* poner cuando las cart renderizen en el estado
-            case CLEAR_DETAIL:
-                return {
-                  ...state,
-                  recipes: action.payload,
-                  detail: action.payload
-//* para poder guardar la pagina                  
-                };
-                 case PAGE:
-                return {
-                  ...state,
-                  pages: action.payload
-                }
+        //* poner cuando las cart renderizen en el estado
+        case CLEAR_DETAIL:
+            return {
+                ...state,
+                recipes: action.payload,
+                detail: action.payload
+                //* para poder guardar la pagina                  
+            };
+        case PAGE:
+            return {
+                ...state,
+                pages: action.payload
+            }
 
 
         default:
