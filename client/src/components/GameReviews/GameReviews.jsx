@@ -31,7 +31,7 @@ export default function GameReviews({ videogameId }) {
   return (
     <div>
       <div>
-        {reviews.length ? <ReviewCards reviews={currentPost} /> : 'NO REVIEWS'}
+        {reviews.length ? <ReviewCards reviews={currentPost} /> : null }
         {reviews.length > 1 ? (
           <Pagination
             totalPosts={reviews.length}

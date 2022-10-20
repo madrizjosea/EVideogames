@@ -1,23 +1,14 @@
 import Rating from '@mui/material/Rating';
+import style from './ReviewCards.module.css';
 
 export default function ReviewCards({ reviews }) {
   return (
     <div>
       {reviews?.map(r => (
-        <div key={r.id}>
-          <div>
-            <Rating
-              name="half-rating-read"
-              value={r.rating}
-              precision={0.5}
-              readOnly
-            />
-          </div>
-          <div>{r.content}</div>
-          <div>
+        <div key={r.id} className={style.review}>
+          <div className={style.identifyer}>
             <img
-              width="25"
-              height="25"
+            className={style.reviwerImg}
               src={
                 r.userImage
                   ? r.userImage
@@ -25,7 +16,17 @@ export default function ReviewCards({ reviews }) {
               }
               alt="userImage"
             />
-            <p>{r.username}</p>
+            <div className={style.reviwerName}>{r.username}</div>
+          </div>
+
+          <div className={style.reviewData}>
+            <Rating
+              name="half-rating-read"
+              value={r.rating}
+              precision={0.5}
+              readOnly
+            />
+            <div className={style.content}>{r.content}</div>
           </div>
         </div>
       ))}

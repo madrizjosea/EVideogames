@@ -65,41 +65,53 @@ export default function Details() {
 
   return details.id ? (
     <section className={styles.container}>
-      <div className={styles.leftSide}>
-        <h3>{details.name}</h3>
-        <div className={styles.imageContainer}>
-          <img src={details.image} alt={details.name} />
-        </div>
-      </div>
-      <div className={styles.middle}>
-        <div>
-          <h2>Release Date: {details.releaseDate}</h2>
-          <div className={styles.btns}>
-            <h2>Price: ${details.price}</h2>
-            <button className={styles.addCart} onClick={onClick}>
-              Add to Cart
-            </button>
-            {msg ? <p className={styles.confirmation}>{msg}</p> : <div></div>}
-            {/* 
-            <button>Write review</button> */}
-          </div>
-          <div className={styles.ratings}>
-            {details.audiences[0] ? <p>{details.audiences[0].name}</p> : null}
-            {details.rating ? <p>Rating {details.rating}</p> : null}
+
+      <div className={styles.up}>
+        
+        <div className={styles.leftSide}>
+          <h3>{details.name}</h3>
+          <div className={styles.imageContainer}>
+            <img src={details.image} alt={details.name} />
           </div>
         </div>
-        <p className={styles.description}>{details.description}</p>
+        
+        <div className={styles.middle}>
+          <div>
+            <h2>Release Date: {details.releaseDate}</h2>
+            <div className={styles.btns}>
+              <h2>Price: ${details.price}</h2>
+              <button className={styles.addCart} onClick={onClick}>
+                Add to Cart
+              </button>
+              {msg ? <p className={styles.confirmation}>{msg}</p> : <div></div>}
+            </div>
+            <div className={styles.ratings}>
+              {details.audiences[0] ? <p>{details.audiences[0].name}</p> : null}
+              {details.rating ? <p><Rating
+                name="half-rating-read"
+                value={details.rating}
+                precision={0.5}
+                readOnly
+              /></p> : null}
+            </div>
+          </div>
+          <p className={styles.description}>{details.description}</p>
+        </div>
       </div>
 
-      {userGames.videogames?.find(g => g.id === details.id) &&
-      !userReviews.length ? (
-        <AddReview videogameId={details.id} userData={value} />
-      ) : userGames.videogames?.find(g => g.id === details.id) &&
-        !userReviews?.find(r => r.videogameId === id) ? (
-        <AddReview videogameId={details.id} userData={value} />
-      ) : null}
+      <div className={styles.down}>
+        {userGames.videogames?.find(g => g.id === details.id) &&
+          !userReviews.length ? (
+          <AddReview videogameId={details.id} userData={value} />
+        ) : userGames.videogames?.find(g => g.id === details.id) &&
+          !userReviews?.find(r => r.videogameId === id) ? (
+          <AddReview videogameId={details.id} userData={value} />
+        ) : null}
 
-      <GameReviews videogameId={id} />
+        <GameReviews videogameId={id} />
+      </div>
+
+
     </section>
   ) : (
     <h1>Loading...</h1>
