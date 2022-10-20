@@ -17,7 +17,7 @@ import Cart from './components/Cart/Cart.jsx';
 import About from './components/About/About.jsx'
 import Page404 from './components/Page404/Page404.jsx';
 import Stripe from './components/Payment/Stripe.js';
-import { Library } from './components/Library/Library';
+import Library from './components/Library/Library.jsx';
 
 function App() {
   const [value, setValue] = useLocalStorage('user', '')

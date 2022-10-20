@@ -1,7 +1,7 @@
 import Videogamecard from "../VideogameCard/VideogameCard";
 import Style from "./videogames.module.css";
 
-export default function Videogamescards({ gamedata }) {
+export default function Videogamescards({ gamedata, canReview }) {
   return (
     <div>
       <div className={Style.cointainerCard}>
@@ -13,6 +13,7 @@ export default function Videogamescards({ gamedata }) {
           rating={game.rating}
           genres={game.genres}
           id={game.id}
+          canReview={canReview}
         />))}
       </div>
     </div>

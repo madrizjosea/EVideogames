@@ -51,11 +51,12 @@ export default function Main() {
   }
 
   if (genre) {
-    results = results.filter(dato =>
-      dato.genres.toLowerCase().includes(genre.toLowerCase())
+    results = results.filter(game =>
+      game.genres.find(g => g.name.toLowerCase() === genre.toLowerCase())
     );
   }
-  // console.log(genre);
+
+  // console.log(results);
   const sorting = e => {
     e.preventDefault();
     if (order === 'asc') {
@@ -88,7 +89,9 @@ export default function Main() {
   const postperPage = 12;
   const lastPostIndex = currentPage * postperPage;
   const firstPostIndex = lastPostIndex - postperPage;
-  const currentPost = results.slice(firstPostIndex, lastPostIndex).filter(g => g.isAvailable === true);
+  const currentPost = results
+    .slice(firstPostIndex, lastPostIndex)
+    .filter(g => g.isAvailable === true);
 
   return games ? (
     <div>
@@ -124,7 +127,7 @@ export default function Main() {
       <div className="divcontainer">
         <label className="texto">Genres</label>
         <select name="filtro" onChange={handleSelect}>
-          <option></option>
+          <option value="">All Genres</option>
           <option>Action</option>
           <option>Indie</option>
           <option>Adventure</option>

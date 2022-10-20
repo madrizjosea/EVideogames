@@ -110,9 +110,7 @@ export default function games(state = initialState, action) {
         case CLEAR_DETAIL:
             return {
                 ...state,
-                recipes: action.payload,
-                detail: action.payload
-                //* para poder guardar la pagina                  
+                game: {}               
             };
         case PAGE:
             return {
