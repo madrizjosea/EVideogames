@@ -12,6 +12,7 @@ const getAccountLibrary = async (req, res, next) => {
         attributes: {
           exclude: ['description', 'minReq', 'recommendedReq', 'isAvailable'],
         },
+        through: { attributes: [] }
       },
     });
 
