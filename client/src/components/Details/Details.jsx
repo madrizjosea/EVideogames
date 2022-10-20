@@ -83,8 +83,8 @@ export default function Details() {
             <button>Write review</button> */}
           </div>
           <div className={styles.ratings}>
-            <p>{details.audiences[0].name}</p>
-            <p>Rating {details.rating}</p>
+            {details.audiences[0] ? <p>{details.audiences[0].name}</p> : null}
+            {details.rating ? <p>Rating {details.rating}</p> : null}
           </div>
         </div>
         <p className={styles.description}>{details.description}</p>
