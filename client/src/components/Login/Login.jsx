@@ -79,14 +79,13 @@ export default function Login() {
     setValue(false);
     setCart([]);
   }
-
   function handleCallback(response) {
     document.cookie = `token=${response.credential}; path=/; samesite=strict`;
     var userObject = jwt_decode(response.credential);
     axios.post('/accounts', {
       email: userObject.email,
       name: userObject.name,
-      image: userObject.image,
+      image: userObject.picture,
     });
     console.log('Response:', userObject.email);
     setUser(userObject);
