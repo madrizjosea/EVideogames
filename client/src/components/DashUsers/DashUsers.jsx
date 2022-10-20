@@ -30,12 +30,12 @@ export default function DashUsers() {
     <div>
       <div id={style.sort}>
         <div>
-          <label>Search: </label>
+          <label className={style.search}>Search: </label>
           <input placeholder="Name..."></input>
         </div>
 
         <div>
-          <label>Roles</label>
+          <label className={style.roles}>Roles</label>
           <select>
             <option>admin</option>
             <option>user</option>
@@ -43,7 +43,7 @@ export default function DashUsers() {
         </div>
 
         <div>
-          <button type="button">Order by Name</button>
+          <button className={style.order}type="button">Order by Name</button>
         </div>
       </div>
 

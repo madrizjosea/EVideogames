@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from '../../axios';
 import { UserContext } from '../../Context/UserContext';
+import Style from "../Payment/paymentForm.module.css";
 
 export default function PaymentForm() {
   const { value, order, setOrder, setCart, setTotal } = useContext(UserContext);
@@ -82,8 +83,8 @@ export default function PaymentForm() {
           <button>Pay</button>
         </form>
       ) : (
-        <div>
-          <h2>Payment Successful</h2>
+        <div className={Style.containerPayment}>
+          <h2 className={Style.payment}>¡Payment Successful!</h2>
         </div>
       )}
     </>
